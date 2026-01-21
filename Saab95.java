@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.io.*;
 
-public class Saab95 implements car{
+public class Saab95 extends car {
 
     public boolean turboOn;
     /*
@@ -12,9 +12,11 @@ public class Saab95 implements car{
     public String modelName; // The car model name
     */
     public Saab95(){
+        engine = new SaabEngine(125);
+        speed = new SaabSpeed();
         nrDoors = 2;
         color = Color.red;
-        enginePower = 125;
+        //enginePower = 125;
 	    turboOn = false;
         modelName = "Saab95";
         stopEngine();
@@ -77,5 +79,29 @@ public class Saab95 implements car{
     // TODO fix this method according to lab pm
     public void brake(double amount){
         decrementSpeed(amount);
+    }
+}
+
+class SaabEngine implements Engine{
+    private double enginePower;
+
+    public SaabEngine(double enginePower){
+        this.enginePower = enginePower;
+    }
+    public void incrementSpeed(double amount){
+        double currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+    }
+    public void decrementSpeed(double amount){
+        double currentSpeed = getCurrentSpeed() - speedFactor() * amount;
+    }
+}
+
+class SaabSpeed implements Speed{
+    public boolean turboOn;
+
+    public double speedFactor(){
+        double turbo = 1;
+        if(turboOn) turbo = 1.3;
+        return enginePower * 0.01 * turbo;
     }
 }

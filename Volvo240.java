@@ -1,9 +1,9 @@
 import java.awt.*;
 import java.io.*;
 
-public class Volvo240 implements Car{
+public class Volvo240 extends car{
 
-    
+
     public final static double trimFactor = 1.25;
     /*
     public int nrDoors; // Number of doors on the car

@@ -9,58 +9,56 @@ import java.io.*;
 Motor är ett beteende → interface
 
 */
-
+interface Speed{
+    void speedFactor();
+}
 interface Engine{
    void incrementSpeed(double amount);
    void decrementSpeed(double amount);
+   int getCurrentSpeed();
+   int speedFactor();
 
 }
 
-abstract class Car {
+abstract class car {
+    // variabler
+    protected Engine engine;
+    protected Speed speed;
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
     protected double currentSpeed; // The current speed of the car
     protected Color color; // Color of the car
     protected String modelName; // The car model name
 
-}
-
-public class car{
-    private Info info;
-
-    public car(Info info){
+    public car(Engine engine, Speed speed, int nrDoors, double enginePower, double currentSpeed, Color color, String modelName){
+        this.engine = engine;
+        this.speed = speed;
         this.nrDoors = nrDoors;
-        this.enginePower = enginePower;
-        this.currentSpeed =  currentSpeed;
+        this.enginePower = enginePower; //kanske ta bort
+        this.currentSpeed = currentSpeed; // kanske ta bort
         this.color = color;
         this.modelName = modelName;
     }
+    // funktioner
+    public int getNrDoors() {
+        return nrDoors;}
 
-    public int getNrDoors(){
-        return this.nrDoors;
-    }
-    public double getEnginePower(){
-        return enginePower;
-    }
+    public double getEnginePower() {
+        return enginePower;}
 
-    public double getCurrentSpeed(){
-        return currentSpeed;
-    }
+    public double getCurrentSpeed() {
+        return currentSpeed;}
 
-    public Color getColor(){
-        return color;
-    }
+    public Color getColor() {
+        return color;}
 
-    public void setColor(Color clr){
-        color = clr;
-    }
+    public void setColor(Color clr) {
+        color = clr;}
 
     public void startEngine(){
-        currentSpeed = 0.1;
-    }
+        currentSpeed = 0.1;}
 
     public void stopEngine(){
-        currentSpeed = 0;
-    }
+        currentSpeed = 0;}
 
 }
