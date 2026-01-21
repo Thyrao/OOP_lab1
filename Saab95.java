@@ -4,50 +4,15 @@ import java.io.*;
 public class Saab95 extends car {
 
     public boolean turboOn;
-    /*
-    public int nrDoors; // Number of doors on the car
-    public double enginePower; // Engine power of the car
-    public double currentSpeed; // The current speed of the car
-    public Color color; // Color of the car
-    public String modelName; // The car model name
-    */
+
     public Saab95(){
-        engine = new SaabEngine(125);
-        speed = new SaabSpeed();
         nrDoors = 2;
         color = Color.red;
-        //enginePower = 125;
+        enginePower = 125;
 	    turboOn = false;
         modelName = "Saab95";
         stopEngine();
     }
-    /*
-    public int getNrDoors(){
-        return nrDoors;
-    }
-    public double getEnginePower(){
-        return enginePower;
-    }
-
-    public double getCurrentSpeed(){
-        return currentSpeed;
-    }
-
-    public Color getColor(){
-        return color;
-    }
-
-    public void setColor(Color clr){
-	    color = clr;
-    }
-
-    public void startEngine(){
-	    currentSpeed = 0.1;
-    }
-
-    public void stopEngine(){
-	    currentSpeed = 0;
-    }*/
 
     public void setTurboOn(){
 	    turboOn = true;
@@ -79,29 +44,5 @@ public class Saab95 extends car {
     // TODO fix this method according to lab pm
     public void brake(double amount){
         decrementSpeed(amount);
-    }
-}
-
-class SaabEngine implements Engine{
-    private double enginePower;
-
-    public SaabEngine(double enginePower){
-        this.enginePower = enginePower;
-    }
-    public void incrementSpeed(double amount){
-        double currentSpeed = getCurrentSpeed() + speedFactor() * amount;
-    }
-    public void decrementSpeed(double amount){
-        double currentSpeed = getCurrentSpeed() - speedFactor() * amount;
-    }
-}
-
-class SaabSpeed implements Speed{
-    public boolean turboOn;
-
-    public double speedFactor(){
-        double turbo = 1;
-        if(turboOn) turbo = 1.3;
-        return enginePower * 0.01 * turbo;
     }
 }

@@ -8,34 +8,29 @@ import java.io.*;
  Volvo är en bil → klass + arv
 Motor är ett beteende → interface
 
-*/
-interface Speed{
-    void speedFactor();
-}
-interface Engine{
-   void incrementSpeed(double amount);
-   void decrementSpeed(double amount);
-   int getCurrentSpeed();
-   int speedFactor();
+Interface ska bara beräkna, inte sätta/ändra (?)
 
+*/
+
+interface Engine{
+    void speedFactor();
 }
 
 abstract class car {
     // variabler
     protected Engine engine;
-    protected Speed speed;
+    //protected Speed speed;
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
     protected double currentSpeed; // The current speed of the car
     protected Color color; // Color of the car
     protected String modelName; // The car model name
 
-    public car(Engine engine, Speed speed, int nrDoors, double enginePower, double currentSpeed, Color color, String modelName){
+    public car(Engine engine, int nrDoors, double enginePower, Color color, String modelName){
         this.engine = engine;
-        this.speed = speed;
         this.nrDoors = nrDoors;
-        this.enginePower = enginePower; //kanske ta bort
-        this.currentSpeed = currentSpeed; // kanske ta bort
+        this.enginePower = enginePower;
+        this.currentSpeed = 0;
         this.color = color;
         this.modelName = modelName;
     }
