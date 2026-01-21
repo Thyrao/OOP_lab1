@@ -1,14 +1,16 @@
 import java.awt.*;
+import java.io.*;
 
-public class Saab95{
+public class Saab95 implements car{
 
     public boolean turboOn;
+    /*
     public int nrDoors; // Number of doors on the car
     public double enginePower; // Engine power of the car
     public double currentSpeed; // The current speed of the car
     public Color color; // Color of the car
     public String modelName; // The car model name
-    
+    */
     public Saab95(){
         nrDoors = 2;
         color = Color.red;
@@ -17,7 +19,7 @@ public class Saab95{
         modelName = "Saab95";
         stopEngine();
     }
-    
+    /*
     public int getNrDoors(){
         return nrDoors;
     }
@@ -43,7 +45,7 @@ public class Saab95{
 
     public void stopEngine(){
 	    currentSpeed = 0;
-    }
+    }*/
 
     public void setTurboOn(){
 	    turboOn = true;
