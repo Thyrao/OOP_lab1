@@ -19,7 +19,7 @@ interface Engine{
     double speedFactor();
 }
 
-abstract class car implements Movable{
+abstract class Car implements Movable{
     // variabler
     protected Engine engine;
     //protected Speed speed;
@@ -32,7 +32,7 @@ abstract class car implements Movable{
     protected double posY;
     protected double direction;
 
-    public car(Engine engine, int nrDoors, double enginePower, Color color, String modelName){
+    public Car(Engine engine, int nrDoors, double enginePower, Color color, String modelName){
         this.engine = engine;
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;

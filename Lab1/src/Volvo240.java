@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Volvo240 extends car{
+public class Volvo240 extends Car{
     public Volvo240(){
         super(new VolvoEngine(), 4, 100, Color.black, "Volvo240");
     }
