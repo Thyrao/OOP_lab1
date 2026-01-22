@@ -1,5 +1,6 @@
+
+
 import java.awt.*;
-import java.io.*;
 
 /* Gemensam funktionalitet extraheras till
  en abstrakt basklass, medan varierande beteende bryts ut till interfaces

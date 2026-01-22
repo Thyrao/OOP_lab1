@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.io.*;
 
 public class Volvo240 extends car{
     public Volvo240(){
