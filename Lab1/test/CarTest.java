@@ -80,14 +80,16 @@ public class CarTest {
     public void turnRight() {
         double oldDirection = Saab.getDirection();
         Saab.turnRight();
-        Assertions.assertEquals(oldDirection+1, Saab.getDirection());
+        double exp = (oldDirection + 1)%4;
+        Assertions.assertEquals(exp, Saab.getDirection());
     }
 
     @Test
     public void turnLeft() {
         double oldDirection = Saab.getDirection();
         Saab.turnRight();
-        Assertions.assertEquals(oldDirection-1, Saab.getDirection());
+        double exp = (oldDirection - 1)%4;
+        Assertions.assertEquals(exp, Saab.getDirection());
     }
 
     /*@Test

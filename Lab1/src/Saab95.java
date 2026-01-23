@@ -20,7 +20,8 @@ class SaabEngine implements Engine{
 
     public double speedFactor(){
         double turbo = 1;
-        if(turboOn) turbo = 1.3;
+        if(turboOn)
+            turbo = 1.3;
         return enginePower * 0.01 * turbo;
     }
     public double incrementSpeed(double currentSpeedx, double speedFactor, double amount){
