@@ -24,11 +24,13 @@ public class CarTest {
 
     @Test
     public void startEngine() {
+        Saab.startEngine();
         Assertions.assertEquals(0.1,Saab.getCurrentSpeed(), "When engine has started it should be 0.1");
     }
 
     @Test
     public void stopEngine() {
+        Saab.stopEngine();
         Assertions.assertEquals(0,Saab.getCurrentSpeed(), "When engine is stopped it should be 0");
     }
 
