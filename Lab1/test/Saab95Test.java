@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Assertions;
 
 import java.awt.*;
 
-public class CarTest {
+public class SaabTest {
     Saab95 Saab = new Saab95();
 
     @Test
@@ -12,9 +12,7 @@ public class CarTest {
     }
 
     @Test
-    public void getEnginePower() {
-        Assertions.assertEquals(125, Saab.getEnginePower(), "Engine power should be 125");
-    }
+    public void getEnginePower() {Assertions.assertEquals(125, Saab.getEnginePower(), "Engine power should be 125");}
 
     @Test
     public void get_set_Color() {
@@ -36,11 +34,10 @@ public class CarTest {
 
     @Test
     public void speedFactor() {
-        if(Saab.turboOn){
-            Assertions.assertEquals(1.625, Saab.speedFactor(), "Speed factor if turbo is on");
-        } else {
-            Assertions.assertEquals(1.25, Saab.speedFactor(), "Speed factor if turbo is off");
-        }
+        Saab.setTurboOn();
+        Assertions.assertEquals(1.625, Saab.speedFactor(), "Speed factor if turbo is on");
+        Saab.setTurboOff();
+        Assertions.assertEquals(1.25, Saab.speedFactor(), "Speed factor if turbo is off");
     }
 
     @Test
@@ -75,7 +72,6 @@ public class CarTest {
         Assertions.assertTrue(greaterThen);
     }
 
-
     @Test
     public void turnRight() {
         double oldDirection = Saab.getDirection();
@@ -87,8 +83,8 @@ public class CarTest {
     @Test
     public void turnLeft() {
         double oldDirection = Saab.getDirection();
-        Saab.turnRight();
-        double exp = (oldDirection - 1)%4;
+        Saab.turnLeft();
+        double exp = ((oldDirection - 1)%4 +4) % 4; // kan inte ha modulo på ett negativt tal
         Assertions.assertEquals(exp, Saab.getDirection());
     }
 
@@ -102,14 +98,10 @@ public class CarTest {
 
     @Test
     public void move() {
-        double[] pos = Saab.getPosition();
-        double b4x = pos[0];
-        double b4y = pos[1];
+        double[] beforePos = Saab.getPosition();
+        Saab.gas(0.5);
         Saab.move();
-        double[] after_pos = Saab.getPosition();
-        double afx = after_pos[0];
-        double afy = after_pos[1];
-        Assertions.assertNotEquals(b4x, afx);
-        Assertions.assertNotEquals(b4y, afy);
+        double[] afterPos = Saab.getPosition();
+        Assertions.assertNotEquals(beforePos, afterPos);
     }
 }

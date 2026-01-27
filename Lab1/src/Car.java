@@ -1,5 +1,3 @@
-
-
 import java.awt.*;
 
 /* Gemensam funktionalitet extraheras till
@@ -66,19 +64,18 @@ abstract class Car implements Movable{
     public void stopEngine(){
         currentSpeed = 0;}
 
-    public double speedFactor(){
+    protected double speedFactor(){
         return engine.speedFactor(getEnginePower());
     }
 
-    public void incrementSpeed(double amount){
+    protected void incrementSpeed(double amount){
         currentSpeed = engine.incrementSpeed(getCurrentSpeed(), speedFactor(), amount, getEnginePower());
     }
 
-    public void decrementSpeed(double amount){
+    protected void decrementSpeed(double amount){
         currentSpeed = engine.decrementSpeed(getCurrentSpeed(), speedFactor(), amount, getEnginePower());
     }
 
-    // TODO fix this method according to lab pm
     public void gas(double amount){
         double oldSpeed = getCurrentSpeed();
         if(amount >= 0 && amount <=1){
@@ -87,10 +84,12 @@ abstract class Car implements Movable{
             if(newSpeed < oldSpeed){
                 currentSpeed = oldSpeed;
             }
+            else if (newSpeed > getEnginePower()){
+                currentSpeed = getEnginePower();
+            }
         }
     }
 
-    // TODO fix this method according to lab pm
     public void brake(double amount){
         double oldSpeed = getCurrentSpeed();
         if(amount >= 0 && amount <=1){
@@ -98,6 +97,9 @@ abstract class Car implements Movable{
             double newSpeed = getCurrentSpeed();
             if (newSpeed > oldSpeed){
                 currentSpeed = oldSpeed;
+            }
+            else if (newSpeed < 0){
+                currentSpeed = 0;
             }
         }
     }

@@ -7,8 +7,7 @@ public class Volvo240 extends Car{
 }
 
 class VolvoEngine implements Engine{
-
-    public final static double trimFactor = 1.25;
+    private final static double trimFactor = 1.25;
 
     public double speedFactor(double enginePower){
         return enginePower * 0.01 * trimFactor;

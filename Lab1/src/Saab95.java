@@ -22,7 +22,7 @@ class SaabEngine implements Engine{
         this.turboOn = turboOn;
     }
 
-    public void setTurbo(boolean turboOn){
+    protected void setTurbo(boolean turboOn){
         this.turboOn = turboOn;
     }
 
