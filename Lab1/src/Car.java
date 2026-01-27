@@ -14,15 +14,14 @@ Interface ska bara beräkna, inte sätta/ändra (?)
 */
 
 interface Engine{
-    double incrementSpeed(double currentSpeed, double speedFactor, double amount);
-    double decrementSpeed(double currentSpeed, double speedFactor, double amount);
-    double speedFactor();
+    double incrementSpeed(double currentSpeed, double speedFactor, double amount, double enginePower);
+    double decrementSpeed(double currentSpeed, double speedFactor, double amount, double enginePower);
+    double speedFactor(double enginePower);
 }
 
 abstract class Car implements Movable{
     // variabler
     protected Engine engine;
-    //protected Speed speed;
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
     protected double currentSpeed; // The current speed of the car
@@ -68,15 +67,15 @@ abstract class Car implements Movable{
         currentSpeed = 0;}
 
     public double speedFactor(){
-        return engine.speedFactor();
+        return engine.speedFactor(getEnginePower());
     }
 
     public void incrementSpeed(double amount){
-        currentSpeed = engine.incrementSpeed(getCurrentSpeed(), speedFactor(), amount);
+        currentSpeed = engine.incrementSpeed(getCurrentSpeed(), speedFactor(), amount, getEnginePower());
     }
 
     public void decrementSpeed(double amount){
-        currentSpeed = engine.decrementSpeed(getCurrentSpeed(), speedFactor(), amount);
+        currentSpeed = engine.decrementSpeed(getCurrentSpeed(), speedFactor(), amount, getEnginePower());
     }
 
     // TODO fix this method according to lab pm
@@ -112,7 +111,7 @@ abstract class Car implements Movable{
     }
 
     public void turnLeft(){
-        direction = (getDirection() - 1)%4;
+        direction = ((getDirection() - 1)%4 +4) % 4; // kan inte ha modulo på ett negativt tal
     }
 
     public double[] getPosition(){
@@ -127,16 +126,16 @@ abstract class Car implements Movable{
         double[] pos = getPosition();
 
         if (dir == 0){
-            posY = posY + getCurrentSpeed();
+            posY = pos[1] + getCurrentSpeed();
         }
         else if (dir == 1){
-            posX = posX + getCurrentSpeed();
+            posX = pos[0] + getCurrentSpeed();
         }
         else if (dir == 2){
-            posY = posY - getCurrentSpeed();
+            posY = pos[1] - getCurrentSpeed();
         }
         else {
-            posX = posX - getCurrentSpeed();
+            posX = pos[0] - getCurrentSpeed();
         }
     }
 }

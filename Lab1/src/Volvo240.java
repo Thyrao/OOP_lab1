@@ -7,18 +7,17 @@ public class Volvo240 extends Car{
 }
 
 class VolvoEngine implements Engine{
-    protected double enginePower;
 
     public final static double trimFactor = 1.25;
 
-    public double speedFactor(){
+    public double speedFactor(double enginePower){
         return enginePower * 0.01 * trimFactor;
     }
-    public double incrementSpeed(double currentSpeedx, double speedFactor, double amount){
-        return Math.min(currentSpeedx + speedFactor * amount,enginePower);
+    public double incrementSpeed(double currentSpeedx, double speedFactor, double amount, double enginePower){
+        return Math.min(currentSpeedx + speedFactor * amount, enginePower);
     }
 
-    public double decrementSpeed(double currentSpeedx, double speedFactor, double amount){
+    public double decrementSpeed(double currentSpeedx, double speedFactor, double amount, double enginePower){
         return Math.max(currentSpeedx - speedFactor * amount,0);
     }
 
