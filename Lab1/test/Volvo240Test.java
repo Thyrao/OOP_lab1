@@ -106,14 +106,6 @@ public class Volvo240Test {
         Assertions.assertEquals(exp, Volvo.getDirection(), "The new direction after turning left");
     }
 
-    /*@Test
-    public void getPosition() {
-        double posX = Saab.getPosition()[0];
-        double posY = Saab.getPosition()[1];
-        Saab.move()
-        Assertions.assertEquals(0.0, Saab.getPosition()[0]);
-    }*/
-
     @Test
     public void move0() {
         double[] beforePos = Volvo.getPosition();

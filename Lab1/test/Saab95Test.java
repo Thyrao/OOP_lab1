@@ -108,14 +108,6 @@ public class Saab95Test {
         Assertions.assertEquals(exp, Saab.getDirection(), "The direction didn't update correctly when turning left");
     }
 
-    /*@Test
-    public void getPosition() {
-        double posX = Saab.getPosition()[0];
-        double posY = Saab.getPosition()[1];
-        Saab.move()
-        Assertions.assertEquals(0.0, Saab.getPosition()[0]);
-    }*/
-
     @Test
     public void move0() {
         double[] beforePos = Saab.getPosition();
