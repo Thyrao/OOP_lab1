@@ -1,16 +1,5 @@
 import java.awt.*;
 
-/* Gemensam funktionalitet extraheras till
- en abstrakt basklass, medan varierande beteende bryts ut till interfaces
- och används via composition för att uppfylla Open–Closed Principle.
-
- Volvo är en bil → klass + arv
-Motor är ett beteende → interface
-
-Interface ska bara beräkna, inte sätta/ändra (?)
-
-*/
-
 interface Engine{
     double incrementSpeed(double currentSpeed, double speedFactor, double amount, double enginePower);
     double decrementSpeed(double currentSpeed, double speedFactor, double amount, double enginePower);

@@ -6,11 +6,11 @@ public class Saab95 extends Car {
     }
 
     public void setTurboOn(){
-        ((SaabEngine) engine).setTurbo(true); //kanske fel
+        ((SaabEngine) engine).setTurbo(true);
     }
 
     public void setTurboOff(){
-        ((SaabEngine) engine).setTurbo(false); //kanske fel
+        ((SaabEngine) engine).setTurbo(false);
     }
 }
 
@@ -26,16 +26,18 @@ class SaabEngine implements Engine{
         this.turboOn = turboOn;
     }
 
+    @Override
     public double speedFactor(double enginePower){
         double turbo = 1;
         if(turboOn)
             turbo = 1.3;
         return enginePower * 0.01 * turbo;
     }
+    @Override
     public double incrementSpeed(double currentSpeedx, double speedFactor, double amount, double enginePower){
         return currentSpeedx + speedFactor * amount;
     }
-
+    @Override
     public double decrementSpeed(double currentSpeedx, double speedFactor, double amount, double enginePower){
         return currentSpeedx - speedFactor * amount;
     }
