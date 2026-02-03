@@ -3,7 +3,7 @@ import org.junit.Test;
 
 import java.awt.*;
 
-public class ScaniaTest {
+public class ScaniaTest{
     Scania scania = new Scania();
 
     @Test
@@ -57,6 +57,7 @@ public class ScaniaTest {
 
     @Test
     public void incrementSpeedRaise() {
+        scania.stopEngine();
         double old_speed = scania.getCurrentSpeed();
         scania.raise(40);
         scania.gas(0.5);

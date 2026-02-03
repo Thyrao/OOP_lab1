@@ -1,8 +1,93 @@
 import java.awt.*;
 
-public class Volvo240 extends Car{
+public class Volvo240 implements Vehicle, Movable{
+    private final Car car;
     public Volvo240(){
-        super(new VolvoEngine(), 4, 100, Color.black, "Volvo240");
+        car = new Car(new VolvoEngine(), 4, 100, Color.black, "Volvo240");
+    }
+
+    @Override
+    public int getNrDoors() {
+        return car.getNrDoors();
+    }
+
+    @Override
+    public double getEnginePower() {
+        return car.getEnginePower();
+    }
+
+    @Override
+    public double getCurrentSpeed() {
+        return car.getCurrentSpeed();
+    }
+
+    @Override
+    public Color getColor() {
+        return car.color;
+    }
+
+    @Override
+    public void setColor(Color clr) {
+        car.setColor(clr);
+    }
+
+    @Override
+    public void startEngine() {
+        car.startEngine();
+    }
+
+    @Override
+    public void stopEngine() {
+        car.stopEngine();
+    }
+
+    @Override
+    public void gas(double amount) {
+        car.gas(amount);
+    }
+
+    @Override
+    public void brake(double amount) {
+        car.brake(amount);
+    }
+
+    @Override
+    public double getDirection() {
+        return car.getDirection();
+    }
+
+    @Override
+    public void turnRight() {
+        car.turnRight();
+    }
+
+    @Override
+    public void turnLeft() {
+        car.turnLeft();
+    }
+
+    @Override
+    public double[] getPosition() {
+        return car.getPosition();
+    }
+
+    @Override
+    public void move() {
+        car.move();
+    }
+
+
+    public void incrementSpeed(double amount) {
+        car.incrementSpeed(amount);
+    }
+
+    public void decrementSpeed(double amount) {
+         car.decrementSpeed(amount);
+    }
+
+
+    public double speedFactor() {
+        return car.speedFactor();
     }
 }
 

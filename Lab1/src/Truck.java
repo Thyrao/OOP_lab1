@@ -1,6 +1,6 @@
 import java.awt.*;
 
-class Car implements Movable,Vehicle{
+class Truck implements Movable,Vehicle,Truckbed{
     // variabler
     protected Engine engine;
     protected int nrDoors; // Number of doors on the car
@@ -11,8 +11,9 @@ class Car implements Movable,Vehicle{
     protected double posX;
     protected double posY;
     protected double direction;
+    protected double angle;
 
-    public Car(Engine engine, int nrDoors, double enginePower, Color color, String modelName){
+    public Truck(Engine engine, int nrDoors, double enginePower, Color color, String modelName){
         this.engine = engine;
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
@@ -22,6 +23,7 @@ class Car implements Movable,Vehicle{
         this.posX = 0.0;
         this.posY = 0.0;
         this.direction = 0;
+        this.angle = 0;
         stopEngine();
     }
 
@@ -47,15 +49,18 @@ class Car implements Movable,Vehicle{
     public void stopEngine(){
         currentSpeed = 0;}
 
-    public double speedFactor(){
+    protected double speedFactor(){
         return engine.speedFactor(getEnginePower());
     }
 
-    public void incrementSpeed(double amount){
-        currentSpeed = engine.incrementSpeed(getCurrentSpeed(), speedFactor(), amount, getEnginePower());
+    protected void incrementSpeed(double amount){
+        if (angle > 0){
+            currentSpeed = 0;
+        }
+        else{ currentSpeed = engine.incrementSpeed(getCurrentSpeed(), speedFactor(), amount, getEnginePower());}
     }
 
-    public void decrementSpeed(double amount){
+    protected void decrementSpeed(double amount){
         currentSpeed = engine.decrementSpeed(getCurrentSpeed(), speedFactor(), amount, getEnginePower());
     }
 
@@ -122,6 +127,29 @@ class Car implements Movable,Vehicle{
         else {
             posX = pos[0] - getCurrentSpeed();
         }
+    }
+
+    public void lower(double amount) {
+        if (getCurrentSpeed() == 0) {
+            angle -= amount;
+            if  (angle < 0)
+                angle = 0;
+        }
+        //else throw new RuntimeException("The Truck must first stand still ");
+    }
+
+    public void raise(double amount) {
+        if (getCurrentSpeed() == 0){
+            angle += amount;
+            if (angle > 70)
+                angle = 70;
+        }
+        //else throw new RuntimeException("The Truck must first stand still ");
+    }
+
+    @Override
+    public double getAngle() {
+        return angle;
     }
 
 }
