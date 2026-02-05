@@ -3,12 +3,16 @@ import java.awt.*;
 public class Volvo240 implements Vehicle, Movable{
     private final Car car;
     public Volvo240(){
-        car = new Car(new VolvoEngine(), 4, 100, Color.black, "Volvo240");
+        car = new Car(new VolvoEngine(), 4, 100, Color.black, "Volvo240", 2);
     }
 
     @Override
     public int getNrDoors() {
         return car.getNrDoors();
+    }
+
+    public int getCarSize(){
+        return car.getCarSize();
     }
 
     @Override
@@ -71,23 +75,17 @@ public class Volvo240 implements Vehicle, Movable{
         return car.getPosition();
     }
 
+    protected  void updatePosition(double x, double y){
+        car.updatePosition(x,y);
+    }
+
     @Override
     public void move() {
         car.move();
     }
 
-
-    public void incrementSpeed(double amount) {
-        car.incrementSpeed(amount);
-    }
-
-    public void decrementSpeed(double amount) {
-         car.decrementSpeed(amount);
-    }
-
-
-    public double speedFactor() {
-        return car.speedFactor();
+    public double speedFactor(){
+        return car.engine.speedFactor(getEnginePower());
     }
 }
 

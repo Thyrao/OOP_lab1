@@ -50,27 +50,27 @@ class Truck implements Movable,Vehicle{
         double oldSpeed = getCurrentSpeed();
         if(amount >= 0 && amount <=1){
             double newSpeed = engine.incrementSpeed(getCurrentSpeed(), engine.speedFactor(getEnginePower()), amount, getEnginePower());
-            System.out.println(newSpeed);
             if(newSpeed < oldSpeed){
                 currentSpeed = oldSpeed;
             }
             else if (newSpeed > getEnginePower()){
                 currentSpeed = getEnginePower();
             }
+            else currentSpeed = newSpeed;
         }
     }
 
     public void brake(double amount){
         double oldSpeed = getCurrentSpeed();
         if(amount >= 0 && amount <=1){
-            engine.decrementSpeed(getCurrentSpeed(), engine.speedFactor(getEnginePower()), amount, getEnginePower());
-            double newSpeed = getCurrentSpeed();
+            double newSpeed = engine.decrementSpeed(getCurrentSpeed(), engine.speedFactor(getEnginePower()), amount, getEnginePower());
             if (newSpeed > oldSpeed){
                 currentSpeed = oldSpeed;
             }
             else if (newSpeed < 0){
                 currentSpeed = 0;
             }
+            else currentSpeed = newSpeed;
         }
     }
 

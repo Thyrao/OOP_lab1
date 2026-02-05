@@ -11,8 +11,9 @@ class Car implements Movable,Vehicle{
     protected double posX;
     protected double posY;
     protected double direction;
+    protected int carSize;
 
-    public Car(Engine engine, int nrDoors, double enginePower, Color color, String modelName){
+    public Car(Engine engine, int nrDoors, double enginePower, Color color, String modelName, int carSize){
         this.engine = engine;
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
@@ -22,12 +23,17 @@ class Car implements Movable,Vehicle{
         this.posX = 0.0;
         this.posY = 0.0;
         this.direction = 0;
+        this.carSize = carSize;
         stopEngine();
     }
 
     // funktioner
     public int getNrDoors() {
         return nrDoors;}
+
+    public int getCarSize(){
+        return carSize;
+    }
 
     public double getEnginePower() {
         return enginePower;}
@@ -47,43 +53,31 @@ class Car implements Movable,Vehicle{
     public void stopEngine(){
         currentSpeed = 0;}
 
-    public double speedFactor(){
-        return engine.speedFactor(getEnginePower());
-    }
-
-    public void incrementSpeed(double amount){
-        currentSpeed = engine.incrementSpeed(getCurrentSpeed(), speedFactor(), amount, getEnginePower());
-    }
-
-    public void decrementSpeed(double amount){
-        currentSpeed = engine.decrementSpeed(getCurrentSpeed(), speedFactor(), amount, getEnginePower());
-    }
-
     public void gas(double amount){
         double oldSpeed = getCurrentSpeed();
         if(amount >= 0 && amount <=1){
-            incrementSpeed(amount);
-            double newSpeed = getCurrentSpeed();
+            double newSpeed = engine.incrementSpeed(getCurrentSpeed(), engine.speedFactor(getEnginePower()), amount, getEnginePower());
             if(newSpeed < oldSpeed){
                 currentSpeed = oldSpeed;
             }
             else if (newSpeed > getEnginePower()){
                 currentSpeed = getEnginePower();
             }
+            else currentSpeed = newSpeed;
         }
     }
 
     public void brake(double amount){
         double oldSpeed = getCurrentSpeed();
         if(amount >= 0 && amount <=1){
-            decrementSpeed(amount);
-            double newSpeed = getCurrentSpeed();
+            double newSpeed = engine.decrementSpeed(getCurrentSpeed(), engine.speedFactor(getEnginePower()), amount, getEnginePower());
             if (newSpeed > oldSpeed){
                 currentSpeed = oldSpeed;
             }
             else if (newSpeed < 0){
                 currentSpeed = 0;
             }
+            else currentSpeed = newSpeed;
         }
     }
 
@@ -97,6 +91,11 @@ class Car implements Movable,Vehicle{
 
     public void turnLeft(){
         direction = ((getDirection() - 1)%4 +4) % 4; // kan inte ha modulo på ett negativt tal
+    }
+
+    protected  void updatePosition(double x, double y){
+        posX = x;
+        posY = y;
     }
 
     public double[] getPosition(){

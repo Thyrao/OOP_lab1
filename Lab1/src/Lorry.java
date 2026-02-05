@@ -1,18 +1,14 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Lorry implements Movable,Vehicle {
     private final Truck truck;
     protected LorryTruckbed lorryTruckbed;
 
-    protected double angle;
-
     public Lorry() {
+        truck = new Truck(new LorryEngine(),2, 200, Color.cyan, "Lorry");
         this.lorryTruckbed  = new LorryTruckbed();
-        truck = new Truck(new LorryEngine(),   2, 200, Color.cyan, "Lorry");
-        this.angle = 0;
     }
-
-
 
     @Override
     public int getNrDoors() {
@@ -51,7 +47,9 @@ public class Lorry implements Movable,Vehicle {
 
     @Override
     public void gas(double amount) {
-        truck.gas(amount);
+        if(getAngle() == 0){
+            truck.gas(amount);
+        }
     }
 
     @Override
@@ -82,6 +80,11 @@ public class Lorry implements Movable,Vehicle {
     @Override
     public void move() {
         truck.move();
+        if (!getLoadedCars().isEmpty()){
+            for (int i=0; i < getLoadedCars().size(); i++){
+                getLoadedCars().get(i).updatePosition(getPosition()[0], getPosition()[1]);
+            }
+        }
     }
 
     public void raise(){
@@ -92,10 +95,21 @@ public class Lorry implements Movable,Vehicle {
         lorryTruckbed.lower(getCurrentSpeed());
     }
 
-    public void getAngle(){
-        lorryTruckbed.getAngle();
+    public double getAngle(){
+        return lorryTruckbed.getAngle();
     }
 
+    public ArrayList<Car> getLoadedCars(){
+        return lorryTruckbed.getLoadedCars();
+    }
+
+    public void load(Car car){
+        lorryTruckbed.load(car, getPosition());
+    }
+
+    public void unload(){
+        lorryTruckbed.unload();
+    }
 }
 
 class LorryEngine implements Engine{
@@ -115,11 +129,16 @@ class LorryEngine implements Engine{
     }
 }
 
+
+
 class LorryTruckbed{
     protected double angle;
+    private ArrayList<Car> loadedCars;
+
 
     public LorryTruckbed(){
-        this.angle = angle;
+        this.angle = 0;
+        this.loadedCars = new ArrayList<>(5);
     }
 
     public void lower(double currentSpeed) {
@@ -137,4 +156,28 @@ class LorryTruckbed{
     public double getAngle() {
         return angle;
     }
+
+    public void load(Car car, double[] position){
+        if ((Math.abs(car.getPosition()[0] - position[0]) < 1) && (Math.abs(car.getPosition()[1] - position[1]) < 1)){
+            if (angle == 70)
+                if (car.getCarSize() < 5)
+                    loadedCars.add(car); // vad händer när listan är full och vi försöker lasta ne ny bil?
+        }
+    }
+
+    public void unload(){
+        Car unloadedCar;
+        if (angle == 70) {
+            if (!getLoadedCars().isEmpty()) {
+                unloadedCar = getLoadedCars().getLast();
+                getLoadedCars().removeLast();
+                unloadedCar.updatePosition(unloadedCar.getPosition()[0]+1, unloadedCar.getPosition()[1]+1);
+            }
+        }
+    }
+
+    public ArrayList<Car> getLoadedCars() {
+        return loadedCars;
+    }
+
 }

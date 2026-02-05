@@ -3,7 +3,7 @@ import java.awt.*;
 public class Saab95 implements Vehicle,Movable {
     private final Car car;
     public Saab95(){
-        car = new Car(new SaabEngine(false), 2,  125, Color.red, "Saab95");
+        car = new Car(new SaabEngine(false), 2,  125, Color.red, "Saab95", 3);
     }
 
     public void setTurboOn(){
@@ -17,6 +17,10 @@ public class Saab95 implements Vehicle,Movable {
     @Override
     public int getNrDoors() {
         return car.getNrDoors();
+    }
+
+    public int getCarSize(){
+        return car.getCarSize();
     }
 
     @Override
@@ -64,6 +68,10 @@ public class Saab95 implements Vehicle,Movable {
         return car.getDirection();
     }
 
+    protected  void updatePosition(double x, double y){
+        car.updatePosition(x,y);
+    }
+
     @Override
     public void turnRight() {
         car.turnRight();
@@ -84,20 +92,13 @@ public class Saab95 implements Vehicle,Movable {
         car.move();
     }
 
-    public void incrementSpeed(double amount) {
-        car.incrementSpeed(amount);
-    }
-
-    public void decrementSpeed(double amount) {
-        car.decrementSpeed(amount);
-    }
-
     public double speedFactor() {
-        return car.speedFactor();
+        return car.engine.speedFactor(getEnginePower());
     }
 }
 
 class SaabEngine implements Engine {
+
     private boolean turboOn;
 
     public SaabEngine(boolean turboOn){

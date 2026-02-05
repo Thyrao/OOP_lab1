@@ -4,10 +4,9 @@ import java.awt.*;
     private final Truck truck;
     protected ScaniaTruckbed scaniaTruckbed;
 
-
     public Scania() {
         truck = new Truck(new ScaniaEngine(),  2, 175, Color.pink, "Scania");
-        this.scaniaTruckbed = new ScaniaTruckbed();
+        scaniaTruckbed = new ScaniaTruckbed();
     }
 
      @Override
@@ -22,7 +21,6 @@ import java.awt.*;
 
      @Override
      public double getCurrentSpeed() {
-            System.out.println(truck.getCurrentSpeed());
          return truck.getCurrentSpeed();
      }
 
@@ -48,7 +46,9 @@ import java.awt.*;
 
      @Override
      public void gas(double amount) {
-        truck.gas(amount);
+        if (getAngle() == 0){
+            truck.gas(amount);
+        }
      }
 
      @Override
@@ -97,7 +97,7 @@ import java.awt.*;
 class ScaniaEngine implements Engine{
     @Override
     public double incrementSpeed(double currentSpeedx, double speedFactor, double amount, double enginePower) {
-        return currentSpeedx + speedFactor * amount;
+            return currentSpeedx + speedFactor * amount;
     }
 
     @Override
@@ -113,9 +113,8 @@ class ScaniaEngine implements Engine{
 
 class ScaniaTruckbed{
     protected double angle;
-
     public ScaniaTruckbed(){
-        this.angle = angle;
+        this.angle = 0;
     }
 
     public void lower(double amount, double currentSpeed) {
@@ -129,7 +128,6 @@ class ScaniaTruckbed{
     public void raise(double amount, double currentSpeed) {
         if (currentSpeed == 0){
             angle += amount;
-            System.out.println(currentSpeed);
             if (angle > 70)
                 angle = 70;
         }

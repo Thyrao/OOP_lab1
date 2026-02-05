@@ -38,20 +38,6 @@ public class Volvo240Test {
     }
 
     @Test
-    public void incrementSpeed() {
-        double inc = Math.min(Volvo.getCurrentSpeed() + Volvo.speedFactor() * 0.5, Volvo.getEnginePower());
-        Volvo.incrementSpeed(0.5);
-        Assertions.assertEquals(inc, Volvo.getCurrentSpeed(), "Expected increased speed");
-    }
-
-    @Test
-    public void decrementSpeed() {
-        double dec = Math.max(Volvo.getCurrentSpeed() - Volvo.speedFactor() * 0.5, 0);
-        Volvo.decrementSpeed(0.5);
-        Assertions.assertEquals(dec, Volvo.getCurrentSpeed(), "The speed should've decreased");
-    }
-
-    @Test
     public void gas() {
         double oldSpeed = Volvo.getCurrentSpeed();
         Volvo.gas(0.5);

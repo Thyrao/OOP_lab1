@@ -41,20 +41,6 @@ public class Saab95Test {
     }
 
     @Test
-    public void incrementSpeed() {
-        double inc = Saab.getCurrentSpeed() + Saab.speedFactor() * 0.5;
-        Saab.incrementSpeed(0.5);
-        Assertions.assertEquals(inc, Saab.getCurrentSpeed(), "Expected increased speed");
-    }
-
-    @Test
-    public void decrementSpeed() {
-        double dec = Saab.getCurrentSpeed() - Saab.speedFactor() * 0.5;
-        Saab.decrementSpeed(0.5);
-        Assertions.assertEquals(dec, Saab.getCurrentSpeed(), "The speed should've decreased");
-    }
-
-    @Test
     public void gas() {
         double oldSpeed = Saab.getCurrentSpeed();
         Saab.gas(0.5);
