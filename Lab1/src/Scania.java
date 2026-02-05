@@ -2,26 +2,12 @@ import java.awt.*;
 
  public class Scania implements Movable,Vehicle {
     private final Truck truck;
-    protected double angle;
+    protected ScaniaTruckbed scaniaTruckbed;
+
 
     public Scania() {
-        truck = new Truck(new ScaniaEngine(), 2,  175, Color.pink, "Scania");
-        this.angle = 0;
-    }
-
-    public void lower(double amount) {
-        truck.lower(amount);
-        //else throw new RuntimeException("The Truck must first stand still ");
-    }
-
-    public void raise(double amount) {
-        truck.raise(amount);
-        }
-        //else throw new RuntimeException("The Truck must first stand still ");
-
-
-    public double getAngle() {
-        return truck.getAngle();
+        truck = new Truck(new ScaniaEngine(),  2, 175, Color.pink, "Scania");
+        this.scaniaTruckbed = new ScaniaTruckbed();
     }
 
      @Override
@@ -36,6 +22,7 @@ import java.awt.*;
 
      @Override
      public double getCurrentSpeed() {
+            System.out.println(truck.getCurrentSpeed());
          return truck.getCurrentSpeed();
      }
 
@@ -94,27 +81,22 @@ import java.awt.*;
         truck.move();
      }
 
+     public void lower(double amount){
+        scaniaTruckbed.lower(amount, getCurrentSpeed());
 
-     public void incrementSpeed(double amount) {
-         truck.incrementSpeed(amount);
+     }
+     public void raise(double amount){
+        scaniaTruckbed.raise(amount, getCurrentSpeed());
      }
 
-
-     public void decrementSpeed(double amount) {
-          truck.decrementSpeed(amount);
-     }
-
-
-     public double speedFactor() {
-         return truck.speedFactor();
+     public double getAngle(){
+        return scaniaTruckbed.getAngle();
      }
  }
 
 class ScaniaEngine implements Engine{
     @Override
     public double incrementSpeed(double currentSpeedx, double speedFactor, double amount, double enginePower) {
-        //här vill vi ha angle
-
         return currentSpeedx + speedFactor * amount;
     }
 
@@ -126,5 +108,34 @@ class ScaniaEngine implements Engine{
     @Override
     public double speedFactor(double enginePower) {
         return enginePower * 0.01;
+    }
+}
+
+class ScaniaTruckbed{
+    protected double angle;
+
+    public ScaniaTruckbed(){
+        this.angle = angle;
+    }
+
+    public void lower(double amount, double currentSpeed) {
+        if (currentSpeed == 0) {
+            angle -= amount;
+            if  (angle < 0)
+               angle = 0;
+        }
+    }
+
+    public void raise(double amount, double currentSpeed) {
+        if (currentSpeed == 0){
+            angle += amount;
+            System.out.println(currentSpeed);
+            if (angle > 70)
+                angle = 70;
+        }
+    }
+
+    public double getAngle() {
+        return angle;
     }
 }

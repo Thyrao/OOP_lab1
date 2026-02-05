@@ -1,6 +1,6 @@
 import java.awt.*;
 
-class Truck implements Movable,Vehicle,Truckbed{
+class Truck implements Movable,Vehicle{
     // variabler
     protected Engine engine;
     protected int nrDoors; // Number of doors on the car
@@ -11,9 +11,8 @@ class Truck implements Movable,Vehicle,Truckbed{
     protected double posX;
     protected double posY;
     protected double direction;
-    protected double angle;
 
-    public Truck(Engine engine, int nrDoors, double enginePower, Color color, String modelName){
+    public Truck(Engine engine,  int nrDoors, double enginePower, Color color, String modelName){
         this.engine = engine;
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
@@ -23,11 +22,9 @@ class Truck implements Movable,Vehicle,Truckbed{
         this.posX = 0.0;
         this.posY = 0.0;
         this.direction = 0;
-        this.angle = 0;
         stopEngine();
     }
 
-    // funktioner
     public int getNrDoors() {
         return nrDoors;}
 
@@ -49,26 +46,11 @@ class Truck implements Movable,Vehicle,Truckbed{
     public void stopEngine(){
         currentSpeed = 0;}
 
-    protected double speedFactor(){
-        return engine.speedFactor(getEnginePower());
-    }
-
-    protected void incrementSpeed(double amount){
-        if (angle > 0){
-            currentSpeed = 0;
-        }
-        else{ currentSpeed = engine.incrementSpeed(getCurrentSpeed(), speedFactor(), amount, getEnginePower());}
-    }
-
-    protected void decrementSpeed(double amount){
-        currentSpeed = engine.decrementSpeed(getCurrentSpeed(), speedFactor(), amount, getEnginePower());
-    }
-
     public void gas(double amount){
         double oldSpeed = getCurrentSpeed();
         if(amount >= 0 && amount <=1){
-            incrementSpeed(amount);
-            double newSpeed = getCurrentSpeed();
+            double newSpeed = engine.incrementSpeed(getCurrentSpeed(), engine.speedFactor(getEnginePower()), amount, getEnginePower());
+            System.out.println(newSpeed);
             if(newSpeed < oldSpeed){
                 currentSpeed = oldSpeed;
             }
@@ -81,7 +63,7 @@ class Truck implements Movable,Vehicle,Truckbed{
     public void brake(double amount){
         double oldSpeed = getCurrentSpeed();
         if(amount >= 0 && amount <=1){
-            decrementSpeed(amount);
+            engine.decrementSpeed(getCurrentSpeed(), engine.speedFactor(getEnginePower()), amount, getEnginePower());
             double newSpeed = getCurrentSpeed();
             if (newSpeed > oldSpeed){
                 currentSpeed = oldSpeed;
@@ -128,29 +110,5 @@ class Truck implements Movable,Vehicle,Truckbed{
             posX = pos[0] - getCurrentSpeed();
         }
     }
-
-    public void lower(double amount) {
-        if (getCurrentSpeed() == 0) {
-            angle -= amount;
-            if  (angle < 0)
-                angle = 0;
-        }
-        //else throw new RuntimeException("The Truck must first stand still ");
-    }
-
-    public void raise(double amount) {
-        if (getCurrentSpeed() == 0){
-            angle += amount;
-            if (angle > 70)
-                angle = 70;
-        }
-        //else throw new RuntimeException("The Truck must first stand still ");
-    }
-
-    @Override
-    public double getAngle() {
-        return angle;
-    }
-
 }
 
