@@ -1,17 +1,20 @@
 import java.awt.*;
+import java.util.ArrayList;
 
-public class Saab95 implements Vehicle,Movable {
+public class Saab95 implements Vehicle,Movable, ICar {
     private final Car car;
+    private SaabEngine saabEngine;
     public Saab95(){
-        car = new Car(new SaabEngine(false), 2,  125, Color.red, "Saab95", 3);
+        this.saabEngine = new SaabEngine(false);
+        car = new Car(saabEngine, 2,  125, Color.red, "Saab95", 3);
     }
 
     public void setTurboOn(){
-        ((SaabEngine) car.engine).setTurbo(true);
+        saabEngine.setTurboOn(); // detta ska ändras
     }
 
     public void setTurboOff(){
-        ((SaabEngine) car.engine).setTurbo(false);
+        saabEngine.setTurboOff(); // detta ska ändras
     }
 
     @Override
@@ -68,7 +71,7 @@ public class Saab95 implements Vehicle,Movable {
         return car.getDirection();
     }
 
-    protected  void updatePosition(double x, double y){
+    public void updatePosition(double x, double y){
         car.updatePosition(x,y);
     }
 
@@ -83,7 +86,7 @@ public class Saab95 implements Vehicle,Movable {
     }
 
     @Override
-    public double[] getPosition() {
+    public ArrayList<Double> getPosition() {
         return car.getPosition();
     }
 
@@ -97,15 +100,10 @@ public class Saab95 implements Vehicle,Movable {
     }
 }
 
-class SaabEngine implements Engine {
-
+class SaabEngine implements Engine,Turbo {
     private boolean turboOn;
 
     public SaabEngine(boolean turboOn){
-        this.turboOn = turboOn;
-    }
-
-    protected void setTurbo(boolean turboOn){
         this.turboOn = turboOn;
     }
 
@@ -123,5 +121,15 @@ class SaabEngine implements Engine {
     @Override
     public double decrementSpeed(double currentSpeedx, double speedFactor, double amount, double enginePower){
         return currentSpeedx - speedFactor * amount;
+    }
+
+    @Override
+    public void setTurboOn() {
+        turboOn = true;
+    }
+
+    @Override
+    public void setTurboOff() {
+        turboOn = false;
     }
 }

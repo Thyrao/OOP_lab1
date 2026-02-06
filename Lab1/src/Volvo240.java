@@ -1,6 +1,7 @@
 import java.awt.*;
+import java.util.ArrayList;
 
-public class Volvo240 implements Vehicle, Movable{
+public class Volvo240 implements Vehicle, Movable, ICar{
     private final Car car;
     public Volvo240(){
         car = new Car(new VolvoEngine(), 4, 100, Color.black, "Volvo240", 2);
@@ -71,11 +72,11 @@ public class Volvo240 implements Vehicle, Movable{
     }
 
     @Override
-    public double[] getPosition() {
+    public ArrayList<Double> getPosition() {
         return car.getPosition();
     }
 
-    protected  void updatePosition(double x, double y){
+    public  void updatePosition(double x, double y){
         car.updatePosition(x,y);
     }
 

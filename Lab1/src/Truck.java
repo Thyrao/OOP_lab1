@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 class Truck implements Movable,Vehicle{
     // variabler
@@ -11,6 +12,7 @@ class Truck implements Movable,Vehicle{
     protected double posX;
     protected double posY;
     protected double direction;
+    protected ArrayList<Double> pos;
 
     public Truck(Engine engine,  int nrDoors, double enginePower, Color color, String modelName){
         this.engine = engine;
@@ -22,6 +24,9 @@ class Truck implements Movable,Vehicle{
         this.posX = 0.0;
         this.posY = 0.0;
         this.direction = 0;
+        this.pos = new ArrayList<>(2);
+        pos.set(0, 0.0);
+        pos.set(1, 0.0);
         stopEngine();
     }
 
@@ -86,28 +91,27 @@ class Truck implements Movable,Vehicle{
         direction = ((getDirection() - 1)%4 +4) % 4; // kan inte ha modulo på ett negativt tal
     }
 
-    public double[] getPosition(){
-        double[] pos = new double[2];
-        pos[0] = posX;
-        pos[1] = posY;
+    public ArrayList<Double> getPosition(){
+        pos.set(0, posX);
+        pos.set(1, posY);
         return pos;
     }
 
     public void move(){
         double dir = getDirection();
-        double[] pos = getPosition();
+        ArrayList<Double> pos = getPosition();
 
         if (dir == 0){
-            posY = pos[1] + getCurrentSpeed();
+            posY = pos.get(1) + getCurrentSpeed();
         }
         else if (dir == 1){
-            posX = pos[0] + getCurrentSpeed();
+            posX = pos.get(0) + getCurrentSpeed();
         }
         else if (dir == 2){
-            posY = pos[1] - getCurrentSpeed();
+            posY = pos.get(1) - getCurrentSpeed();
         }
         else {
-            posX = pos[0] - getCurrentSpeed();
+            posX = pos.get(0) - getCurrentSpeed();
         }
     }
 }

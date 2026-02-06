@@ -9,16 +9,28 @@ class LorryTest {
     Lorry lorry = new Lorry();
     Saab95 saab = new Saab95();
     Volvo240 volvo = new Volvo240();
+
     @Test
     void moveWithoutCars() {
-        double [] old_pos = lorry.getPosition();
-        lorry.gas
-
+        ArrayList<Double> old_pos = lorry.getPosition();
+        lorry.gas(0.5);
+        lorry.move();
+        ArrayList<Double> new_pos = lorry.getPosition();
     }
 
     @Test
     void moveWithCars(){
 
+        //lorry.load(volvo);
+        //lorry.load(saab);
+        lorry.gas(0.8);
+        lorry.move();
+        ArrayList<Double> lPos = lorry.getPosition();
+        ArrayList<Double> vPos = volvo.getPosition();
+        ArrayList<Double> sPos = saab.getPosition();
+
+        Assertions.assertEquals(lPos, vPos);
+        Assertions.assertEquals(lPos, sPos);
     }
 
     @Test
@@ -31,6 +43,7 @@ class LorryTest {
 
     @Test
     void lower() {
+        lorry.raise();
         double oldAngle = lorry.getAngle();
         lorry.lower();
         boolean angleState = oldAngle > lorry.getAngle();
@@ -38,21 +51,28 @@ class LorryTest {
     }
 
     @Test
-    void getAngle() {
-    }
-
-    @Test
     void getLoadedCars() {
-    }
 
-    @Test
-    void load() {
     }
 
     @Test
     void unload() {
-        ArrayList<Car> oldList = lorry.getLoadedCars();
-        lorry.load(Saa);
+        ArrayList<ICar> oldList = lorry.getLoadedCars();
+        lorry.unload();
+    }
 
+    @Test
+    void load() {
+        lorry.load(saab);
+        lorry.load(volvo);
+        ArrayList<ICar> newList = lorry.getLoadedCars();
+        Assertions.assertEquals(2 , newList.size());
+         //newList.
+
+    }
+
+    @Test
+    void loadWhenFull() {
+        lorry.load(saab);
     }
 }

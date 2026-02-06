@@ -1,6 +1,7 @@
 import java.awt.*;
+import java.util.ArrayList;
 
- public class Scania implements Movable,Vehicle {
+public class Scania implements Movable,Vehicle {
     private final Truck truck;
     protected ScaniaTruckbed scaniaTruckbed;
 
@@ -72,7 +73,7 @@ import java.awt.*;
      }
 
      @Override
-     public double[] getPosition() {
+     public ArrayList<Double> getPosition() {
          return truck.getPosition();
      }
 

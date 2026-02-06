@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 class Car implements Movable,Vehicle{
     // variabler
@@ -10,6 +11,7 @@ class Car implements Movable,Vehicle{
     protected String modelName; // The car model name
     protected double posX;
     protected double posY;
+    protected ArrayList<Double> pos;
     protected double direction;
     protected int carSize;
 
@@ -24,6 +26,9 @@ class Car implements Movable,Vehicle{
         this.posY = 0.0;
         this.direction = 0;
         this.carSize = carSize;
+        this.pos = new ArrayList<>(2);
+        pos.set(0, 0.0);
+        pos.set(1, 0.0);
         stopEngine();
     }
 
@@ -98,28 +103,27 @@ class Car implements Movable,Vehicle{
         posY = y;
     }
 
-    public double[] getPosition(){
-        double[] pos = new double[2];
-        pos[0] = posX;
-        pos[1] = posY;
+    public ArrayList<Double> getPosition(){
+        pos.set(0, posX);
+        pos.set(1, posY);
         return pos;
     }
 
     public void move(){
         double dir = getDirection();
-        double[] pos = getPosition();
+        ArrayList<Double> pos = getPosition();
 
         if (dir == 0){
-            posY = pos[1] + getCurrentSpeed();
+            posY = pos.get(1) + getCurrentSpeed();
         }
         else if (dir == 1){
-            posX = pos[0] + getCurrentSpeed();
+            posX = pos.get(0) + getCurrentSpeed();
         }
         else if (dir == 2){
-            posY = pos[1] - getCurrentSpeed();
+            posY = pos.get(1) - getCurrentSpeed();
         }
         else {
-            posX = pos[0] - getCurrentSpeed();
+            posX = pos.get(0) - getCurrentSpeed();
         }
     }
 

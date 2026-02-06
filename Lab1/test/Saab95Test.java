@@ -2,6 +2,7 @@ import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Saab95Test {
     Saab95 Saab = new Saab95();
@@ -96,43 +97,43 @@ public class Saab95Test {
 
     @Test
     public void move0() {
-        double[] beforePos = Saab.getPosition();
+        ArrayList<Double> beforePos = Saab.getPosition();
         Saab.gas(0.5);
         Saab.move();
-        double[] afterPos = Saab.getPosition();
+        ArrayList<Double> afterPos = Saab.getPosition();
         Assertions.assertNotEquals(beforePos, afterPos, "The position should have changed if current speed > 0");
     }
 
     @Test
     public void move1() {
-        double[] beforePos = Saab.getPosition();
+        ArrayList<Double> beforePos = Saab.getPosition();
         Saab.gas(0.5);
         Saab.turnRight();
         Saab.move();
-        double[] afterPos = Saab.getPosition();
+        ArrayList<Double> afterPos = Saab.getPosition();
         Assertions.assertNotEquals(beforePos, afterPos, "The position should have changed if current speed > 0");
     }
 
     @Test
     public void move2() {
-        double[] beforePos = Saab.getPosition();
+        ArrayList<Double> beforePos = Saab.getPosition();
         Saab.gas(0.5);
         Saab.turnRight();
         Saab.turnRight();
         Saab.move();
-        double[] afterPos = Saab.getPosition();
+        ArrayList<Double> afterPos = Saab.getPosition();
         Assertions.assertNotEquals(beforePos, afterPos, "The position should have changed if current speed > 0");
     }
 
     @Test
     public void move3() {
-        double[] beforePos = Saab.getPosition();
+        ArrayList<Double> beforePos = Saab.getPosition();
         Saab.gas(0.5);
         Saab.turnRight();
         Saab.turnRight();
         Saab.turnRight();
         Saab.move();
-        double[] afterPos = Saab.getPosition();
+        ArrayList<Double> afterPos = Saab.getPosition();
         Assertions.assertNotEquals(beforePos, afterPos, "The position should have changed if current speed > 0");
     }
 }

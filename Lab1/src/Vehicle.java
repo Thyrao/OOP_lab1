@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 interface Vehicle {
     int getNrDoors();
@@ -13,7 +14,7 @@ interface Vehicle {
     double getDirection();
     void turnRight();
     void turnLeft();
-    double[] getPosition();
+    ArrayList<Double> getPosition();
     void move();
 
 }

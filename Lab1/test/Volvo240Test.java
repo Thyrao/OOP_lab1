@@ -2,6 +2,7 @@ import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Volvo240Test {
     Volvo240 Volvo = new Volvo240();
@@ -94,43 +95,43 @@ public class Volvo240Test {
 
     @Test
     public void move0() {
-        double[] beforePos = Volvo.getPosition();
+        ArrayList<Double> beforePos = Volvo.getPosition();
         Volvo.gas(0.5);
         Volvo.move();
-        double[] afterPos = Volvo.getPosition();
+        ArrayList<Double> afterPos = Volvo.getPosition();
         Assertions.assertNotEquals(beforePos, afterPos, "The position should have changed if current speed > 0");
     }
 
     @Test
     public void move1() {
-        double[] beforePos = Volvo.getPosition();
+        ArrayList<Double> beforePos = Volvo.getPosition();
         Volvo.gas(0.5);
         Volvo.turnRight();
         Volvo.move();
-        double[] afterPos = Volvo.getPosition();
+        ArrayList<Double> afterPos = Volvo.getPosition();
         Assertions.assertNotEquals(beforePos, afterPos, "The position should have changed if current speed > 0");
     }
 
     @Test
     public void move2() {
-        double[] beforePos = Volvo.getPosition();
+        ArrayList<Double> beforePos = Volvo.getPosition();
         Volvo.gas(0.5);
         Volvo.turnRight();
         Volvo.turnRight();
         Volvo.move();
-        double[] afterPos = Volvo.getPosition();
+        ArrayList<Double> afterPos = Volvo.getPosition();
         Assertions.assertNotEquals(beforePos, afterPos, "The position should have changed if current speed > 0");
     }
 
     @Test
     public void move3() {
-        double[] beforePos = Volvo.getPosition();
+        ArrayList<Double> beforePos = Volvo.getPosition();
         Volvo.gas(0.5);
         Volvo.turnRight();
         Volvo.turnRight();
         Volvo.turnRight();
         Volvo.move();
-        double[] afterPos = Volvo.getPosition();
+        ArrayList<Double> afterPos = Volvo.getPosition();
         Assertions.assertNotEquals(beforePos, afterPos, "The position should have changed if current speed > 0");
     }
 }
