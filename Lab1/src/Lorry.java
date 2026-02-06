@@ -81,8 +81,8 @@ public class Lorry implements Movable,Vehicle {
     public void move() {
         truck.move();
         if (!getLoadedCars().isEmpty()){
-            for (int i=0; i < getLoadedCars().size(); i++){
-                getLoadedCars().get(i).updatePosition(getPosition().get(0), getPosition().get(1));
+            for (ICar c : getLoadedCars()){
+                c.updatePosition(getPosition().get(0), getPosition().get(1));
             }
         }
     }

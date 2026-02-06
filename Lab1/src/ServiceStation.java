@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class ServiceStation<T> {
+public class ServiceStation<T extends Vehicle> {
     private int maxCapacity;
     private ArrayList<T> carsInService;
 
