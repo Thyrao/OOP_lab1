@@ -97,43 +97,39 @@ public class Saab95Test {
 
     @Test
     public void move0() {
-        ArrayList<Double> beforePos = Saab.getPosition();
+        ArrayList<Double> beforePos = new ArrayList<>(Saab.getPosition());
         Saab.gas(0.5);
         Saab.move();
-        ArrayList<Double> afterPos = Saab.getPosition();
-        Assertions.assertNotEquals(beforePos, afterPos, "The position should have changed if current speed > 0");
+        Assertions.assertNotEquals(beforePos, Saab.getPosition(), "The position should have changed if current speed > 0");
     }
 
     @Test
     public void move1() {
-        ArrayList<Double> beforePos = Saab.getPosition();
+        ArrayList<Double> beforePos = new ArrayList<>(Saab.getPosition());
         Saab.gas(0.5);
         Saab.turnRight();
         Saab.move();
-        ArrayList<Double> afterPos = Saab.getPosition();
-        Assertions.assertNotEquals(beforePos, afterPos, "The position should have changed if current speed > 0");
+        Assertions.assertNotEquals(beforePos, Saab.getPosition(), "The position should have changed if current speed > 0");
     }
 
     @Test
     public void move2() {
-        ArrayList<Double> beforePos = Saab.getPosition();
+        ArrayList<Double> beforePos = new ArrayList<>(Saab.getPosition());
         Saab.gas(0.5);
         Saab.turnRight();
         Saab.turnRight();
         Saab.move();
-        ArrayList<Double> afterPos = Saab.getPosition();
-        Assertions.assertNotEquals(beforePos, afterPos, "The position should have changed if current speed > 0");
+        Assertions.assertNotEquals(beforePos, Saab.getPosition(), "The position should have changed if current speed > 0");
     }
 
     @Test
     public void move3() {
-        ArrayList<Double> beforePos = Saab.getPosition();
+        ArrayList<Double> beforePos =new ArrayList<>(Saab.getPosition());
         Saab.gas(0.5);
         Saab.turnRight();
         Saab.turnRight();
         Saab.turnRight();
         Saab.move();
-        ArrayList<Double> afterPos = Saab.getPosition();
-        Assertions.assertNotEquals(beforePos, afterPos, "The position should have changed if current speed > 0");
+        Assertions.assertNotEquals(beforePos, Saab.getPosition(), "The position should have changed if current speed > 0");
     }
 }

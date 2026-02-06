@@ -9,6 +9,7 @@ class LorryTest {
     Lorry lorry = new Lorry();
     Saab95 saab = new Saab95();
     Volvo240 volvo = new Volvo240();
+    Scania scania = new Scania();
 
     @Test
     void moveWithoutCars() {
@@ -64,15 +65,22 @@ class LorryTest {
     }
 
     @Test
-    void unload() { // kolla på varför oldList kan uppdateras
+    void unload1() {
         lorry.raise();
         lorry.load(volvo);
         lorry.load(saab);
-        ArrayList<ICar> oldList = lorry.getLoadedCars();
-        System.out.println(oldList.size());
         ICar unloadedCar = lorry.unload();
         Assertions.assertEquals(saab,unloadedCar);
-        System.out.println(oldList.size());
+    }
+
+    @Test
+    void unload2() {
+        lorry.raise();
+        lorry.load(volvo);
+        lorry.load(saab);
+        ArrayList<ICar> oldList = new ArrayList<>(lorry.getLoadedCars());
+        oldList.removeLast();
+        lorry.unload();
         Assertions.assertEquals(oldList.size(), lorry.getLoadedCars().size());
     }
 

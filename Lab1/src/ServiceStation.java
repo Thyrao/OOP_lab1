@@ -1,11 +1,9 @@
 import java.util.ArrayList;
 
 public class ServiceStation<T extends Vehicle> {
-    private int maxCapacity;
     private ArrayList<T> carsInService;
 
     public ServiceStation(int maxCapacity){
-        this.maxCapacity = maxCapacity;
         this.carsInService = new ArrayList<>(maxCapacity); // osäker
     }
 

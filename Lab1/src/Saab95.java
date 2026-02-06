@@ -1,9 +1,10 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Saab95 implements Vehicle,Movable, ICar {
+class Saab95 implements Vehicle,Movable, ICar {
     private final Car car;
     private SaabEngine saabEngine;
+
     public Saab95(){
         this.saabEngine = new SaabEngine(false);
         car = new Car(saabEngine, 2,  125, Color.red, "Saab95", 3);
@@ -100,36 +101,3 @@ public class Saab95 implements Vehicle,Movable, ICar {
     }
 }
 
-class SaabEngine implements Engine,Turbo {
-    private boolean turboOn;
-
-    public SaabEngine(boolean turboOn){
-        this.turboOn = turboOn;
-    }
-
-    @Override
-    public double speedFactor(double enginePower){
-        double turbo = 1;
-        if(turboOn)
-            turbo = 1.3;
-        return enginePower * 0.01 * turbo;
-    }
-    @Override
-    public double incrementSpeed(double currentSpeedx, double speedFactor, double amount, double enginePower){
-        return currentSpeedx + speedFactor * amount;
-    }
-    @Override
-    public double decrementSpeed(double currentSpeedx, double speedFactor, double amount, double enginePower){
-        return currentSpeedx - speedFactor * amount;
-    }
-
-    @Override
-    public void setTurboOn() {
-        turboOn = true;
-    }
-
-    @Override
-    public void setTurboOff() {
-        turboOn = false;
-    }
-}

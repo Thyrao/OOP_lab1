@@ -1,8 +1,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-class Truck implements Movable,Vehicle{
-    // variabler
+class Truck implements Movable,Vehicle, ITruck{
     protected Engine engine;
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
@@ -105,13 +104,13 @@ class Truck implements Movable,Vehicle{
             posY = pos.get(1) + getCurrentSpeed();
         }
         else if (dir == 1){
-            posX = pos.get(0) + getCurrentSpeed();
+            posX = pos.getFirst() + getCurrentSpeed();
         }
         else if (dir == 2){
             posY = pos.get(1) - getCurrentSpeed();
         }
         else {
-            posX = pos.get(0) - getCurrentSpeed();
+            posX = pos.getFirst() - getCurrentSpeed();
         }
     }
 }

@@ -95,43 +95,39 @@ public class Volvo240Test {
 
     @Test
     public void move0() {
-        ArrayList<Double> beforePos = Volvo.getPosition();
+        ArrayList<Double> beforePos = new ArrayList<>(Volvo.getPosition());
         Volvo.gas(0.5);
         Volvo.move();
-        ArrayList<Double> afterPos = Volvo.getPosition();
-        Assertions.assertNotEquals(beforePos, afterPos, "The position should have changed if current speed > 0");
+        Assertions.assertNotEquals(beforePos, Volvo.getPosition(), "The position should have changed if current speed > 0");
     }
 
     @Test
     public void move1() {
-        ArrayList<Double> beforePos = Volvo.getPosition();
+        ArrayList<Double> beforePos = new ArrayList<>(Volvo.getPosition());
         Volvo.gas(0.5);
         Volvo.turnRight();
         Volvo.move();
-        ArrayList<Double> afterPos = Volvo.getPosition();
-        Assertions.assertNotEquals(beforePos, afterPos, "The position should have changed if current speed > 0");
+        Assertions.assertNotEquals(beforePos, Volvo.getPosition(), "The position should have changed if current speed > 0");
     }
 
     @Test
     public void move2() {
-        ArrayList<Double> beforePos = Volvo.getPosition();
+        ArrayList<Double> beforePos = new ArrayList<>(Volvo.getPosition());
         Volvo.gas(0.5);
         Volvo.turnRight();
         Volvo.turnRight();
         Volvo.move();
-        ArrayList<Double> afterPos = Volvo.getPosition();
-        Assertions.assertNotEquals(beforePos, afterPos, "The position should have changed if current speed > 0");
+        Assertions.assertNotEquals(beforePos, Volvo.getPosition(), "The position should have changed if current speed > 0");
     }
 
     @Test
     public void move3() {
-        ArrayList<Double> beforePos = Volvo.getPosition();
+        ArrayList<Double> beforePos = new ArrayList<>(Volvo.getPosition());
         Volvo.gas(0.5);
         Volvo.turnRight();
         Volvo.turnRight();
         Volvo.turnRight();
         Volvo.move();
-        ArrayList<Double> afterPos = Volvo.getPosition();
-        Assertions.assertNotEquals(beforePos, afterPos, "The position should have changed if current speed > 0");
+        Assertions.assertNotEquals(beforePos, Volvo.getPosition(), "The position should have changed if current speed > 0");
     }
 }

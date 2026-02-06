@@ -1,9 +1,9 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Scania implements Movable,Vehicle {
+class Scania implements Movable,Vehicle, ITruck {
     private final Truck truck;
-    protected ScaniaTruckbed scaniaTruckbed;
+    private final ScaniaTruckbed scaniaTruckbed;
 
     public Scania() {
         truck = new Truck(new ScaniaEngine(),  2, 175, Color.pink, "Scania");
@@ -94,47 +94,3 @@ public class Scania implements Movable,Vehicle {
         return scaniaTruckbed.getAngle();
      }
  }
-
-class ScaniaEngine implements Engine{
-    @Override
-    public double incrementSpeed(double currentSpeedx, double speedFactor, double amount, double enginePower) {
-            return currentSpeedx + speedFactor * amount;
-    }
-
-    @Override
-    public double decrementSpeed(double currentSpeedx, double speedFactor, double amount, double enginePower) {
-        return currentSpeedx - speedFactor * amount;
-    }
-
-    @Override
-    public double speedFactor(double enginePower) {
-        return enginePower * 0.01;
-    }
-}
-
-class ScaniaTruckbed{
-    protected double angle;
-    public ScaniaTruckbed(){
-        this.angle = 0;
-    }
-
-    public void lower(double amount, double currentSpeed) {
-        if (currentSpeed == 0) {
-            angle -= amount;
-            if  (angle < 0)
-               angle = 0;
-        }
-    }
-
-    public void raise(double amount, double currentSpeed) {
-        if (currentSpeed == 0){
-            angle += amount;
-            if (angle > 70)
-                angle = 70;
-        }
-    }
-
-    public double getAngle() {
-        return angle;
-    }
-}
