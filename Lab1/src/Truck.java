@@ -25,8 +25,8 @@ class Truck implements Movable,Vehicle{
         this.posY = 0.0;
         this.direction = 0;
         this.pos = new ArrayList<>(2);
-        pos.set(0, 0.0);
-        pos.set(1, 0.0);
+        pos.add(0, 0.0);
+        pos.add(1, 0.0);
         stopEngine();
     }
 

@@ -15,10 +15,10 @@ class ServiceStationTest {
     Saab95 saab2 = new Saab95();
 
     @Test
-    void getCar() {
+    void fetchCar1() {
         saab95ServiceStation.handInCar(saab1);
         saab95ServiceStation.handInCar(saab2);
-        Assertions.assertEquals(saab1, saab95ServiceStation.getCar(saab1));
+        Assertions.assertEquals(saab1, saab95ServiceStation.fetchCar(saab1)); //ATT TESTA
     }
 
     @Test

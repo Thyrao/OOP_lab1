@@ -27,8 +27,8 @@ class Car implements Movable,Vehicle{
         this.direction = 0;
         this.carSize = carSize;
         this.pos = new ArrayList<>(2);
-        pos.set(0, 0.0);
-        pos.set(1, 0.0);
+        pos.add(0, 0.0);
+        pos.add(1, 0.0);
         stopEngine();
     }
 

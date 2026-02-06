@@ -20,9 +20,10 @@ class LorryTest {
 
     @Test
     void moveWithCars(){
-
-        //lorry.load(volvo);
-        //lorry.load(saab);
+        lorry.raise();
+        lorry.load(volvo);
+        lorry.load(saab);
+        lorry.lower();
         lorry.gas(0.8);
         lorry.move();
         ArrayList<Double> lPos = lorry.getPosition();
@@ -52,27 +53,47 @@ class LorryTest {
 
     @Test
     void getLoadedCars() {
+        lorry.raise();
+        lorry.load(volvo);
+        lorry.load(saab);
+        ArrayList<ICar> loaded = new ArrayList<>(2);
+        loaded.add(volvo);
+        loaded.add(saab);
 
+        Assertions.assertEquals(loaded, lorry.getLoadedCars());
     }
 
     @Test
-    void unload() {
+    void unload() { // kolla på varför oldList kan uppdateras
+        lorry.raise();
+        lorry.load(volvo);
+        lorry.load(saab);
         ArrayList<ICar> oldList = lorry.getLoadedCars();
-        lorry.unload();
+        System.out.println(oldList.size());
+        ICar unloadedCar = lorry.unload();
+        Assertions.assertEquals(saab,unloadedCar);
+        System.out.println(oldList.size());
+        Assertions.assertEquals(oldList.size(), lorry.getLoadedCars().size());
     }
 
     @Test
     void load() {
+        lorry.raise();
         lorry.load(saab);
         lorry.load(volvo);
         ArrayList<ICar> newList = lorry.getLoadedCars();
         Assertions.assertEquals(2 , newList.size());
-         //newList.
-
     }
 
     @Test
     void loadWhenFull() {
+        lorry.raise();
         lorry.load(saab);
+        lorry.load(saab);
+        lorry.load(volvo);
+        lorry.load(volvo);
+        lorry.load(volvo);
+        lorry.load(volvo);
+        Assertions.assertEquals(2, lorry.getLoadedCars().size());
     }
 }

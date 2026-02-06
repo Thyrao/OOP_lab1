@@ -13,16 +13,12 @@ public class ServiceStation<T> {
         return carsInService;
     }
 
-    T getCar(T t){
+    T fetchCar(T t){
         if (carsInService.contains(t)){
-            for(int i=0; i < carsInService.size(); i++){
-                if (carsInService.get(i) == t){
-                    return carsInService.remove(i);
-                }
-            }
+            int i = carsInService.indexOf(t);
+            return carsInService.remove(i);
         }
-        else throw new RuntimeException("Car not in service");
-        //return t;
+        else return null;
     }
 
     void handInCar(T t){
