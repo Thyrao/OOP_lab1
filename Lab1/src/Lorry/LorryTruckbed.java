@@ -1,6 +1,9 @@
+package Lorry;
+import Interface.ICar;
+
 import java.util.ArrayList;
 
-class LorryTruckbed{
+public class LorryTruckbed{
     protected double angle;
     private final ArrayList<ICar> loadedCars;
 
@@ -29,7 +32,7 @@ class LorryTruckbed{
         if ((Math.abs(car.getPosition().get(0) - position.get(0)) < 1) && (Math.abs(car.getPosition().get(1) - position.get(1)) < 1)){
             if (angle == 70 && !loadedCars.contains(car))
                 if (car.getCarSize() < 5)
-                    loadedCars.add(car); // vad händer när listan är full och vi försöker lasta en ny eller samma bil?
+                    loadedCars.add(car);
         }
     }
 

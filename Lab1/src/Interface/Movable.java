@@ -1,6 +1,6 @@
+package Interface;
 
-
-interface Movable{
+public interface Movable{
     void turnRight();
     void turnLeft();
     void move();

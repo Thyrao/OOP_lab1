@@ -1,4 +1,7 @@
-class VolvoEngine implements Engine{
+package Volvo;
+import Interface.Engine;
+
+public class VolvoEngine implements Engine {
     private final static double trimFactor = 1.25;
 
     @Override

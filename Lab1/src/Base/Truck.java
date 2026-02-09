@@ -1,8 +1,14 @@
+package Base;
+
+import Interface.ITruck;
+import Interface.Movable;
+import Interface.Vehicle;
+import Interface.Engine;
+
 import java.awt.*;
 import java.util.ArrayList;
 
-class Car implements Movable,Vehicle{
-    // variabler
+public class Truck implements Movable, Vehicle, ITruck {
     protected Engine engine;
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
@@ -11,11 +17,10 @@ class Car implements Movable,Vehicle{
     protected String modelName; // The car model name
     protected double posX;
     protected double posY;
-    protected ArrayList<Double> pos;
     protected double direction;
-    protected int carSize;
+    protected ArrayList<Double> pos;
 
-    public Car(Engine engine, int nrDoors, double enginePower, Color color, String modelName, int carSize){
+    public Truck(Engine engine, int nrDoors, double enginePower, Color color, String modelName){
         this.engine = engine;
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
@@ -25,20 +30,14 @@ class Car implements Movable,Vehicle{
         this.posX = 0.0;
         this.posY = 0.0;
         this.direction = 0;
-        this.carSize = carSize;
         this.pos = new ArrayList<>(2);
         pos.add(0, 0.0);
         pos.add(1, 0.0);
         stopEngine();
     }
 
-    // funktioner
     public int getNrDoors() {
         return nrDoors;}
-
-    public int getCarSize(){
-        return carSize;
-    }
 
     public double getEnginePower() {
         return enginePower;}
@@ -98,11 +97,6 @@ class Car implements Movable,Vehicle{
         direction = ((getDirection() - 1)%4 +4) % 4; // kan inte ha modulo på ett negativt tal
     }
 
-    protected  void updatePosition(double x, double y){
-        posX = x;
-        posY = y;
-    }
-
     public ArrayList<Double> getPosition(){
         pos.set(0, posX);
         pos.set(1, posY);
@@ -117,15 +111,14 @@ class Car implements Movable,Vehicle{
             posY = pos.get(1) + getCurrentSpeed();
         }
         else if (dir == 1){
-            posX = pos.get(0) + getCurrentSpeed();
+            posX = pos.getFirst() + getCurrentSpeed();
         }
         else if (dir == 2){
             posY = pos.get(1) - getCurrentSpeed();
         }
         else {
-            posX = pos.get(0) - getCurrentSpeed();
+            posX = pos.getFirst() - getCurrentSpeed();
         }
     }
-
 }
 

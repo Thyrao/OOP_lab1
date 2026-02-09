@@ -1,4 +1,9 @@
-class SaabEngine implements Engine,Turbo {
+package Saab;
+
+import Interface.Turbo;
+import Interface.Engine;
+
+public class SaabEngine implements Engine, Turbo {
     private boolean turboOn;
 
     public SaabEngine(boolean turboOn){

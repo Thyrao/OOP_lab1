@@ -1,7 +1,14 @@
+package Scania;
+import Interface.Vehicle;
+import Interface.Movable;
+import Interface.ITruck;
+
+import Base.Truck;
+
 import java.awt.*;
 import java.util.ArrayList;
 
-class Scania implements Movable,Vehicle, ITruck {
+public class Scania implements Movable, Vehicle, ITruck {
     private final Truck truck;
     private final ScaniaTruckbed scaniaTruckbed;
 

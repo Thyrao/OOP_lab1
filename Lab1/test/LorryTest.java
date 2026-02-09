@@ -1,9 +1,12 @@
+import Interface.ICar;
+import Lorry.Lorry;
+import Scania.Scania;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import Saab.Saab95;
+import Volvo.Volvo240;
 
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class LorryTest {
     Lorry lorry = new Lorry();

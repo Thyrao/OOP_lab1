@@ -1,7 +1,6 @@
+import Scania.Scania;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-
-import java.awt.*;
 
 public class ScaniaTest{
     Scania scania = new Scania();

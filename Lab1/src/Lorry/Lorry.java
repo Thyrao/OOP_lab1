@@ -1,7 +1,17 @@
+package Lorry;
+import Interface.Vehicle;
+import Interface.Movable;
+import Interface.ITruck;
+import Interface.ICar;
+import Base.Truck;
+import Lorry.LorryTruckbed;
+
+
 import java.awt.*;
 import java.util.ArrayList;
 
-class Lorry implements Movable,Vehicle,ITruck {
+
+public class Lorry implements Movable, Vehicle, ITruck {
     private final Truck truck;
     private final LorryTruckbed lorryTruckbed;
 

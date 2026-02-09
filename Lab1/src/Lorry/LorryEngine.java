@@ -1,4 +1,7 @@
-class ScaniaEngine implements Engine{
+package Lorry;
+import Interface.Engine;
+
+public class LorryEngine implements Engine {
     @Override
     public double incrementSpeed(double currentSpeedx, double speedFactor, double amount, double enginePower) {
         return currentSpeedx + speedFactor * amount;

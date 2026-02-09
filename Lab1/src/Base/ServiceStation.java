@@ -1,3 +1,6 @@
+package Base;
+import Interface.Vehicle;
+
 import java.util.ArrayList;
 
 public class ServiceStation<T extends Vehicle> {
@@ -7,11 +10,11 @@ public class ServiceStation<T extends Vehicle> {
         this.carsInService = new ArrayList<>(maxCapacity); // osäker
     }
 
-    ArrayList<T> getAllCarsInService(){
+    public ArrayList<T> getAllCarsInService(){
         return carsInService;
     }
 
-    T fetchCar(T t){
+    public T fetchCar(T t){
         if (carsInService.contains(t)){
             int i = carsInService.indexOf(t);
             return carsInService.remove(i);
@@ -19,7 +22,7 @@ public class ServiceStation<T extends Vehicle> {
         else return null;
     }
 
-    void handInCar(T t){
+    public void handInCar(T t){
         carsInService.add(t);
     }
 }

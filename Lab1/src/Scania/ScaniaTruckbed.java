@@ -1,4 +1,6 @@
-class ScaniaTruckbed{
+package Scania;
+
+public class ScaniaTruckbed{
     protected double angle;
     public ScaniaTruckbed(){
         this.angle = 0;

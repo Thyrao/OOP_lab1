@@ -1,7 +1,9 @@
+package Interface;
+
 import java.awt.*;
 import java.util.ArrayList;
 
-interface Vehicle {
+public interface Vehicle {
     int getNrDoors();
     double getEnginePower();
     double getCurrentSpeed();

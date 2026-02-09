@@ -1,10 +1,28 @@
+package Saab;
+import Base.Car;
+import Interface.ICar;
+import Interface.Movable;
+import Interface.Vehicle;
+import Saab.SaabEngine;
+
 import java.awt.*;
 import java.util.ArrayList;
 
-class Volvo240 implements Vehicle, Movable, ICar{
+public class Saab95 implements Vehicle, Movable, ICar {
     private final Car car;
-    public Volvo240(){
-        car = new Car(new VolvoEngine(), 4, 100, Color.black, "Volvo240", 2);
+    private final SaabEngine saabEngine;
+
+    public Saab95(){
+        this.saabEngine = new SaabEngine(false);
+        car = new Car(saabEngine, 2,  125, Color.red, "Saab95", 3);
+    }
+
+    public void setTurboOn(){
+        saabEngine.setTurboOn(); // detta ska ändras
+    }
+
+    public void setTurboOff(){
+        saabEngine.setTurboOff(); // detta ska ändras
     }
 
     @Override
@@ -28,7 +46,7 @@ class Volvo240 implements Vehicle, Movable, ICar{
 
     @Override
     public Color getColor() {
-        return car.color;
+        return car.getColor();
     }
 
     @Override
@@ -61,6 +79,10 @@ class Volvo240 implements Vehicle, Movable, ICar{
         return car.getDirection();
     }
 
+    public void updatePosition(double x, double y){
+        car.updatePosition(x,y);
+    }
+
     @Override
     public void turnRight() {
         car.turnRight();
@@ -76,16 +98,13 @@ class Volvo240 implements Vehicle, Movable, ICar{
         return car.getPosition();
     }
 
-    public  void updatePosition(double x, double y){
-        car.updatePosition(x,y);
-    }
-
     @Override
     public void move() {
         car.move();
     }
 
-    public double speedFactor(){
+    public double speedFactor() {
         return car.engine.speedFactor(getEnginePower());
     }
 }
+
