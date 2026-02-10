@@ -7,6 +7,7 @@ import Saab.Saab95;
 import Volvo.Volvo240;
 
 import java.util.ArrayList;
+import java.util.List;
 
 class LorryTest {
     Lorry lorry = new Lorry();
@@ -16,10 +17,10 @@ class LorryTest {
 
     @Test
     void moveWithoutCars() {
-        ArrayList<Double> old_pos = lorry.getPosition();
+        List<Double> old_pos = lorry.getPosition();
         lorry.gas(0.5);
         lorry.move();
-        ArrayList<Double> new_pos = lorry.getPosition();
+        List<Double> new_pos = lorry.getPosition();
     }
 
     @Test
@@ -30,9 +31,9 @@ class LorryTest {
         lorry.lower();
         lorry.gas(0.8);
         lorry.move();
-        ArrayList<Double> lPos = lorry.getPosition();
-        ArrayList<Double> vPos = volvo.getPosition();
-        ArrayList<Double> sPos = saab.getPosition();
+        List<Double> lPos = lorry.getPosition();
+        List<Double> vPos = volvo.getPosition();
+        List<Double> sPos = saab.getPosition();
 
         Assertions.assertEquals(lPos, vPos);
         Assertions.assertEquals(lPos, sPos);
@@ -40,19 +41,15 @@ class LorryTest {
 
     @Test
     void raise() {
-        double oldAngle = lorry.getAngle();
         lorry.raise();
-        boolean angleState = oldAngle < lorry.getAngle();
-        Assertions.assertTrue(angleState);
+        Assertions.assertTrue(lorry.getAngle());
     }
 
     @Test
     void lower() {
         lorry.raise();
-        double oldAngle = lorry.getAngle();
         lorry.lower();
-        boolean angleState = oldAngle > lorry.getAngle();
-        Assertions.assertTrue(angleState);
+        Assertions.assertFalse(lorry.getAngle());
     }
 
     @Test
@@ -60,7 +57,7 @@ class LorryTest {
         lorry.raise();
         lorry.load(volvo);
         lorry.load(saab);
-        ArrayList<ICar> loaded = new ArrayList<>(2);
+        List<ICar> loaded = new ArrayList<>(2);
         loaded.add(volvo);
         loaded.add(saab);
 
@@ -81,7 +78,7 @@ class LorryTest {
         lorry.raise();
         lorry.load(volvo);
         lorry.load(saab);
-        ArrayList<ICar> oldList = new ArrayList<>(lorry.getLoadedCars());
+        List<ICar> oldList = new ArrayList<>(lorry.getLoadedCars());
         oldList.removeLast();
         lorry.unload();
         Assertions.assertEquals(oldList.size(), lorry.getLoadedCars().size());
@@ -92,7 +89,7 @@ class LorryTest {
         lorry.raise();
         lorry.load(saab);
         lorry.load(volvo);
-        ArrayList<ICar> newList = lorry.getLoadedCars();
+        List<ICar> newList = lorry.getLoadedCars();
         Assertions.assertEquals(2 , newList.size());
     }
 

@@ -6,6 +6,7 @@ import Interface.Engine;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Car implements Movable, Vehicle {
     // variabler
@@ -17,7 +18,7 @@ public class Car implements Movable, Vehicle {
     protected String modelName; // The car model name
     protected double posX;
     protected double posY;
-    protected ArrayList<Double> pos;
+    protected List<Double> pos;
     protected double direction;
     protected int carSize;
 
@@ -32,7 +33,7 @@ public class Car implements Movable, Vehicle {
         this.posY = 0.0;
         this.direction = 0;
         this.carSize = carSize;
-        this.pos = new ArrayList<>(2);
+        this.pos = new ArrayList<>();
         pos.add(0, 0.0);
         pos.add(1, 0.0);
         stopEngine();
@@ -104,12 +105,12 @@ public class Car implements Movable, Vehicle {
         direction = ((getDirection() - 1)%4 +4) % 4; // kan inte ha modulo på ett negativt tal
     }
 
-    public  void updatePosition(double x, double y){
+    public void updatePosition(double x, double y){
         posX = x;
         posY = y;
     }
 
-    public ArrayList<Double> getPosition(){
+    public List<Double> getPosition(){
         pos.set(0, posX);
         pos.set(1, posY);
         return pos;
@@ -117,7 +118,7 @@ public class Car implements Movable, Vehicle {
 
     public void move(){
         double dir = getDirection();
-        ArrayList<Double> pos = getPosition();
+        List<Double> pos = getPosition();
 
         if (dir == 0){
             posY = pos.get(1) + getCurrentSpeed();

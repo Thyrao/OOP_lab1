@@ -7,6 +7,7 @@ import Base.Truck;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Scania implements Movable, Vehicle, ITruck {
     private final Truck truck;
@@ -80,7 +81,7 @@ public class Scania implements Movable, Vehicle, ITruck {
      }
 
      @Override
-     public ArrayList<Double> getPosition() {
+     public List<Double> getPosition() {
          return truck.getPosition();
      }
 

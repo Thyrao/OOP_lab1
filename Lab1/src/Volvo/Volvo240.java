@@ -3,10 +3,9 @@ import Base.Car;
 import Interface.ICar;
 import Interface.Movable;
 import Interface.Vehicle;
-import Volvo.VolvoEngine;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.List;
 
 public class Volvo240 implements Vehicle, Movable, ICar {
     private final Car car;
@@ -79,7 +78,7 @@ public class Volvo240 implements Vehicle, Movable, ICar {
     }
 
     @Override
-    public ArrayList<Double> getPosition() {
+    public List<Double> getPosition() {
         return car.getPosition();
     }
 

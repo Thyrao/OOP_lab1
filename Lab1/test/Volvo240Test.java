@@ -4,6 +4,7 @@ import Volvo.Volvo240;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Volvo240Test {
     Volvo240 Volvo = new Volvo240();
@@ -96,7 +97,7 @@ public class Volvo240Test {
 
     @Test
     public void move0() {
-        ArrayList<Double> beforePos = new ArrayList<>(Volvo.getPosition());
+        List<Double> beforePos = new ArrayList<>(Volvo.getPosition());
         Volvo.gas(0.5);
         Volvo.move();
         Assertions.assertNotEquals(beforePos, Volvo.getPosition(), "The position should have changed if current speed > 0");
@@ -104,7 +105,7 @@ public class Volvo240Test {
 
     @Test
     public void move1() {
-        ArrayList<Double> beforePos = new ArrayList<>(Volvo.getPosition());
+        List<Double> beforePos = new ArrayList<>(Volvo.getPosition());
         Volvo.gas(0.5);
         Volvo.turnRight();
         Volvo.move();
@@ -113,7 +114,7 @@ public class Volvo240Test {
 
     @Test
     public void move2() {
-        ArrayList<Double> beforePos = new ArrayList<>(Volvo.getPosition());
+        List<Double> beforePos = new ArrayList<>(Volvo.getPosition());
         Volvo.gas(0.5);
         Volvo.turnRight();
         Volvo.turnRight();
@@ -123,7 +124,7 @@ public class Volvo240Test {
 
     @Test
     public void move3() {
-        ArrayList<Double> beforePos = new ArrayList<>(Volvo.getPosition());
+        List<Double> beforePos = new ArrayList<>(Volvo.getPosition());
         Volvo.gas(0.5);
         Volvo.turnRight();
         Volvo.turnRight();

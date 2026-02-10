@@ -7,6 +7,7 @@ import Interface.Engine;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Truck implements Movable, Vehicle, ITruck {
     protected Engine engine;
@@ -18,7 +19,7 @@ public class Truck implements Movable, Vehicle, ITruck {
     protected double posX;
     protected double posY;
     protected double direction;
-    protected ArrayList<Double> pos;
+    protected List<Double> pos;
 
     public Truck(Engine engine, int nrDoors, double enginePower, Color color, String modelName){
         this.engine = engine;
@@ -30,7 +31,7 @@ public class Truck implements Movable, Vehicle, ITruck {
         this.posX = 0.0;
         this.posY = 0.0;
         this.direction = 0;
-        this.pos = new ArrayList<>(2);
+        this.pos = new ArrayList<>();
         pos.add(0, 0.0);
         pos.add(1, 0.0);
         stopEngine();
@@ -97,7 +98,7 @@ public class Truck implements Movable, Vehicle, ITruck {
         direction = ((getDirection() - 1)%4 +4) % 4; // kan inte ha modulo på ett negativt tal
     }
 
-    public ArrayList<Double> getPosition(){
+    public List<Double> getPosition(){
         pos.set(0, posX);
         pos.set(1, posY);
         return pos;
@@ -105,7 +106,7 @@ public class Truck implements Movable, Vehicle, ITruck {
 
     public void move(){
         double dir = getDirection();
-        ArrayList<Double> pos = getPosition();
+        List<Double> pos = getPosition();
 
         if (dir == 0){
             posY = pos.get(1) + getCurrentSpeed();

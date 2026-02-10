@@ -4,6 +4,7 @@ import Saab.Saab95;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Saab95Test {
     Saab95 Saab = new Saab95();
@@ -98,7 +99,7 @@ public class Saab95Test {
 
     @Test
     public void move0() {
-        ArrayList<Double> beforePos = new ArrayList<>(Saab.getPosition());
+        List<Double> beforePos = new ArrayList<>(Saab.getPosition());
         Saab.gas(0.5);
         Saab.move();
         Assertions.assertNotEquals(beforePos, Saab.getPosition(), "The position should have changed if current speed > 0");
@@ -106,7 +107,7 @@ public class Saab95Test {
 
     @Test
     public void move1() {
-        ArrayList<Double> beforePos = new ArrayList<>(Saab.getPosition());
+        List<Double> beforePos = new ArrayList<>(Saab.getPosition());
         Saab.gas(0.5);
         Saab.turnRight();
         Saab.move();
@@ -115,7 +116,7 @@ public class Saab95Test {
 
     @Test
     public void move2() {
-        ArrayList<Double> beforePos = new ArrayList<>(Saab.getPosition());
+        List<Double> beforePos = new ArrayList<>(Saab.getPosition());
         Saab.gas(0.5);
         Saab.turnRight();
         Saab.turnRight();
@@ -125,7 +126,7 @@ public class Saab95Test {
 
     @Test
     public void move3() {
-        ArrayList<Double> beforePos =new ArrayList<>(Saab.getPosition());
+        List<Double> beforePos =new ArrayList<>(Saab.getPosition());
         Saab.gas(0.5);
         Saab.turnRight();
         Saab.turnRight();

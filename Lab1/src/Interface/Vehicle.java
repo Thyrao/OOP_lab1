@@ -1,7 +1,7 @@
 package Interface;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.List;
 
 public interface Vehicle {
     int getNrDoors();
@@ -16,7 +16,7 @@ public interface Vehicle {
     double getDirection();
     void turnRight();
     void turnLeft();
-    ArrayList<Double> getPosition();
+    List<Double> getPosition();
     void move();
 
 }

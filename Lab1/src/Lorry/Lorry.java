@@ -4,11 +4,9 @@ import Interface.Movable;
 import Interface.ITruck;
 import Interface.ICar;
 import Base.Truck;
-import Lorry.LorryTruckbed;
-
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.List;
 
 
 public class Lorry implements Movable, Vehicle, ITruck {
@@ -57,7 +55,7 @@ public class Lorry implements Movable, Vehicle, ITruck {
 
     @Override
     public void gas(double amount) {
-        if(getAngle() == 0){
+        if(!getAngle()){
             truck.gas(amount);
         }
     }
@@ -83,7 +81,7 @@ public class Lorry implements Movable, Vehicle, ITruck {
     }
 
     @Override
-    public ArrayList<Double> getPosition() {
+    public List<Double> getPosition() {
         return truck.getPosition();
     }
 
@@ -105,11 +103,11 @@ public class Lorry implements Movable, Vehicle, ITruck {
         lorryTruckbed.lower(getCurrentSpeed());
     }
 
-    public double getAngle(){
+    public boolean getAngle(){
         return lorryTruckbed.getAngle();
     }
 
-    public ArrayList<ICar> getLoadedCars(){
+    public List<ICar> getLoadedCars(){
         return lorryTruckbed.getLoadedCars();
     }
 

@@ -7,6 +7,7 @@ import Volvo.Volvo240;
 import Saab.Saab95;
 
 import java.util.ArrayList;
+import java.util.List;
 
 class ServiceStationTest {
     ServiceStation<Volvo240> volvo240ServiceStation = new ServiceStation<>(20);
@@ -26,7 +27,7 @@ class ServiceStationTest {
 
     @Test
     void getAllCarsInService(){
-        ArrayList<Volvo240> inService = new ArrayList<>(5);
+        List<Volvo240> inService = new ArrayList<>(5);
         inService.add(volvo1);
         inService.add(volvo2);
         volvo240ServiceStation.handInCar(volvo1);
@@ -36,7 +37,7 @@ class ServiceStationTest {
 
     @Test
     void generalService(){
-        ArrayList<ICar> inService = new ArrayList<>(5);
+        List<ICar> inService = new ArrayList<>(5);
         inService.add(volvo1);
         inService.add(saab1);
         carServiceStation.handInCar(volvo1);

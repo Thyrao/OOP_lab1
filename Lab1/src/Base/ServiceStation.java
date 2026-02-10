@@ -2,15 +2,18 @@ package Base;
 import Interface.Vehicle;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ServiceStation<T extends Vehicle> {
-    private ArrayList<T> carsInService;
+    private List<T> carsInService;
+    private final int maxCapacity;
 
     public ServiceStation(int maxCapacity){
-        this.carsInService = new ArrayList<>(maxCapacity); // osäker
+        this.maxCapacity = maxCapacity;
+        this.carsInService = new ArrayList<>();
     }
 
-    public ArrayList<T> getAllCarsInService(){
+    public List<T> getAllCarsInService(){
         return carsInService;
     }
 
@@ -23,6 +26,8 @@ public class ServiceStation<T extends Vehicle> {
     }
 
     public void handInCar(T t){
-        carsInService.add(t);
+        if(carsInService.size() < maxCapacity){
+            carsInService.add(t);
+        }
     }
 }
