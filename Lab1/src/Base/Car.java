@@ -8,7 +8,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Car implements Movable, Vehicle {
+public class Car implements Movable{
     // variabler
     public Engine engine;
     protected int nrDoors; // Number of doors on the car
