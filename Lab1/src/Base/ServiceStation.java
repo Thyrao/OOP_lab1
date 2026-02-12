@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceStation<T extends Vehicle> {
-    private List<T> carsInService;
+    private final List<T> carsInService;
     private final int maxCapacity;
 
     public ServiceStation(int maxCapacity){

@@ -14,6 +14,7 @@ public class Saab95 implements Vehicle, Movable, ICar {
     public Saab95(){
         this.saabEngine = new SaabEngine(false);
         car = new Car(saabEngine, 2,  125, Color.red, "Saab95", 3);
+        car.updatePosition(0,-100);
     }
 
     public void setTurboOn(){
@@ -36,6 +37,11 @@ public class Saab95 implements Vehicle, Movable, ICar {
     @Override
     public double getEnginePower() {
         return car.getEnginePower();
+    }
+
+    @Override
+    public void setCurrentSpeed(double amount) {
+        car.setCurrentSpeed(amount);
     }
 
     @Override

@@ -1,4 +1,4 @@
-
+import Base.ServiceStation;
 import Interface.Vehicle;
 import Saab.Saab95;
 import Scania.Scania;
@@ -23,7 +23,7 @@ public class CarController {
     // The timer is started with a listener (see below) that executes the statements
     // each step between delays.
     private Timer timer = new Timer(delay, new TimerListener());
-
+    ServiceStation<Volvo240> volvoService = new ServiceStation<>(20);
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
@@ -36,6 +36,8 @@ public class CarController {
         CarController cc = new CarController();
 
         cc.vehicles.add(new Volvo240());
+        cc.vehicles.add(new Saab95());
+        cc.vehicles.add(new Scania());
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -48,12 +50,39 @@ public class CarController {
     * view to update its images. Change this method to your needs.
     * */
     private class TimerListener implements ActionListener {
+        double g;
         public void actionPerformed(ActionEvent e) {
             for (Vehicle vehicle : vehicles) {
                 vehicle.move();
                 int x = (int) Math.round(vehicle.getPosition().getFirst());
-                int y = (int) Math.round(vehicle.getPosition().getLast());
-                frame.drawPanel.moveit(x, y);
+                int y = (int) -Math.round(vehicle.getPosition().getLast()); // "-" för att koordinatsystemet är flippat
+                if (x > 700 || x < 0) {
+                    g = vehicle.getCurrentSpeed();
+                    vehicle.stopEngine();
+                    vehicle.turnLeft();
+                    vehicle.turnLeft();
+                    vehicle.startEngine();
+                    vehicle.setCurrentSpeed(g);
+                }
+
+                if (y > 500 || y < 0) {
+                    g = vehicle.getCurrentSpeed();
+                    vehicle.stopEngine();
+                    vehicle.turnLeft();
+                    vehicle.turnLeft();
+                    vehicle.startEngine();
+                    vehicle.setCurrentSpeed(g);
+                }
+
+                if (vehicle instanceof Volvo240) {
+                    if ((x < 400 && x > 200) && (y < 398 && y > 240)){
+                        vehicle.stopEngine();
+                        volvoService.handInCar((Volvo240) vehicle);
+                        frame.drawPanel.volvoImage = null;
+                        ((Volvo240) vehicle).updatePosition(0,0);
+                    }
+                }
+                    frame.drawPanel.moveit(vehicle, x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }

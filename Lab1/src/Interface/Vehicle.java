@@ -18,5 +18,6 @@ public interface Vehicle {
     void turnLeft();
     List<Double> getPosition();
     void move();
+    void setCurrentSpeed(double amount);
 
 }

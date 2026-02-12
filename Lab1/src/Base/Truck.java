@@ -121,5 +121,9 @@ public class Truck implements Movable, Vehicle, ITruck {
             posX = pos.getFirst() - getCurrentSpeed();
         }
     }
+
+    public void setCurrentSpeed(double amount){
+        currentSpeed = amount;
+    }
 }
 

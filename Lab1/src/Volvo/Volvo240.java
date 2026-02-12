@@ -11,6 +11,7 @@ public class Volvo240 implements Vehicle, Movable, ICar {
     private final Car car;
     public Volvo240(){
         car = new Car(new VolvoEngine(), 4, 100, Color.black, "Volvo240", 2);
+        car.updatePosition(0,-200);
     }
 
     @Override
@@ -25,6 +26,11 @@ public class Volvo240 implements Vehicle, Movable, ICar {
     @Override
     public double getEnginePower() {
         return car.getEnginePower();
+    }
+
+    @Override
+    public void setCurrentSpeed(double amount) {
+        car.setCurrentSpeed(amount);
     }
 
     @Override

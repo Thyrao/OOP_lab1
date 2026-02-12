@@ -56,6 +56,10 @@ public class Car implements Movable{
     public Color getColor() {
         return color;}
 
+    public void setCurrentSpeed(double amount){
+        currentSpeed = amount;
+    }
+
     public void setColor(Color clr) {
         color = clr;}
 

@@ -24,6 +24,11 @@ public class Lorry implements Movable, Vehicle, ITruck {
     }
 
     @Override
+    public void setCurrentSpeed(double amount) {
+        truck.setCurrentSpeed(amount);
+    }
+
+    @Override
     public double getEnginePower() {
         return truck.getEnginePower();
     }
