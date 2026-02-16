@@ -1,5 +1,6 @@
 package Base;
 
+import Interface.ICar;
 import Interface.Movable;
 import Interface.Vehicle;
 import Interface.Engine;
@@ -8,7 +9,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Car implements Movable{
+public class Car implements Movable, ICar, Vehicle{
     // variabler
     public Engine engine;
     protected int nrDoors; // Number of doors on the car
