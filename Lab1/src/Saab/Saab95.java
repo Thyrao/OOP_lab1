@@ -18,11 +18,11 @@ public class Saab95 implements Vehicle, Movable, ICar {
     }
 
     public void setTurboOn(){
-        saabEngine.setTurboOn(); // detta ska ändras
+        saabEngine.setTurboOn();
     }
 
     public void setTurboOff(){
-        saabEngine.setTurboOff(); // detta ska ändras
+        saabEngine.setTurboOff();
     }
 
     @Override

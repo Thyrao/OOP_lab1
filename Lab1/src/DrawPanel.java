@@ -16,8 +16,6 @@ public class DrawPanel extends JPanel{
 
     // Just a single image, TODO: Generalize
 
-
-
     // To keep track of a single car's position
 
     Point volvoPoint = new Point(0,200);
@@ -52,6 +50,7 @@ public class DrawPanel extends JPanel{
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
+        this.setDoubleBuffered(true);
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.pink);
