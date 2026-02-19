@@ -1,10 +1,10 @@
-import Interface.ICar;
+import MVC.Vehicles.CarsPackage.Components.ICar;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import Base.ServiceStation;
-import Volvo.Volvo240;
-import Saab.Saab95;
+import MVC.NoneMoveableObjects.ServiceStation;
+import MVC.Vehicles.CarsPackage.Cars.Volvo240;
+import MVC.Vehicles.CarsPackage.Cars.Saab95;
 
 import java.util.ArrayList;
 import java.util.List;

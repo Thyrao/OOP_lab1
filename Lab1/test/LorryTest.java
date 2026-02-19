@@ -1,10 +1,10 @@
-import Interface.ICar;
-import Lorry.Lorry;
-import Scania.Scania;
+import MVC.Vehicles.CarsPackage.Components.ICar;
+import MVC.Vehicles.TrucksPackage.Trucks.Lorry;
+import MVC.Vehicles.TrucksPackage.Trucks.Scania;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import Saab.Saab95;
-import Volvo.Volvo240;
+import MVC.Vehicles.CarsPackage.Cars.Saab95;
+import MVC.Vehicles.CarsPackage.Cars.Volvo240;
 
 import java.util.ArrayList;
 import java.util.List;
