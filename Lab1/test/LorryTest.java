@@ -15,6 +15,7 @@ class LorryTest {
     Volvo240 volvo = new Volvo240();
     Scania scania = new Scania();
 
+
     @Test
     void moveWithoutCars() {
         List<Double> old_pos = lorry.getPosition();
@@ -26,6 +27,8 @@ class LorryTest {
     @Test
     void moveWithCars(){
         lorry.raise();
+        volvo.updatePosition(0,0);
+        saab.updatePosition(0,0);
         lorry.load(volvo);
         lorry.load(saab);
         lorry.lower();
@@ -55,6 +58,7 @@ class LorryTest {
     @Test
     void getLoadedCars() {
         lorry.raise();
+
         lorry.load(volvo);
         lorry.load(saab);
         List<ICar> loaded = new ArrayList<>(2);

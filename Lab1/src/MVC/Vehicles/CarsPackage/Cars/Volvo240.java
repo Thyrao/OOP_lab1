@@ -13,7 +13,7 @@ public class Volvo240 implements Vehicle, Movable, ICar {
 
     public Volvo240(){
         car = new Car(new VolvoEngine(), 4, 100, Color.black, "Volvo240", 2);
-
+        car.updatePosition(0,-200);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package MVC.Controllers;
 
 import MVC.NoneMoveableObjects.ServiceStation;
+import MVC.Vehicles.CarsPackage.Components.ICar;
 import MVC.Vehicles.Vehicle;
 import MVC.Vehicles.CarsPackage.Cars.Saab95;
 import MVC.Vehicles.TrucksPackage.Trucks.Scania;
@@ -41,6 +42,7 @@ public class CarController {
         cc.vehicles.add(new Volvo240());
         cc.vehicles.add(new Saab95());
         cc.vehicles.add(new Scania());
+
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
