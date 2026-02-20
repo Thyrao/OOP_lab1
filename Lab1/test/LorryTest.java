@@ -57,8 +57,9 @@ class LorryTest {
 
     @Test
     void getLoadedCars() {
+        volvo.updatePosition(0,0);
+        saab.updatePosition(0,0);
         lorry.raise();
-
         lorry.load(volvo);
         lorry.load(saab);
         List<ICar> loaded = new ArrayList<>(2);
@@ -70,6 +71,8 @@ class LorryTest {
 
     @Test
     void unload1() {
+        volvo.updatePosition(0,0);
+        saab.updatePosition(0,0);
         lorry.raise();
         lorry.load(volvo);
         lorry.load(saab);
@@ -79,6 +82,8 @@ class LorryTest {
 
     @Test
     void unload2() {
+        volvo.updatePosition(0,0);
+        saab.updatePosition(0,0);
         lorry.raise();
         lorry.load(volvo);
         lorry.load(saab);
@@ -90,6 +95,8 @@ class LorryTest {
 
     @Test
     void load() {
+        volvo.updatePosition(0,0);
+        saab.updatePosition(0,0);
         lorry.raise();
         lorry.load(saab);
         lorry.load(volvo);
@@ -99,6 +106,8 @@ class LorryTest {
 
     @Test
     void loadWhenFull() {
+        volvo.updatePosition(0,0);
+        saab.updatePosition(0,0);
         lorry.raise();
         lorry.load(saab);
         lorry.load(saab);
