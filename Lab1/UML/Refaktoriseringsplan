@@ -1,0 +1,31 @@
+&                                                                    **Refaktoreringsplan**
+
+Lab3
+
+1.  Skapa en ny klass Main som gör det som CarControllers main funktion gör. Ta bort main metoden från CarController. Flytta även ut TimerListner så att den ligger som en egen klass
+    
+    -  På detta sättet så får vi bort att CarController är beroende av CarView och CarView är beroende av CarController
+        
+2.  Skapa ett interface som heter Observer och som har en metod void update(). Implicera CarView med Observer. 
+    
+3.  Skapa en lista med Observers i TimerListner och en metod som heter notifyObervers() som för varje tick kör update() metoden hos dess observerare.
+    
+    -  Vi får bort att TimeListner har en CarView som har en DrawPanel men att TimeListner också använde DrawPanel, vi eliminerar en dubbelväg. 
+        
+4.  Förenkla if-saterna som finns i TimerListner genom funktionell nedbrytning till separata metoder. Dessa metoder körs varje gång som TimerListner tickar genom CarView update metod. 
+    
+5.  Skapa en factory för alla vehicles.
+    
+    -  Genom att ha en factory för alla vehicles så är inte längre våran main beroende av varje vehicle object. På det sättet minskar vi beroenden och följer high cohesion low coupling.
+        
+6.   Vi vill bli av med DrawPanels beroende till Saab, Volvo, Scania, genom att använda de olika fordonens interna positioner istället för att skapa en ny punkt för varje fordon som vi gör nu.
+    
+    -  På detta sätt blir vi av med beroende på 3 separat klasser, Volvo, Saab, Scania och klassen blir mer generaliserad.
+        
+
+**Vilka steg kan göras samtidigt?** 
+
+OBS! Undvik att jobba i samma filer samtidigt för att undvika merge konflikt. 
+
+Steg 1, 2, 6 kan göras samtidigt. Steg 3, 5 och 4 bör göras separat från resterande steg då vi måste ha skapat ett interface Observer för att kunna skapa en lista med Observers samt så behöver 
+vi ha en update metod i CarView innan vi kan lägga in saker i den. För att göra steg 5 behöver vi redan ha skapat en main i steg 1.
