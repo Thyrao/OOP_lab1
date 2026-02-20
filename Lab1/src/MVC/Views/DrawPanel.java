@@ -4,10 +4,11 @@ import MVC.Vehicles.Vehicle;
 import MVC.Vehicles.CarsPackage.Cars.Saab95;
 import MVC.Vehicles.TrucksPackage.Trucks.Scania;
 import MVC.Vehicles.CarsPackage.Cars.Volvo240;
-
+import java.util.ArrayList;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -15,7 +16,7 @@ import javax.swing.*;
 // This panel represents the animated part of the view with the car images.
 
 public class DrawPanel extends JPanel{
-
+    private ArrayList<Vehicle> vehicles;
     // Just a single image, TODO: Generalize
 
     // To keep track of a single car's position
@@ -23,7 +24,7 @@ public class DrawPanel extends JPanel{
     Point volvoPoint = new Point(0,200);
     public BufferedImage volvoImage;
 
-    Point saabPoint = new Point(0, 100);
+    Point saabPoint = new Point(0,100);
     BufferedImage saabImage;
 
     Point scaniaPoint = new Point();
@@ -35,9 +36,11 @@ public class DrawPanel extends JPanel{
 
     // TODO: Make this general for all cars
     public void moveit(Vehicle vehicle, int x, int y){
+        /*
         if(vehicle instanceof Volvo240){
             volvoPoint.x = x;
             volvoPoint.y = y;
+
         }
         else if(vehicle instanceof Saab95){
             saabPoint.x = x;
@@ -48,14 +51,23 @@ public class DrawPanel extends JPanel{
             scaniaPoint.x = x;
             scaniaPoint.y = y;
         }
-    }
+         */
+        vehicle.updatePosition(x,y);
 
+
+    }
+    public void getVehicles(ArrayList<Vehicle> vehiclesFromMain){
+         this.vehicles = vehiclesFromMain;
+    }
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
+
         this.setDoubleBuffered(true);
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.pink);
+
+
         // Print an error message in case file is not found with a try/catch block
         try {
             // You can remove the "pics" part if running outside of IntelliJ and

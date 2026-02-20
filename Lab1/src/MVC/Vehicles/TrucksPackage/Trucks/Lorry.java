@@ -31,6 +31,11 @@ public class Lorry implements Movable, Vehicle, ITruck {
     }
 
     @Override
+    public void updatePosition(double x, double y) {
+
+    }
+
+    @Override
     public double getEnginePower() {
         return truck.getEnginePower();
     }
@@ -120,6 +125,7 @@ public class Lorry implements Movable, Vehicle, ITruck {
 
     public void load(ICar car){
         lorryTruckbed.load(car, getPosition());
+
     }
 
     public ICar unload(){

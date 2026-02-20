@@ -108,4 +108,9 @@ public class Scania implements Movable, Vehicle, ITruck {
     public void setCurrentSpeed(double amount) {
         truck.setCurrentSpeed(amount);
     }
+
+    @Override
+    public void updatePosition(double x, double y) {
+
+    }
 }

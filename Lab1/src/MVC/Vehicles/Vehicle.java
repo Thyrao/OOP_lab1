@@ -19,5 +19,6 @@ public interface Vehicle {
     List<Double> getPosition();
     void move();
     void setCurrentSpeed(double amount);
+    void updatePosition(double x, double y);
 
 }

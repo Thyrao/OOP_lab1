@@ -22,20 +22,22 @@ import java.util.List;
     protected double direction;
     protected int carSize;
 
-    public Car(Engine engine, int nrDoors, double enginePower, Color color, String modelName, int carSize){
+    public Car(Engine engine, int nrDoors, int enginePower, Color color, String modelName, int carSize){
         this.engine = engine;
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.currentSpeed = 0;
         this.color = color;
         this.modelName = modelName;
-        this.posX = 0.0;
-        this.posY = 0.0;
+
         this.direction = 0;
         this.carSize = carSize;
+        this.posX = 0;
+        this.posY = 0;
         this.pos = new ArrayList<>();
         pos.add(0, 0.0);
         pos.add(1, 0.0);
+
         stopEngine();
     }
 
@@ -64,7 +66,7 @@ import java.util.List;
         color = clr;}
 
     public void startEngine(){
-        currentSpeed = 0.1;}
+        currentSpeed = 1;}
 
     public void stopEngine(){
         currentSpeed = 0;}
@@ -113,30 +115,30 @@ import java.util.List;
         posX = x;
         posY = y;
     }
+     public List<Double> getPosition() {
+         pos.set(0, posX);
+         pos.set(1, posY);
+         return pos;
 
-    public List<Double> getPosition(){
-        pos.set(0, posX);
-        pos.set(1, posY);
-        return pos;
-    }
+     }
 
-    public void move(){
-        double dir = getDirection();
-        List<Double> pos = getPosition();
+     public void move(){
+         double dir = getDirection();
+         List<Double> pos = getPosition();
 
-        if (dir == 0){
-            posY = pos.get(1) + getCurrentSpeed();
-        }
-        else if (dir == 1){
-            posX = pos.get(0) + getCurrentSpeed();
-        }
-        else if (dir == 2){
-            posY = pos.get(1) - getCurrentSpeed();
-        }
-        else {
-            posX = pos.get(0) - getCurrentSpeed();
-        }
-    }
+         if (dir == 0){
+             posY = pos.get(1) + getCurrentSpeed();
+         }
+         else if (dir == 1){
+             posX = pos.get(0) + getCurrentSpeed();
+         }
+         else if (dir == 2){
+             posY = pos.get(1) - getCurrentSpeed();
+         }
+         else {
+             posX = pos.get(0) - getCurrentSpeed();
+         }
+     }
 
 }
 
