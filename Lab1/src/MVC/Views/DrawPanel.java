@@ -1,5 +1,6 @@
 package MVC.Views;
 
+import MVC.Model.ModelWorld;
 import MVC.Model.Vehicles.CarsPackage.Cars.Volvo240;
 import MVC.Model.Vehicles.Vehicle;
 
@@ -16,7 +17,8 @@ import javax.swing.*;
 
 public class DrawPanel extends JPanel{
     private HashMap <Object, BufferedImage> objectToImages = new HashMap<>();
-    private ArrayList<Vehicle> vehicles;
+    ModelWorld model;
+
     // Just a single image, TODO: Generalize
 
     // To keep track of a single car's position
@@ -36,9 +38,9 @@ public class DrawPanel extends JPanel{
     */
 
     // TODO: Make this general for all cars
-    /*public void moveit(Vehicle vehicle, int x, int y){
+    public void moveit(Vehicle vehicle, int x, int y){
 
-        if(vehicle instanceof Volvo240){
+        /*if(vehicle instanceof Volvo240){
             volvoPoint.x = x;
             volvoPoint.y = y;
 
@@ -51,10 +53,10 @@ public class DrawPanel extends JPanel{
         else if(vehicle instanceof Scania){
             scaniaPoint.x = x;
             scaniaPoint.y = y;
-        }
+        }*/
 
         // vehicle.updatePosition(x,y); behövs nog inte
-    }*/
+    }
 
 
     // Initializes the panel and reads the images
@@ -63,10 +65,10 @@ public class DrawPanel extends JPanel{
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.pink);
-
+        model = new ModelWorld();
 
         // Print an error message in case file is not found with a try/catch block
-        try {
+        /*try {
             // You can remove the "pics" part if running outside of IntelliJ and
             // everything is in the same main folder.
             // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
@@ -83,7 +85,7 @@ public class DrawPanel extends JPanel{
         } catch (IOException ex)
         {
             ex.printStackTrace();
-        }
+        }*/
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself
@@ -91,15 +93,8 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for (Vehicle vehicle : vehicles){
-            g.drawImage(volvoImage, vehicle.getPosition().x , vehicle.getPosition().y, null);
+        for (Vehicle vehicle : model.getVehicles().keySet()){
+            g.drawImage(model.getVehicles().get(vehicle), vehicle.getPosition().x , vehicle.getPosition().y, null);
         }
-        /*
-        g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null);
-        g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);
-        g.drawImage(saabImage, saabPoint.x, saabPoint.y, null); // see javadoc for more info on the parameters
-        g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
-
-         */
     }
 }

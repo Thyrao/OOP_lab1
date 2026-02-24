@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import MVC.Model.Vehicles.CarsPackage.Cars.Saab95;
 import MVC.Model.Vehicles.CarsPackage.Cars.Volvo240;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,10 +19,10 @@ class LorryTest {
 
     @Test
     void moveWithoutCars() {
-        List<Double> old_pos = lorry.getPosition();
+        Point old_pos = lorry.getPosition();
         lorry.gas(0.5);
         lorry.move();
-        List<Double> new_pos = lorry.getPosition();
+        Point new_pos = lorry.getPosition();
     }
 
     @Test
@@ -34,9 +35,9 @@ class LorryTest {
         lorry.lower();
         lorry.gas(0.8);
         lorry.move();
-        List<Double> lPos = lorry.getPosition();
-        List<Double> vPos = volvo.getPosition();
-        List<Double> sPos = saab.getPosition();
+        Point lPos = lorry.getPosition();
+        Point vPos = volvo.getPosition();
+        Point sPos = saab.getPosition();
 
         Assertions.assertEquals(lPos, vPos);
         Assertions.assertEquals(lPos, sPos);

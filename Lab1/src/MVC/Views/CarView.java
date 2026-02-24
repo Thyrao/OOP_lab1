@@ -1,6 +1,8 @@
 package MVC.Views;
 
 import MVC.Controllers.CarController;
+import MVC.Model.ModelWorld;
+import MVC.Model.Vehicles.Vehicle;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -194,7 +196,7 @@ public class CarView extends JFrame implements Observer{
     }
     @Override
     public void update() {
-        //drawPanel.moveit(vehicle, x, y); // finns ingen move funktion jsut nu i drawPanel så därför fungerar det ej
+        //drawPanel.moveit(); // finns ingen move funktion jsut nu i drawPanel så därför fungerar det ej
         // repaint() calls the paintComponent method of the panel
         drawPanel.repaint();
     }

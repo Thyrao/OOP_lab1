@@ -32,8 +32,9 @@ public class Truck implements Movable, Vehicle, ITruck {
         //this.pos = new ArrayList<>();
         //pos.add(0, 0.0);
         //pos.add(1, 0.0);
-        position.x = 0;
-        position.y = 0;
+        //position.x = 0;
+        //position.y = 0;
+        this.position = new Point(0,0);
         stopEngine();
     }
 

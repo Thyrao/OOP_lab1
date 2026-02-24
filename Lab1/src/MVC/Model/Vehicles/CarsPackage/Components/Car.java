@@ -28,8 +28,9 @@ public class Car implements Movable, ICar, Vehicle{
         this.currentSpeed = 0;
         this.color = color;
         this.modelName = modelName;
-        position.x = 0;
-        position.y = 0;
+        //position.x = 0;
+        //position.y = 0;
+        this.position = new Point(0,0);
         this.direction = 0;
         this.carSize = carSize;
         //this.posX = 0;

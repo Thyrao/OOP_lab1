@@ -1,10 +1,12 @@
 package MVC.Model;
 
+import MVC.Model.NoneMoveableObjects.ServiceStation;
 import MVC.Model.Vehicles.CarsPackage.Cars.Saab95;
 import MVC.Model.Vehicles.CarsPackage.Cars.Volvo240;
 import MVC.Model.Vehicles.TrucksPackage.Trucks.Scania;
 import MVC.Model.Vehicles.Vehicle;
 import MVC.Views.DrawPanel;
+import MVC.Views.Observer;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -14,11 +16,13 @@ import java.util.Objects;
 
 public class ModelWorld {
     HashMap<Vehicle, BufferedImage> vehicles = new HashMap<>();
+    ServiceStation<Volvo240> volvoWorkshop;
 
     public ModelWorld(){
         addVolvo();
         addSaab();
         addScania();
+        ServiceStation<Volvo240> volvoWorkshop = new ServiceStation<>(20);
     }
 
     public void addVolvo(){
@@ -57,8 +61,11 @@ public class ModelWorld {
         vehicles.put(scania, scaniaImage);
     }
 
-
-    private void bounds(Vehicle vehicle, int x, int y) { // Ska detta vara en egen klass ist?
+    public HashMap<Vehicle,BufferedImage> getVehicles(){
+        return vehicles;
+    }
+    public void bounds(Vehicle vehicle, int x, int y) { // Ska detta vara en egen klass ist?
+        double g;
         if (x > 700 || x < 0) {
             g = vehicle.getCurrentSpeed();
             vehicle.stopEngine();
@@ -79,8 +86,8 @@ public class ModelWorld {
         if (vehicle instanceof Volvo240) {
             if ((x < 400 && x > 200) && (y < 398 && y > 240)){
                 vehicle.stopEngine();
-                volvoService.handInCar((Volvo240) vehicle); // ska verkligen en klocka ha en volvoService
-                frame.drawPanel.volvoImage = null; // eftersom vi nu inte har någon CarView utan endast använder den som en observer kommer inte detta fungera alls
+                volvoWorkshop.handInCar((Volvo240) vehicle); // ska verkligen en klocka ha en volvoService
+                vehicles.remove(vehicle); // eftersom vi nu inte har någon CarView utan endast använder den som en observer kommer inte detta fungera alls
                 ((Volvo240) vehicle).updatePosition(0,0);
             }
         }
@@ -88,32 +95,32 @@ public class ModelWorld {
 
     public void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (Vehicle vehicle : vehicles) {
+        for (Vehicle vehicle : vehicles.keySet()) {
             vehicle.gas(gas);
         }
     }
 
     public void brake(int amount){
         double brake = ((double) amount) / 100;
-        for (Vehicle vehicle : vehicles){
+        for (Vehicle vehicle : vehicles.keySet()){
             vehicle.brake(brake);
         }
     }
 
     public void turnLeft(){
-        for (Vehicle vehicle : vehicles){
+        for (Vehicle vehicle : vehicles.keySet()){
             vehicle.turnLeft();
         }
     }
 
     public void turnRight(){
-        for (Vehicle vehicle : vehicles){
+        for (Vehicle vehicle : vehicles.keySet()){
             vehicle.turnRight();
         }
     }
 
     public void setTurboOn(){
-        for (Vehicle vehicle : vehicles){
+        for (Vehicle vehicle : vehicles.keySet()){
             if (vehicle instanceof Saab95){
                 ((Saab95) vehicle).setTurboOn();
             }
@@ -121,7 +128,7 @@ public class ModelWorld {
     }
 
     public void setTurboOff(){
-        for (Vehicle vehicle : vehicles){
+        for (Vehicle vehicle : vehicles.keySet()){
             if (vehicle instanceof Saab95){
                 ((Saab95) vehicle).setTurboOff();
             }
@@ -129,7 +136,7 @@ public class ModelWorld {
     }
 
     public void lowerTruckbed(int amount){
-        for (Vehicle vehicle : vehicles){
+        for (Vehicle vehicle : vehicles.keySet()){
             if (vehicle instanceof Scania){
                 ((Scania) vehicle).lower(amount);
             }
@@ -137,7 +144,7 @@ public class ModelWorld {
     }
 
     public void raiseTruckbed(int amount){
-        for (Vehicle vehicle : vehicles){
+        for (Vehicle vehicle : vehicles.keySet()){
             if (vehicle instanceof Scania){
                 ((Scania) vehicle).raise(amount);
             }
@@ -145,15 +152,14 @@ public class ModelWorld {
     }
 
     public void turnAllCarsOff(){
-        for (Vehicle vehicle : vehicles){
+        for (Vehicle vehicle : vehicles.keySet()){
             vehicle.stopEngine();
         }
     }
 
     public void turnAllCarsOn(){
-        for (Vehicle vehicle : vehicles){
+        for (Vehicle vehicle : vehicles.keySet()){
             vehicle.startEngine();
         }
     }
-
 }

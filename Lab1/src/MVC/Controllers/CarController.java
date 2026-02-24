@@ -14,92 +14,50 @@ import java.util.ArrayList;
  */
 
 public class CarController {
-    ArrayList<Vehicle> vehicles; // ska komma from ModelWorld
     ModelWorld model;
-    // member fields:
 
-    // The delay (ms) corresponds to 20 updates a sec (hz)
-
-    // The timer is started with a listener (see below) that executes the statements
-    // each step between delays.
-
-    // The frame that represents this instance View of the MVC pattern
-    // A list of cars, modify if needed
-
-    //methods:
-
-
-    /* Each step the TimerListener moves all the cars in the list and tells the
-    * view to update its images. Change this method to your needs.
-    * */
-    public CarController(ModelWorld model ) {
+    public CarController(ModelWorld model) {
         this.model = model;
-        
+    }
+        // Calls the gas method for each car once
+    public void gas ( int amount){
+        model.gas(amount);
     }
 
-        // Calls the gas method for each car once
-        public void gas ( int amount){
-            model.gas(amount);
-        }
+    public void brake ( int amount){
+        model.brake(amount);
+    }
 
-        public void brake ( int amount){
-            model.brake(amount);
-        }
+    public void turnLeft () {
+        model.turnLeft();
+    }
 
+    public void turnRight () {
+        model.turnRight();
+    }
 
-        public void turnLeft () {
-            for (Vehicle vehicle : vehicles) {
-                model.turnLeft();
-            }
-        }
+    public void setTurboOn () {
+        model.setTurboOn();
+    }
 
-        public void turnRight () {
-                model.turnRight();
+    public void setTurboOff () {
+        model.setTurboOff();
+    }
 
-        }
+    public void lowerTruckbed ( int amount){
+        model.lowerTruckbed(amount);
+    }
 
-        public void setTurboOn () {
-            for (Vehicle vehicle : vehicles) {
-                if (vehicle instanceof Saab95) {
-                    ((Saab95) vehicle).setTurboOn();
-                }
-            }
-        }
+    public void raiseTruckbed ( int amount){
+        model.raiseTruckbed(amount);
+    }
 
-        public void setTurboOff () {
-            for (Vehicle vehicle : vehicles) {
-                if (vehicle instanceof Saab95) {
-                    ((Saab95) vehicle).setTurboOff();
-                }
-            }
-        }
+    public void turnAllCarsOff () {
+        model.turnAllCarsOff();
+    }
 
-        public void lowerTruckbed ( int amount){
-            for (Vehicle vehicle : vehicles) {
-                if (vehicle instanceof Scania) {
-                    ((Scania) vehicle).lower(amount);
-                }
-            }
-        }
-
-        public void raiseTruckbed ( int amount){
-            for (Vehicle vehicle : vehicles) {
-                if (vehicle instanceof Scania) {
-                    ((Scania) vehicle).raise(amount);
-                }
-            }
-        }
-
-        public void turnAllCarsOff () {
-            for (Vehicle vehicle : vehicles) {
-                vehicle.stopEngine();
-            }
-        }
-
-        public void turnAllCarsOn () {
-            for (Vehicle vehicle : vehicles) {
-                vehicle.startEngine();
-            }
-        }
+    public void turnAllCarsOn () {
+        model.turnAllCarsOn();
+    }
     
 }
