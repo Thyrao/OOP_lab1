@@ -1,12 +1,10 @@
 import MVC.Controllers.CarController;
-import MVC.Controllers.TimerListener;
-import MVC.NoneMoveableObjects.ServiceStation;
-import MVC.Vehicles.CarsPackage.Cars.Saab95;
-import MVC.Vehicles.CarsPackage.Cars.Volvo240;
-import MVC.Vehicles.TrucksPackage.Trucks.Scania;
-import MVC.Vehicles.Vehicle;
-import MVC.Views.CarView;
-import MVC.Views.DrawPanel;
+import MVC.Model.TimerListener;
+import MVC.Model.NoneMoveableObjects.ServiceStation;
+import MVC.Model.Vehicles.CarsPackage.Cars.Saab95;
+import MVC.Model.Vehicles.CarsPackage.Cars.Volvo240;
+import MVC.Model.Vehicles.TrucksPackage.Trucks.Scania;
+import MVC.Model.Vehicles.Vehicle;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -22,16 +20,10 @@ public static void main(String[] args) {
     Timer timer = new Timer(delay, new TimerListener());
     //CarView frame;
 
-    vehicles.add(new Volvo240());
-    vehicles.add(new Saab95());
-    vehicles.add(new Scania());
-
-
-
-
     // Start a new view and send a reference of self
     //frame = new CarView("CarSim 1.0", cc);
 
     // Start the timer
     timer.start();
 }
+

@@ -1,7 +1,7 @@
-package MVC.Vehicles.CarsPackage.Engines;
+package MVC.Model.Vehicles.CarsPackage.Engines;
 
-import MVC.Vehicles.Engine;
-import MVC.Vehicles.CarsPackage.Components.Turbo;
+import MVC.Model.Vehicles.Engine;
+import MVC.Model.Vehicles.CarsPackage.Components.Turbo;
 
 public class SaabEngine implements Engine, Turbo {
     private boolean turboOn;

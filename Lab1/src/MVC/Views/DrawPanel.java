@@ -1,14 +1,13 @@
 package MVC.Views;
 
-import MVC.Vehicles.Vehicle;
-import MVC.Vehicles.CarsPackage.Cars.Saab95;
-import MVC.Vehicles.TrucksPackage.Trucks.Scania;
-import MVC.Vehicles.CarsPackage.Cars.Volvo240;
+import MVC.Model.Vehicles.CarsPackage.Cars.Volvo240;
+import MVC.Model.Vehicles.Vehicle;
+
 import java.util.ArrayList;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -16,14 +15,16 @@ import javax.swing.*;
 // This panel represents the animated part of the view with the car images.
 
 public class DrawPanel extends JPanel{
+    private HashMap <Object, BufferedImage> objectToImages = new HashMap<>();
     private ArrayList<Vehicle> vehicles;
     // Just a single image, TODO: Generalize
 
     // To keep track of a single car's position
 
-    Point volvoPoint = new Point(0,200);
+    //Point volvoPoint = new Point(0,200);
     public BufferedImage volvoImage;
 
+    /*
     Point saabPoint = new Point(0,100);
     BufferedImage saabImage;
 
@@ -32,11 +33,11 @@ public class DrawPanel extends JPanel{
 
     BufferedImage volvoWorkshopImage;
     Point volvoWorkshopPoint = new Point(300, 300);
-
+    */
 
     // TODO: Make this general for all cars
-    public void moveit(Vehicle vehicle, int x, int y){
-        /*
+    /*public void moveit(Vehicle vehicle, int x, int y){
+
         if(vehicle instanceof Volvo240){
             volvoPoint.x = x;
             volvoPoint.y = y;
@@ -51,17 +52,13 @@ public class DrawPanel extends JPanel{
             scaniaPoint.x = x;
             scaniaPoint.y = y;
         }
-         */
-        vehicle.updatePosition(x,y);
+
+        // vehicle.updatePosition(x,y); behövs nog inte
+    }*/
 
 
-    }
-    public void getVehicles(ArrayList<Vehicle> vehiclesFromMain){
-         this.vehicles = vehiclesFromMain;
-    }
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
-
         this.setDoubleBuffered(true);
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
@@ -78,9 +75,9 @@ public class DrawPanel extends JPanel{
             // if you are starting in IntelliJ.
 
             volvoImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg")));
-            saabImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg")));
-            scaniaImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/Scania.jpg")));
-            volvoWorkshopImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/VolvoBrand.jpg")));
+            //saabImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg")));
+            //scaniaImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/Scania.jpg")));
+            //volvoWorkshopImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/VolvoBrand.jpg")));
 
 
         } catch (IOException ex)
@@ -94,9 +91,15 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        for (Vehicle vehicle : vehicles){
+            g.drawImage(volvoImage, vehicle.getPosition().x , vehicle.getPosition().y, null);
+        }
+        /*
         g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null);
         g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);
         g.drawImage(saabImage, saabPoint.x, saabPoint.y, null); // see javadoc for more info on the parameters
         g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
+
+         */
     }
 }

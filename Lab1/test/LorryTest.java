@@ -1,10 +1,10 @@
-import MVC.Vehicles.CarsPackage.Components.ICar;
-import MVC.Vehicles.TrucksPackage.Trucks.Lorry;
-import MVC.Vehicles.TrucksPackage.Trucks.Scania;
+import MVC.Model.Vehicles.CarsPackage.Components.ICar;
+import MVC.Model.Vehicles.TrucksPackage.Trucks.Lorry;
+import MVC.Model.Vehicles.TrucksPackage.Trucks.Scania;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import MVC.Vehicles.CarsPackage.Cars.Saab95;
-import MVC.Vehicles.CarsPackage.Cars.Volvo240;
+import MVC.Model.Vehicles.CarsPackage.Cars.Saab95;
+import MVC.Model.Vehicles.CarsPackage.Cars.Volvo240;
 
 import java.util.ArrayList;
 import java.util.List;

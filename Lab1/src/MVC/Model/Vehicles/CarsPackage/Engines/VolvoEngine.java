@@ -1,6 +1,6 @@
-package MVC.Vehicles.CarsPackage.Engines;
+package MVC.Model.Vehicles.CarsPackage.Engines;
 
-import MVC.Vehicles.Engine;
+import MVC.Model.Vehicles.Engine;
 
 public class VolvoEngine implements Engine {
     private final static double trimFactor = 1.25;

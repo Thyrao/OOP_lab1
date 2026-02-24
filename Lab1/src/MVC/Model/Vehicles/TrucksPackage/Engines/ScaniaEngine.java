@@ -1,7 +1,7 @@
-package MVC.Vehicles.TrucksPackage.Engines;
-import MVC.Vehicles.Engine;
+package MVC.Model.Vehicles.TrucksPackage.Engines;
+import MVC.Model.Vehicles.Engine;
 
-public class LorryEngine implements Engine {
+public class ScaniaEngine implements Engine {
     @Override
     public double incrementSpeed(double currentSpeedx, double speedFactor, double amount, double enginePower) {
         return currentSpeedx + speedFactor * amount;

@@ -1,19 +1,28 @@
-package MVC.Vehicles.CarsPackage.Cars;
-import MVC.Vehicles.CarsPackage.Components.Car;
-import MVC.Vehicles.CarsPackage.Engines.VolvoEngine;
-import MVC.Vehicles.CarsPackage.Components.ICar;
-import MVC.Vehicles.Movable;
-import MVC.Vehicles.Vehicle;
+package MVC.Model.Vehicles.CarsPackage.Cars;
+import MVC.Model.Vehicles.CarsPackage.Components.Car;
+import MVC.Model.Vehicles.CarsPackage.Engines.SaabEngine;
+import MVC.Model.Vehicles.CarsPackage.Components.ICar;
+import MVC.Model.Vehicles.Movable;
+import MVC.Model.Vehicles.Vehicle;
 
 import java.awt.*;
-import java.util.List;
 
-public class Volvo240 implements Vehicle, Movable, ICar {
+public class Saab95 implements Vehicle, Movable, ICar {
     private final Car car;
+    private final SaabEngine saabEngine;
 
-    public Volvo240(){
-        car = new Car(new VolvoEngine(), 4, 100, Color.black, "Volvo240", 2);
-        car.updatePosition(0,-200);
+    public Saab95(){
+        this.saabEngine = new SaabEngine(false);
+        car = new Car(saabEngine, 2,  125, Color.red, "Saab95", 3);
+        car.updatePosition(0,-100);
+    }
+
+    public void setTurboOn(){
+        saabEngine.setTurboOn();
+    }
+
+    public void setTurboOff(){
+        saabEngine.setTurboOff();
     }
 
     @Override
@@ -75,6 +84,11 @@ public class Volvo240 implements Vehicle, Movable, ICar {
         return car.getDirection();
     }
 
+
+    public void updatePosition(int x, int y){
+        car.updatePosition(x,y);
+    }
+
     @Override
     public void turnRight() {
         car.turnRight();
@@ -86,12 +100,8 @@ public class Volvo240 implements Vehicle, Movable, ICar {
     }
 
     @Override
-    public List<Double> getPosition() {
+    public Point getPosition() {
         return car.getPosition();
-    }
-
-    public  void updatePosition(double x, double y){
-        car.updatePosition(x,y);
     }
 
     @Override
@@ -99,7 +109,8 @@ public class Volvo240 implements Vehicle, Movable, ICar {
         car.move();
     }
 
-    public double speedFactor(){
+    public double speedFactor() {
         return car.engine.speedFactor(getEnginePower());
     }
 }
+

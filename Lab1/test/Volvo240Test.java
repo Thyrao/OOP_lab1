@@ -1,6 +1,6 @@
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import MVC.Vehicles.CarsPackage.Cars.Volvo240;
+import MVC.Model.Vehicles.CarsPackage.Cars.Volvo240;
 
 import java.awt.*;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-import MVC.Vehicles.TrucksPackage.Trucks.Scania;
+import MVC.Model.Vehicles.TrucksPackage.Trucks.Scania;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 

@@ -1,4 +1,4 @@
-package MVC.Vehicles;
+package MVC.Model.Vehicles;
 
 public interface Movable{
     void turnRight();

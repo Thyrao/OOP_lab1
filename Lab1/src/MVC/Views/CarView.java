@@ -194,6 +194,8 @@ public class CarView extends JFrame implements Observer{
     }
     @Override
     public void update() {
-
+        //drawPanel.moveit(vehicle, x, y); // finns ingen move funktion jsut nu i drawPanel så därför fungerar det ej
+        // repaint() calls the paintComponent method of the panel
+        drawPanel.repaint();
     }
 }

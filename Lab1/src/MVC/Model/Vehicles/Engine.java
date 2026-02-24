@@ -1,4 +1,4 @@
-package MVC.Vehicles;
+package MVC.Model.Vehicles;
 
 public interface Engine{
     double incrementSpeed(double currentSpeed, double speedFactor, double amount, double enginePower);

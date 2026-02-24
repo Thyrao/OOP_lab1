@@ -1,4 +1,4 @@
-package MVC.Vehicles.TrucksPackage.Components;
+package MVC.Model.Vehicles.TrucksPackage.Components;
 
 public class ScaniaTruckbed{
     protected double angle;

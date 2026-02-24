@@ -1,16 +1,10 @@
 package MVC.Controllers;
 
-import MVC.NoneMoveableObjects.ServiceStation;
-import MVC.Vehicles.CarsPackage.Components.ICar;
-import MVC.Vehicles.Vehicle;
-import MVC.Vehicles.CarsPackage.Cars.Saab95;
-import MVC.Vehicles.TrucksPackage.Trucks.Scania;
-import MVC.Vehicles.CarsPackage.Cars.Volvo240;
-import MVC.Views.CarView;
+import MVC.Model.ModelWorld;
+import MVC.Model.Vehicles.Vehicle;
+import MVC.Model.Vehicles.CarsPackage.Cars.Saab95;
+import MVC.Model.Vehicles.TrucksPackage.Trucks.Scania;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /*
@@ -20,6 +14,8 @@ import java.util.ArrayList;
  */
 
 public class CarController {
+    ArrayList<Vehicle> vehicles; // ska komma from ModelWorld
+    ModelWorld model;
     // member fields:
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
@@ -36,76 +32,74 @@ public class CarController {
     /* Each step the TimerListener moves all the cars in the list and tells the
     * view to update its images. Change this method to your needs.
     * */
-
-
-    // Calls the gas method for each car once
-    public void gas(int amount) {
-        double gas = ((double) amount) / 100;
-        for (Vehicle vehicle : vehicles) {
-            vehicle.gas(gas);
-        }
+    public CarController(ModelWorld model ) {
+        this.model = model;
+        
     }
 
-    public void brake(int amount){
-        double brake = ((double) amount) / 100;
-        for (Vehicle vehicle : vehicles){
-            vehicle.brake(brake);
+        // Calls the gas method for each car once
+        public void gas ( int amount){
+            model.gas(amount);
         }
-    }
 
-    public void turnLeft(){
-        for (Vehicle vehicle : vehicles){
-            vehicle.turnLeft();
+        public void brake ( int amount){
+            model.brake(amount);
         }
-    }
 
-    public void turnRight(){
-        for (Vehicle vehicle : vehicles){
-            vehicle.turnRight();
-        }
-    }
 
-    public void setTurboOn(){
-        for (Vehicle vehicle : vehicles){
-            if (vehicle instanceof Saab95){
-                ((Saab95) vehicle).setTurboOn();
+        public void turnLeft () {
+            for (Vehicle vehicle : vehicles) {
+                model.turnLeft();
             }
         }
-    }
 
-    public void setTurboOff(){
-        for (Vehicle vehicle : vehicles){
-            if (vehicle instanceof Saab95){
-                ((Saab95) vehicle).setTurboOff();
+        public void turnRight () {
+                model.turnRight();
+
+        }
+
+        public void setTurboOn () {
+            for (Vehicle vehicle : vehicles) {
+                if (vehicle instanceof Saab95) {
+                    ((Saab95) vehicle).setTurboOn();
+                }
             }
         }
-    }
 
-    public void lowerTruckbed(int amount){
-        for (Vehicle vehicle : vehicles){
-            if (vehicle instanceof Scania){
-                ((Scania) vehicle).lower(amount);
+        public void setTurboOff () {
+            for (Vehicle vehicle : vehicles) {
+                if (vehicle instanceof Saab95) {
+                    ((Saab95) vehicle).setTurboOff();
+                }
             }
         }
-    }
 
-    public void raiseTruckbed(int amount){
-        for (Vehicle vehicle : vehicles){
-            if (vehicle instanceof Scania){
-                ((Scania) vehicle).raise(amount);
+        public void lowerTruckbed ( int amount){
+            for (Vehicle vehicle : vehicles) {
+                if (vehicle instanceof Scania) {
+                    ((Scania) vehicle).lower(amount);
+                }
             }
         }
-    }
 
-    public void turnAllCarsOff(){
-        for (Vehicle vehicle : vehicles){
-            vehicle.stopEngine();
+        public void raiseTruckbed ( int amount){
+            for (Vehicle vehicle : vehicles) {
+                if (vehicle instanceof Scania) {
+                    ((Scania) vehicle).raise(amount);
+                }
+            }
         }
-    }
 
-    public void turnAllCarsOn(){
-        for (Vehicle vehicle : vehicles){
-            vehicle.startEngine();
+        public void turnAllCarsOff () {
+            for (Vehicle vehicle : vehicles) {
+                vehicle.stopEngine();
+            }
         }
-    }
+
+        public void turnAllCarsOn () {
+            for (Vehicle vehicle : vehicles) {
+                vehicle.startEngine();
+            }
+        }
+    
 }

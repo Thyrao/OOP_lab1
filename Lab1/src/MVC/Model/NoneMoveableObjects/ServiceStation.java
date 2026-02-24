@@ -1,5 +1,5 @@
-package MVC.NoneMoveableObjects;
-import MVC.Vehicles.Vehicle;
+package MVC.Model.NoneMoveableObjects;
+import MVC.Model.Vehicles.Vehicle;
 
 import java.util.ArrayList;
 import java.util.List;

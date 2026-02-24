@@ -1,14 +1,13 @@
-package MVC.Vehicles.TrucksPackage.Trucks;
-import MVC.Vehicles.TrucksPackage.Components.ScaniaTruckbed;
-import MVC.Vehicles.TrucksPackage.Engines.ScaniaEngine;
-import MVC.Vehicles.Vehicle;
-import MVC.Vehicles.Movable;
-import MVC.Vehicles.TrucksPackage.Components.ITruck;
+package MVC.Model.Vehicles.TrucksPackage.Trucks;
+import MVC.Model.Vehicles.TrucksPackage.Components.ScaniaTruckbed;
+import MVC.Model.Vehicles.TrucksPackage.Engines.ScaniaEngine;
+import MVC.Model.Vehicles.Vehicle;
+import MVC.Model.Vehicles.Movable;
+import MVC.Model.Vehicles.TrucksPackage.Components.ITruck;
 
-import MVC.Vehicles.TrucksPackage.Components.Truck;
+import MVC.Model.Vehicles.TrucksPackage.Components.Truck;
 
 import java.awt.*;
-import java.util.List;
 
 public class Scania implements Movable, Vehicle, ITruck {
     private final Truck truck;
@@ -83,7 +82,7 @@ public class Scania implements Movable, Vehicle, ITruck {
     }
 
     @Override
-    public List<Double> getPosition() {
+    public Point getPosition() {
         return truck.getPosition();
     }
 
@@ -110,7 +109,7 @@ public class Scania implements Movable, Vehicle, ITruck {
     }
 
     @Override
-    public void updatePosition(double x, double y) {
+    public void updatePosition(int x, int y) {
 
     }
 }

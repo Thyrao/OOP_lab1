@@ -1,4 +1,4 @@
-package MVC.Vehicles;
+package MVC.Model.Vehicles;
 
 import java.awt.*;
 import java.util.List;
@@ -16,9 +16,9 @@ public interface Vehicle {
     double getDirection();
     void turnRight();
     void turnLeft();
-    List<Double> getPosition();
+    Point getPosition();
     void move();
     void setCurrentSpeed(double amount);
-    void updatePosition(double x, double y);
+    void updatePosition(int x, int y);
 
 }

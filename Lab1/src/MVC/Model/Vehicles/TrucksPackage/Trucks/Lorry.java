@@ -1,11 +1,11 @@
-package MVC.Vehicles.TrucksPackage.Trucks;
-import MVC.Vehicles.TrucksPackage.Components.LorryTruckbed;
-import MVC.Vehicles.TrucksPackage.Engines.LorryEngine;
-import MVC.Vehicles.Vehicle;
-import MVC.Vehicles.Movable;
-import MVC.Vehicles.TrucksPackage.Components.ITruck;
-import MVC.Vehicles.CarsPackage.Components.ICar;
-import MVC.Vehicles.TrucksPackage.Components.Truck;
+package MVC.Model.Vehicles.TrucksPackage.Trucks;
+import MVC.Model.Vehicles.TrucksPackage.Components.LorryTruckbed;
+import MVC.Model.Vehicles.TrucksPackage.Engines.LorryEngine;
+import MVC.Model.Vehicles.Vehicle;
+import MVC.Model.Vehicles.Movable;
+import MVC.Model.Vehicles.TrucksPackage.Components.ITruck;
+import MVC.Model.Vehicles.CarsPackage.Components.ICar;
+import MVC.Model.Vehicles.TrucksPackage.Components.Truck;
 
 import java.awt.*;
 import java.util.List;
@@ -31,7 +31,7 @@ public class Lorry implements Movable, Vehicle, ITruck {
     }
 
     @Override
-    public void updatePosition(double x, double y) {
+    public void updatePosition(int x, int y) {
 
     }
 
@@ -93,7 +93,7 @@ public class Lorry implements Movable, Vehicle, ITruck {
     }
 
     @Override
-    public List<Double> getPosition() {
+    public Point getPosition() {
         return truck.getPosition();
     }
 
@@ -102,7 +102,7 @@ public class Lorry implements Movable, Vehicle, ITruck {
         truck.move();
         if (!getLoadedCars().isEmpty()){
             for (ICar c : getLoadedCars()){
-                c.updatePosition(getPosition().get(0), getPosition().get(1));
+                c.updatePosition(getPosition().x, getPosition().y);
             }
         }
     }
