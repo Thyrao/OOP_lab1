@@ -31,8 +31,8 @@ public class TimerListener implements ActionListener {
             vehicle.move();
             int x = (int) Math.round(vehicle.getPosition().x);
             int y = (int) -Math.round(vehicle.getPosition().y); // "-" för att koordinatsystemet är flippat
-            System.out.println(x);
-            System.out.println(y);
+            //System.out.println(x);
+            //System.out.println(y);
                     
             model.bounds(vehicle, x, y);
             notifyObservers();

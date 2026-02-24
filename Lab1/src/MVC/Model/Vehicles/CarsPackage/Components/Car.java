@@ -147,6 +147,5 @@ public class Car implements Movable, ICar, Vehicle{
              pos.x -= getCurrentSpeed();
          }
      }
-
 }
 

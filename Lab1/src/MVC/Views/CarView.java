@@ -26,7 +26,7 @@ public class CarView extends JFrame implements Observer{
     // The controller member
     CarController carC;
 
-    public DrawPanel drawPanel = new DrawPanel(X, Y-240);
+    public DrawPanel drawPanel;
 
     JPanel controlPanel = new JPanel();
 
@@ -51,6 +51,7 @@ public class CarView extends JFrame implements Observer{
     // Constructor
     public CarView(String framename, CarController cc){
         this.carC = cc;
+        this.drawPanel = new DrawPanel(X, Y-240);
         initComponents(framename);
     }
 

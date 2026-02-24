@@ -65,7 +65,7 @@ public class DrawPanel extends JPanel{
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.pink);
-        model = new ModelWorld();
+        model = new ModelWorld(); // fel!!!
 
         // Print an error message in case file is not found with a try/catch block
         /*try {
@@ -94,6 +94,9 @@ public class DrawPanel extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (Vehicle vehicle : model.getVehicles().keySet()){
+            System.out.println(vehicle);
+            System.out.println(vehicle.getPosition().x );
+            System.out.println(vehicle.getPosition().y );
             g.drawImage(model.getVehicles().get(vehicle), vehicle.getPosition().x , vehicle.getPosition().y, null);
         }
     }
