@@ -5,36 +5,27 @@ import MVC.Model.Vehicles.CarsPackage.Cars.Saab95;
 import MVC.Model.Vehicles.CarsPackage.Cars.Volvo240;
 import MVC.Model.Vehicles.TrucksPackage.Trucks.Scania;
 import MVC.Model.Vehicles.Vehicle;
-import MVC.Views.DrawPanel;
-import MVC.Views.Observer;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 public class ModelWorld {
-    HashMap<Vehicle, BufferedImage> vehicles = new HashMap<>();
-    ServiceStation<Volvo240> volvoWorkshop;
+    private HashMap<Vehicle, String> vehicles = new HashMap<>();
+    public ServiceStation<Volvo240> volvoWorkshop;
 
     public ModelWorld(){
         addVolvo();
         addSaab();
         addScania();
-        ServiceStation<Volvo240> volvoWorkshop = new ServiceStation<>(20);
+        volvoWorkshop = new ServiceStation<>(20);
     }
 
     public void addVolvo(){
-        Vehicle volvo  = VehicleFactory.createVolvo();
-        BufferedImage volvoImage = null;
-        try {
-            volvoImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg")));
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        vehicles.put(volvo, volvoImage);
+        Pair<Vehicle, String> volvo  = VehicleFactory.createVolvo();
+        vehicles.put(volvo.get(0), volvo.get(1));
     }
 
     public void addSaab(){
@@ -51,14 +42,7 @@ public class ModelWorld {
 
     public void addScania(){
         Vehicle scania  = VehicleFactory.createScania();
-        BufferedImage scaniaImage = null;
-        try {
-            scaniaImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/Scania.jpg")));
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        vehicles.put(scania, scaniaImage);
+        vehicles.put(scania, "Scania.jpg");
     }
 
     public HashMap<Vehicle,BufferedImage> getVehicles(){

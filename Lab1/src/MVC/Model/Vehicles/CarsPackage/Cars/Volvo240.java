@@ -6,6 +6,8 @@ import MVC.Model.Vehicles.Movable;
 import MVC.Model.Vehicles.Vehicle;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Volvo240 implements Vehicle, Movable, ICar {
     private final Car car;
@@ -85,11 +87,11 @@ public class Volvo240 implements Vehicle, Movable, ICar {
     }
 
     @Override
-    public Point getPosition() {
+    public List<Double> getPosition() {
         return car.getPosition();
     }
 
-    public  void updatePosition(int x, int y){
+    public  void updatePosition(double x, double y){
         car.updatePosition(x,y);
     }
 

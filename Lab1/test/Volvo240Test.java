@@ -97,7 +97,7 @@ public class Volvo240Test {
 
     @Test
     public void move0() {
-        Point beforePos = new Point(Volvo.getPosition());
+        List beforePos = new ArrayList(Volvo.getPosition());
         Volvo.gas(0.5);
         Volvo.move();
         Assertions.assertNotEquals(beforePos, Volvo.getPosition(), "The position should have changed if current speed > 0");
@@ -105,7 +105,7 @@ public class Volvo240Test {
 
     @Test
     public void move1() {
-        Point beforePos = new Point(Volvo.getPosition());
+        List beforePos = new ArrayList(Volvo.getPosition());
         Volvo.gas(0.5);
         Volvo.turnRight();
         Volvo.move();
@@ -114,7 +114,7 @@ public class Volvo240Test {
 
     @Test
     public void move2() {
-        Point beforePos = new Point(Volvo.getPosition());
+        List beforePos = new ArrayList(Volvo.getPosition());
         Volvo.gas(0.5);
         Volvo.turnRight();
         Volvo.turnRight();
@@ -124,7 +124,7 @@ public class Volvo240Test {
 
     @Test
     public void move3() {
-        Point beforePos = new Point(Volvo.getPosition());
+        List beforePos = new ArrayList(Volvo.getPosition());
         Volvo.gas(0.5);
         Volvo.turnRight();
         Volvo.turnRight();

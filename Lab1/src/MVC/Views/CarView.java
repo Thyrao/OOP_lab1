@@ -22,6 +22,7 @@ import java.awt.event.ActionListener;
 public class CarView extends JFrame implements Observer{
     private static final int X = 800;
     private static final int Y = 800;
+    ModelWorld model;
 
     // The controller member
     CarController carC;
@@ -49,9 +50,10 @@ public class CarView extends JFrame implements Observer{
 
 
     // Constructor
-    public CarView(String framename, CarController cc){
+    public CarView(String framename, CarController cc, ModelWorld model){
         this.carC = cc;
-        this.drawPanel = new DrawPanel(X, Y-240);
+        this.model = model;
+        this.drawPanel = new DrawPanel(X, Y-240, model);
         initComponents(framename);
     }
 

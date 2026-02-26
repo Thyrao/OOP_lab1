@@ -16,8 +16,9 @@ public class Truck implements Movable, Vehicle, ITruck {
     //protected double posX;
     //protected double posY;
     protected double direction;
-    //protected List<Double> pos;
-    protected Point position;
+    protected List<Double> position;
+    protected double posX;
+    protected double posY;
 
     public Truck(Engine engine, int nrDoors, double enginePower, Color color, String modelName){
         this.engine = engine;

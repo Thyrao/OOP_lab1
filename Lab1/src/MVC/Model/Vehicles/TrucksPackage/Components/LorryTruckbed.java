@@ -47,7 +47,8 @@ public class LorryTruckbed{
         if (angle) {
             if (!getLoadedCars().isEmpty()) {
                 unloadedCar = getLoadedCars().removeLast();
-                unloadedCar.updatePosition(unloadedCar.getPosition().x+1, unloadedCar.getPosition().y+1);
+                unloadedCar.getPosition();
+                unloadedCar.updatePosition(unloadedCar.getPosition().get(0)+1, unloadedCar.getPosition().get(1)+1);
                 return unloadedCar;
             }
         }

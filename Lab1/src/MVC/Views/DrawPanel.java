@@ -60,7 +60,7 @@ public class DrawPanel extends JPanel{
 
 
     // Initializes the panel and reads the images
-    public DrawPanel(int x, int y) {
+    public DrawPanel(int x, int y, ModelWorld model) {
         this.setDoubleBuffered(true);
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));

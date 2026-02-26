@@ -1,9 +1,10 @@
 package MVC.Model.Vehicles;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
-public interface Vehicle {
+public interface Vehicle extends Movable{
     int getNrDoors();
     double getEnginePower();
     double getCurrentSpeed();
@@ -16,9 +17,9 @@ public interface Vehicle {
     double getDirection();
     void turnRight();
     void turnLeft();
-    Point getPosition();
+    //List<Double> getPosition(); //flyttad till movable
     void move();
     void setCurrentSpeed(double amount);
-    void updatePosition(int x, int y);
+    void updatePosition(double x, double y);
 
 }

@@ -4,13 +4,9 @@ import MVC.Model.Vehicles.CarsPackage.Cars.Saab95;
 import MVC.Model.Vehicles.CarsPackage.Cars.Volvo240;
 import MVC.Model.Vehicles.TrucksPackage.Trucks.Scania;
 import MVC.Model.Vehicles.Vehicle;
-import MVC.Views.DrawPanel;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Objects;
+import javafx.util.Pair;
+
 
 public class VehicleFactory {
 

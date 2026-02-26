@@ -5,6 +5,8 @@ import MVC.Model.Vehicles.Vehicle;
 import MVC.Model.Vehicles.Engine;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Car implements Movable, ICar, Vehicle{
     // variabler
@@ -14,12 +16,11 @@ public class Car implements Movable, ICar, Vehicle{
     protected double currentSpeed; // The current speed of the car
     protected Color color; // Color of the car
     protected String modelName; // The car model name
-    //protected double posX;
-    //protected double posY;
-    //protected List<Double> pos;
+    protected double posX;
+    protected double posY;
     protected double direction;
     protected int carSize;
-    protected Point position;
+    protected List<Double> position;
 
     public Car(Engine engine, int nrDoors, int enginePower, Color color, String modelName, int carSize){
         this.engine = engine;
@@ -69,10 +70,10 @@ public class Car implements Movable, ICar, Vehicle{
         color = clr;}
 
     public void startEngine(){
-        currentSpeed = 1;}
+        currentSpeed = 0.1;}
 
     public void stopEngine(){
-        currentSpeed = 0;}
+        currentSpeed = 0.0;}
 
     public void gas(double amount){
         double oldSpeed = getCurrentSpeed();
@@ -114,9 +115,9 @@ public class Car implements Movable, ICar, Vehicle{
         direction = ((getDirection() - 1)%4 +4) % 4; // kan inte ha modulo på ett negativt tal
     }
 
-    public void updatePosition(int x, int y){
-        position.x = x;
-        position.y = y;
+    public void updatePosition(double x, double y){
+        posX = x;
+        posY = y;
 
     }
      public Point getPosition() {

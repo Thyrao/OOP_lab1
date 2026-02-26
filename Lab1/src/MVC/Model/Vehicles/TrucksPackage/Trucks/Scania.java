@@ -8,6 +8,7 @@ import MVC.Model.Vehicles.TrucksPackage.Components.ITruck;
 import MVC.Model.Vehicles.TrucksPackage.Components.Truck;
 
 import java.awt.*;
+import java.util.List;
 
 public class Scania implements Movable, Vehicle, ITruck {
     private final Truck truck;

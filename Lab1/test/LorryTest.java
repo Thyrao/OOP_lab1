@@ -22,7 +22,8 @@ class LorryTest {
         Point old_pos = lorry.getPosition();
         lorry.gas(0.5);
         lorry.move();
-        Point new_pos = lorry.getPosition();
+        List<Double> new_pos = lorry.getPosition();
+        Assertions.assertNotEquals(old_pos, new_pos);
     }
 
     @Test
