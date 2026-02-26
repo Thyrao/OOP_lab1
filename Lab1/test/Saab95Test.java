@@ -99,7 +99,7 @@ public class Saab95Test {
 
     @Test
     public void move0() {
-        Point beforePos = new Point(Saab.getPosition());
+        List<Double> beforePos = new ArrayList<>(Saab.getPosition());
         Saab.gas(0.5);
         Saab.move();
         Assertions.assertNotEquals(beforePos, Saab.getPosition(), "The position should have changed if current speed > 0");
@@ -107,7 +107,7 @@ public class Saab95Test {
 
     @Test
     public void move1() {
-        Point beforePos = new Point(Saab.getPosition());
+        List<Double> beforePos = new ArrayList<>(Saab.getPosition());
         Saab.gas(0.5);
         Saab.turnRight();
         Saab.move();
@@ -116,7 +116,7 @@ public class Saab95Test {
 
     @Test
     public void move2() {
-        Point beforePos = new Point(Saab.getPosition());
+        List<Double> beforePos = new ArrayList<>(Saab.getPosition());
         Saab.gas(0.5);
         Saab.turnRight();
         Saab.turnRight();
@@ -126,7 +126,7 @@ public class Saab95Test {
 
     @Test
     public void move3() {
-        Point beforePos =new Point(Saab.getPosition());
+        List<Double> beforePos =new ArrayList<>(Saab.getPosition());
         Saab.gas(0.5);
         Saab.turnRight();
         Saab.turnRight();

@@ -6,7 +6,6 @@ import MVC.Model.Vehicles.Movable;
 import MVC.Model.Vehicles.Vehicle;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Saab95 implements Vehicle, Movable, ICar {
@@ -16,7 +15,6 @@ public class Saab95 implements Vehicle, Movable, ICar {
     public Saab95(){
         this.saabEngine = new SaabEngine(false);
         car = new Car(saabEngine, 2,  125, Color.red, "Saab95", 3);
-        car.updatePosition(0,-100);
     }
 
     public void setTurboOn(){
@@ -85,7 +83,6 @@ public class Saab95 implements Vehicle, Movable, ICar {
     public double getDirection() {
         return car.getDirection();
     }
-
 
     public void updatePosition(double x, double y){
         car.updatePosition(x,y);

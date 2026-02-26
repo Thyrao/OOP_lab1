@@ -6,15 +6,12 @@ import MVC.Model.Vehicles.CarsPackage.Cars.Volvo240;
 import MVC.Model.Vehicles.TrucksPackage.Trucks.Scania;
 import MVC.Model.Vehicles.Vehicle;
 
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+
 
 public class ModelWorld {
     private HashMap<Vehicle, String> vehicles = new HashMap<>();
-    public ServiceStation<Volvo240> volvoWorkshop;
+    ServiceStation<Volvo240> volvoWorkshop;
 
     public ModelWorld(){
         addVolvo();
@@ -25,29 +22,23 @@ public class ModelWorld {
 
     public void addVolvo(){
         Pair<Vehicle, String> volvo  = VehicleFactory.createVolvo();
-        vehicles.put(volvo.get(0), volvo.get(1));
+        vehicles.put(volvo.getFirst(), volvo.getLast());
     }
 
     public void addSaab(){
-        Vehicle saab  = VehicleFactory.createSaab();
-        BufferedImage saabImage = null;
-        try {
-            saabImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg")));
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        vehicles.put(saab, saabImage);
+        Pair<Vehicle, String> saab  = VehicleFactory.createSaab();
+        vehicles.put(saab.getFirst(), saab.getLast());
     }
 
     public void addScania(){
-        Vehicle scania  = VehicleFactory.createScania();
-        vehicles.put(scania, "Scania.jpg");
+        Pair<Vehicle, String> scania  = VehicleFactory.createScania();
+        vehicles.put(scania.getFirst(), scania.getLast());
     }
 
-    public HashMap<Vehicle,BufferedImage> getVehicles(){
-        return vehicles;
+    public HashMap<Vehicle,String> getVehicles(){
+        return new HashMap<>(vehicles);
     }
+
     public void bounds(Vehicle vehicle, int x, int y) { // Ska detta vara en egen klass ist?
         double g;
         if (x > 700 || x < 0) {
@@ -70,9 +61,8 @@ public class ModelWorld {
         if (vehicle instanceof Volvo240) {
             if ((x < 400 && x > 200) && (y < 398 && y > 240)){
                 vehicle.stopEngine();
-                volvoWorkshop.handInCar((Volvo240) vehicle); // ska verkligen en klocka ha en volvoService
-                vehicles.remove(vehicle); // eftersom vi nu inte har någon CarView utan endast använder den som en observer kommer inte detta fungera alls
-                ((Volvo240) vehicle).updatePosition(0,0);
+                volvoWorkshop.handInCar((Volvo240) vehicle);
+                vehicles.remove(vehicle);
             }
         }
     }

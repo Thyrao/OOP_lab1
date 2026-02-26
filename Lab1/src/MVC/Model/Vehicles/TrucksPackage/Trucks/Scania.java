@@ -83,7 +83,7 @@ public class Scania implements Movable, Vehicle, ITruck {
     }
 
     @Override
-    public Point getPosition() {
+    public List<Double> getPosition() {
         return truck.getPosition();
     }
 
@@ -94,7 +94,6 @@ public class Scania implements Movable, Vehicle, ITruck {
 
     public void lower(double amount) {
         scaniaTruckbed.lower(amount, getCurrentSpeed());
-
     }
 
     public void raise(double amount) {
@@ -110,7 +109,7 @@ public class Scania implements Movable, Vehicle, ITruck {
     }
 
     @Override
-    public void updatePosition(int x, int y) {
-
+    public void updatePosition(double x, double y) {
+        truck.updatePosition(x, y);
     }
 }

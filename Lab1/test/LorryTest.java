@@ -19,7 +19,7 @@ class LorryTest {
 
     @Test
     void moveWithoutCars() {
-        Point old_pos = lorry.getPosition();
+        List<Double> old_pos = lorry.getPosition();
         lorry.gas(0.5);
         lorry.move();
         List<Double> new_pos = lorry.getPosition();
@@ -36,9 +36,9 @@ class LorryTest {
         lorry.lower();
         lorry.gas(0.8);
         lorry.move();
-        Point lPos = lorry.getPosition();
-        Point vPos = volvo.getPosition();
-        Point sPos = saab.getPosition();
+        List<Double> lPos = lorry.getPosition();
+        List<Double> vPos = volvo.getPosition();
+        List<Double> sPos = saab.getPosition();
 
         Assertions.assertEquals(lPos, vPos);
         Assertions.assertEquals(lPos, sPos);

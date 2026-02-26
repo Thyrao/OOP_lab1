@@ -1,19 +1,22 @@
 import MVC.Controllers.CarController;
+import MVC.Model.ModelWorld;
 import MVC.Model.TimerListener;
-import MVC.Model.NoneMoveableObjects.ServiceStation;
-import MVC.Model.Vehicles.CarsPackage.Cars.Saab95;
-import MVC.Model.Vehicles.CarsPackage.Cars.Volvo240;
-import MVC.Model.Vehicles.TrucksPackage.Trucks.Scania;
-import MVC.Model.Vehicles.Vehicle;
+import MVC.Views.CarView;
+import MVC.Views.DrawPanel;
 
 import javax.swing.*;
 
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public static void main(String[] args) {
     final int delay = 50;
-    Timer timer = new Timer(delay, new TimerListener());
+    ModelWorld model = new ModelWorld();
+    DrawPanel drawPanel = new DrawPanel(800, 560, model);
+    TimerListener timerListener = new TimerListener(model);
+    CarController cc = new CarController(model);
+    CarView view = new CarView("CarSim 1.0",cc, drawPanel);
+    Timer timer = new Timer(delay, timerListener);
+    timerListener.addObserver(view);
+
     timer.start();
 }
 

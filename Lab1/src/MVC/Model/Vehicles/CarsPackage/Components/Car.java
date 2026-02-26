@@ -29,18 +29,13 @@ public class Car implements Movable, ICar, Vehicle{
         this.currentSpeed = 0;
         this.color = color;
         this.modelName = modelName;
-        //position.x = 0;
-        //position.y = 0;
-        this.position = new Point(0,0);
+        this.position = new ArrayList<>(2);
+        position.add(0, 0.0);
+        position.add(1, 0.0);
+        posX = 0.0;
+        posY = 0.0;
         this.direction = 0;
         this.carSize = carSize;
-        //this.posX = 0;
-        //this.posY = 0;
-        //this.pos = new ArrayList<>();
-        //pos.add(0, 0.0);
-        //pos.add(1, 0.0);
-
-
 
         stopEngine();
     }
@@ -120,32 +115,29 @@ public class Car implements Movable, ICar, Vehicle{
         posY = y;
 
     }
-     public Point getPosition() {
-         //pos.set(0, posX);
-         //pos.set(1, posY);
-         //return pos;
-         return position;
-
+     public List<Double> getPosition() {
+        position.set(0, posX);
+        position.set(1, posY);
+        return new ArrayList<>(position);
      }
 
      public void move(){
          double dir = getDirection();
-         Point pos = getPosition();
 
          if (dir == 0){
-             pos.y +=  getCurrentSpeed();
+             posY +=  getCurrentSpeed();
          }
          else if (dir == 1){
              //posX = pos.get(0) + getCurrentSpeed();
-             pos.x += getCurrentSpeed();
+             posX -= getCurrentSpeed();
          }
          else if (dir == 2){
              //posY = pos.get(1) - getCurrentSpeed();
-             pos.y -= getCurrentSpeed();
+             posY -= getCurrentSpeed();
          }
          else {
              //posX = pos.get(0) - getCurrentSpeed();
-             pos.x -= getCurrentSpeed();
+             posX += getCurrentSpeed();
          }
      }
 }

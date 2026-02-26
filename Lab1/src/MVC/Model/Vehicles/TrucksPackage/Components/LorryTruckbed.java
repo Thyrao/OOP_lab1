@@ -1,7 +1,6 @@
 package MVC.Model.Vehicles.TrucksPackage.Components;
 import MVC.Model.Vehicles.CarsPackage.Components.ICar;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,9 +31,9 @@ public class LorryTruckbed{
         return angle;
     }
 
-    public void load(ICar car, Point position) {
+    public void load(ICar car, List<Double> position) {
         if (loadedCars.size() < maxCapacity) {
-            if ((Math.abs(car.getPosition().x - position.x) < 1) && (Math.abs(car.getPosition().y - position.y) < 1)) {
+            if ((Math.abs(car.getPosition().getFirst() - position.getFirst()) < 1) && (Math.abs(car.getPosition().getLast() - position.getLast()) < 1)) {
                 if (angle && !loadedCars.contains(car))
                     if (car.getCarSize() < 5)
                         loadedCars.add(car);

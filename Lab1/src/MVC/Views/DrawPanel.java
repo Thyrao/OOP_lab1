@@ -1,14 +1,12 @@
 package MVC.Views;
 
 import MVC.Model.ModelWorld;
-import MVC.Model.Vehicles.CarsPackage.Cars.Volvo240;
+import MVC.Model.Vehicles.Movable;
 import MVC.Model.Vehicles.Vehicle;
 
-import java.util.ArrayList;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Objects;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -16,76 +14,29 @@ import javax.swing.*;
 // This panel represents the animated part of the view with the car images.
 
 public class DrawPanel extends JPanel{
-    private HashMap <Object, BufferedImage> objectToImages = new HashMap<>();
     ModelWorld model;
 
     // Just a single image, TODO: Generalize
-
-    // To keep track of a single car's position
-
-    //Point volvoPoint = new Point(0,200);
-    public BufferedImage volvoImage;
-
-    /*
-    Point saabPoint = new Point(0,100);
-    BufferedImage saabImage;
-
-    Point scaniaPoint = new Point();
-    BufferedImage scaniaImage;
-
-    BufferedImage volvoWorkshopImage;
-    Point volvoWorkshopPoint = new Point(300, 300);
-    */
+    private BufferedImage volvoServiceImage;
 
     // TODO: Make this general for all cars
-    public void moveit(Vehicle vehicle, int x, int y){
+    /*public void moveit(Vehicle vehicle, int x, int y){
 
-        /*if(vehicle instanceof Volvo240){
-            volvoPoint.x = x;
-            volvoPoint.y = y;
-
-        }
-        else if(vehicle instanceof Saab95){
-            saabPoint.x = x;
-            saabPoint.y = y;
-
-        }
-        else if(vehicle instanceof Scania){
-            scaniaPoint.x = x;
-            scaniaPoint.y = y;
-        }*/
-
-        // vehicle.updatePosition(x,y); behövs nog inte
-    }
-
-
+    }*/
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y, ModelWorld model) {
         this.setDoubleBuffered(true);
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.pink);
-        model = new ModelWorld(); // fel!!!
+        this.model = model;
 
-        // Print an error message in case file is not found with a try/catch block
-        /*try {
-            // You can remove the "pics" part if running outside of IntelliJ and
-            // everything is in the same main folder.
-            // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
+        try {
+            volvoServiceImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/VolvoBrand.jpg")));
 
-            // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
-            // if you are starting in IntelliJ.
-
-            volvoImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg")));
-            //saabImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg")));
-            //scaniaImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/Scania.jpg")));
-            //volvoWorkshopImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/VolvoBrand.jpg")));
-
-
-        } catch (IOException ex)
-        {
+        } catch (IOException ex) {
             ex.printStackTrace();
-        }*/
+        }
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself
@@ -93,11 +44,16 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for (Vehicle vehicle : model.getVehicles().keySet()){
-            System.out.println(vehicle);
-            System.out.println(vehicle.getPosition().x );
-            System.out.println(vehicle.getPosition().y );
-            g.drawImage(model.getVehicles().get(vehicle), vehicle.getPosition().x , vehicle.getPosition().y, null);
+        for (Movable vehicle : model.getVehicles().keySet()) {
+            String path = model.getVehicles().get(vehicle);
+            BufferedImage image = null;
+            try {
+                image = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/" + path)));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            g.drawImage(image, (int) Math.round(vehicle.getPosition().getFirst()), (int) Math.round(vehicle.getPosition().getLast()), null);
         }
+        g.drawImage(volvoServiceImage, 300, 300, null);
     }
 }

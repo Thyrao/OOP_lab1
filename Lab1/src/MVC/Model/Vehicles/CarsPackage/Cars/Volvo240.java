@@ -6,7 +6,6 @@ import MVC.Model.Vehicles.Movable;
 import MVC.Model.Vehicles.Vehicle;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Volvo240 implements Vehicle, Movable, ICar {
@@ -14,7 +13,6 @@ public class Volvo240 implements Vehicle, Movable, ICar {
 
     public Volvo240(){
         car = new Car(new VolvoEngine(), 4, 100, Color.black, "Volvo240", 2);
-        car.updatePosition(0,-200);
     }
 
     @Override

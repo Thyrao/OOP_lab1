@@ -5,6 +5,8 @@ import MVC.Model.Vehicles.Vehicle;
 import MVC.Model.Vehicles.Engine;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Truck implements Movable, Vehicle, ITruck {
     protected Engine engine;
@@ -13,8 +15,6 @@ public class Truck implements Movable, Vehicle, ITruck {
     protected double currentSpeed; // The current speed of the car
     protected Color color; // Color of the car
     protected String modelName; // The car model name
-    //protected double posX;
-    //protected double posY;
     protected double direction;
     protected List<Double> position;
     protected double posX;
@@ -27,15 +27,12 @@ public class Truck implements Movable, Vehicle, ITruck {
         this.currentSpeed = 0;
         this.color = color;
         this.modelName = modelName;
-        //this.posX = 0.0;
-        //this.posY = 0.0;
         this.direction = 0;
-        //this.pos = new ArrayList<>();
-        //pos.add(0, 0.0);
-        //pos.add(1, 0.0);
-        //position.x = 0;
-        //position.y = 0;
-        this.position = new Point(0,0);
+        this.position = new ArrayList<>();
+        position.add(0, 0.0);
+        position.add(1, 0.0);
+        posX = 0.0;
+        posY = 0.0;
         stopEngine();
     }
 
@@ -100,28 +97,26 @@ public class Truck implements Movable, Vehicle, ITruck {
         direction = ((getDirection() - 1)%4 +4) % 4; // kan inte ha modulo på ett negativt tal
     }
 
-    public Point getPosition(){
-        //pos.set(0, posX);
-        //pos.set(1, posY);
-        //return pos;
-        return position;
+    public List<Double> getPosition() {
+        position.set(0, posX);
+        position.set(1, posY);
+        return new ArrayList<>(position);
     }
 
     public void move(){
         double dir = getDirection();
-        Point pos = getPosition();
 
         if (dir == 0){
-            pos.y +=  getCurrentSpeed();
+            posY +=  getCurrentSpeed();
         }
         else if (dir == 1){
-            pos.x +=  getCurrentSpeed();
+            posX -=  getCurrentSpeed();
         }
         else if (dir == 2){
-            pos.y -= getCurrentSpeed();
+            posY -= getCurrentSpeed();
         }
         else {
-            pos.x -= getCurrentSpeed();
+            posX += getCurrentSpeed();
         }
     }
 
@@ -130,9 +125,8 @@ public class Truck implements Movable, Vehicle, ITruck {
     }
 
     @Override
-    public void updatePosition(int x, int y) {
-        position.x = x;
-        position.y = y;
+    public void updatePosition(double x, double y) {
+        posX = x;
+        posY = y;
     }
 }
-

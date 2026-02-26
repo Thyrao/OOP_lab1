@@ -31,8 +31,8 @@ public class Lorry implements Movable, Vehicle, ITruck {
     }
 
     @Override
-    public void updatePosition(int x, int y) {
-
+    public void updatePosition(double x, double y) {
+        truck.updatePosition(x, y);
     }
 
     @Override
@@ -93,7 +93,7 @@ public class Lorry implements Movable, Vehicle, ITruck {
     }
 
     @Override
-    public Point getPosition() {
+    public List<Double> getPosition() {
         return truck.getPosition();
     }
 
@@ -102,7 +102,7 @@ public class Lorry implements Movable, Vehicle, ITruck {
         truck.move();
         if (!getLoadedCars().isEmpty()){
             for (ICar c : getLoadedCars()){
-                c.updatePosition(getPosition().x, getPosition().y);
+                c.updatePosition(getPosition().getFirst(), getPosition().getLast());
             }
         }
     }
