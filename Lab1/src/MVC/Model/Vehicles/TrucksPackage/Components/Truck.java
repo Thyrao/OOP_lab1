@@ -21,7 +21,7 @@ public class Truck implements Movable, Vehicle, ITruck {
     protected List<Double> position;
     protected double posX;
     protected double posY;
-    State state;
+    protected State state;
 
 
     public Truck(Engine engine, int nrDoors, double enginePower, Color color, String modelName){
@@ -65,13 +65,13 @@ public class Truck implements Movable, Vehicle, ITruck {
         color = clr;}
 
     public void startEngine(){
-        currentSpeed = 0.1;}
+        state.startEngine();}
 
     public void stopEngine(){
         currentSpeed = 0;}
 
     public void gas(double amount){
-        double oldSpeed = getCurrentSpeed();
+/*        double oldSpeed = getCurrentSpeed();
         if(amount >= 0 && amount <=1){
             double newSpeed = engine.incrementSpeed(getCurrentSpeed(), engine.speedFactor(getEnginePower()), amount, getEnginePower());
             if(newSpeed < oldSpeed){
@@ -81,11 +81,12 @@ public class Truck implements Movable, Vehicle, ITruck {
                 currentSpeed = getEnginePower();
             }
             else currentSpeed = newSpeed;
-        }
+        }*/
+        state.gas(amount);
     }
 
     public void brake(double amount){
-        double oldSpeed = getCurrentSpeed();
+/*        double oldSpeed = getCurrentSpeed();
         if(amount >= 0 && amount <=1){
             double newSpeed = engine.decrementSpeed(getCurrentSpeed(), engine.speedFactor(getEnginePower()), amount, getEnginePower());
             if (newSpeed > oldSpeed){
@@ -95,7 +96,8 @@ public class Truck implements Movable, Vehicle, ITruck {
                 currentSpeed = 0;
             }
             else currentSpeed = newSpeed;
-        }
+        }*/
+        state.brake(amount);
     }
 
     public double getDirection(){
@@ -106,11 +108,13 @@ public class Truck implements Movable, Vehicle, ITruck {
         direction = dir;
     }
     public void turnRight(){
-        direction = (getDirection() + 1)%4;
+        //direction = (getDirection() + 1)%4;
+        state.turnRight();
     }
 
     public void turnLeft(){
-        direction = ((getDirection() - 1)%4 +4) % 4; // kan inte ha modulo på ett negativt tal
+        //direction = ((getDirection() - 1)%4 +4) % 4; // kan inte ha modulo på ett negativt tal
+        state.turnLeft();
     }
 
     public List<Double> getPosition() {
@@ -120,7 +124,7 @@ public class Truck implements Movable, Vehicle, ITruck {
     }
 
     public void move(){
-        double dir = getDirection();
+/*        double dir = getDirection();
 
         if (dir == 0){
             posY +=  getCurrentSpeed();
@@ -133,7 +137,8 @@ public class Truck implements Movable, Vehicle, ITruck {
         }
         else {
             posX += getCurrentSpeed();
-        }
+        }*/
+        state.move();
     }
 
     public void setCurrentSpeed(double amount){
