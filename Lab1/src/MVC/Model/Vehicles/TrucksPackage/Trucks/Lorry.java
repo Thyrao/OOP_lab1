@@ -1,5 +1,7 @@
 package MVC.Model.Vehicles.TrucksPackage.Trucks;
 import MVC.Model.LoadedState;
+import MVC.Model.State;
+import MVC.Model.Vehicles.Engine;
 import MVC.Model.Vehicles.TrucksPackage.Components.LorryTruckbed;
 import MVC.Model.Vehicles.TrucksPackage.Engines.LorryEngine;
 import MVC.Model.Vehicles.Vehicle;
@@ -19,6 +21,14 @@ public class Lorry implements Movable, Vehicle, ITruck {
     public Lorry() {
         truck = new Truck(new LorryEngine(),2, 200, Color.cyan, "Lorry");
         this.lorryTruckbed  = new LorryTruckbed();
+    }
+
+    public void changeState(State state){
+        truck.changeState(state);
+    }
+
+    public Engine getEngine(){
+        return truck.getEngine();
     }
 
     @Override

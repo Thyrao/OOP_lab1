@@ -22,6 +22,7 @@ public class ServiceStation<T extends Vehicle> {
     public T fetchCar(T t){
         if (carsInService.contains(t)){
             int i = carsInService.indexOf(t);
+            t.changeState(new UnloadedState(t, t.getEngine()));
             return carsInService.remove(i);
         }
         else return null;
@@ -30,6 +31,7 @@ public class ServiceStation<T extends Vehicle> {
     public void handInCar(T t){
         if(carsInService.size() < maxCapacity){
             carsInService.add(t);
+            t.changeState(new LoadedState(t));
         }
     }
 }

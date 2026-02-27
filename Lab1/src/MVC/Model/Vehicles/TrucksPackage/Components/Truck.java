@@ -1,5 +1,7 @@
 package MVC.Model.Vehicles.TrucksPackage.Components;
 
+import MVC.Model.State;
+import MVC.Model.UnloadedState;
 import MVC.Model.Vehicles.Movable;
 import MVC.Model.Vehicles.Vehicle;
 import MVC.Model.Vehicles.Engine;
@@ -19,6 +21,7 @@ public class Truck implements Movable, Vehicle, ITruck {
     protected List<Double> position;
     protected double posX;
     protected double posY;
+    State state;
 
 
     public Truck(Engine engine, int nrDoors, double enginePower, Color color, String modelName){
@@ -34,7 +37,16 @@ public class Truck implements Movable, Vehicle, ITruck {
         position.add(1, 0.0);
         posX = 0.0;
         posY = 0.0;
+        this.state = new UnloadedState(this, engine);
         stopEngine();
+    }
+
+    public void changeState(State state){
+        this.state = state;
+    }
+
+    public Engine getEngine(){
+        return engine;
     }
 
     public int getNrDoors() {

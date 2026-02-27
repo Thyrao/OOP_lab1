@@ -1,4 +1,6 @@
 package MVC.Model.Vehicles.TrucksPackage.Trucks;
+import MVC.Model.State;
+import MVC.Model.Vehicles.Engine;
 import MVC.Model.Vehicles.TrucksPackage.Components.ScaniaTruckbed;
 import MVC.Model.Vehicles.TrucksPackage.Engines.ScaniaEngine;
 import MVC.Model.Vehicles.Vehicle;
@@ -17,6 +19,14 @@ public class Scania implements Movable, Vehicle, ITruck {
     public Scania() {
         truck = new Truck(new ScaniaEngine(), 2, 175, Color.pink, "Scania");
         scaniaTruckbed = new ScaniaTruckbed();
+    }
+
+    public void changeState(State state){
+        truck.changeState(state);
+    }
+
+    public Engine getEngine(){
+        return truck.getEngine();
     }
 
     @Override
