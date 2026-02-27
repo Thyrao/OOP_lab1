@@ -25,8 +25,8 @@ public class UnloadedState implements State{
     }
 
     public void move(){
-        double posY = vehicle.getPosition().getFirst();
-        double posX = vehicle.getPosition().getLast();
+        double posX = vehicle.getPosition().getFirst();
+        double posY = vehicle.getPosition().getLast();
         double dir = vehicle.getDirection();
 
         if (dir == 0){

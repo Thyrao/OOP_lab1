@@ -1,4 +1,6 @@
 package MVC.Model.NoneMoveableObjects;
+import MVC.Model.LoadedState;
+import MVC.Model.UnloadedState;
 import MVC.Model.Vehicles.Vehicle;
 
 import java.util.ArrayList;

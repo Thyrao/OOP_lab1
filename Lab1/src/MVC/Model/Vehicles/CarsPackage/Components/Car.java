@@ -1,5 +1,6 @@
 package MVC.Model.Vehicles.CarsPackage.Components;
 
+import MVC.Model.LoadedState;
 import MVC.Model.State;
 import MVC.Model.UnloadedState;
 import MVC.Model.Vehicles.Movable;
@@ -39,7 +40,7 @@ public class Car implements Movable, ICar, Vehicle{
         posY = 0.0;
         this.direction = 0;
         this.carSize = carSize;
-        this.state = new UnloadedState(this, this.engine);
+        this.state = new UnloadedState(this, engine);
         stopEngine();
     }
 
