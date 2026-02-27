@@ -1,11 +1,6 @@
 package MVC.Controllers;
 
 import MVC.Model.ModelWorld;
-import MVC.Model.Vehicles.Vehicle;
-import MVC.Model.Vehicles.CarsPackage.Cars.Saab95;
-import MVC.Model.Vehicles.TrucksPackage.Trucks.Scania;
-
-import java.util.ArrayList;
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -58,6 +53,27 @@ public class CarController {
 
     public void turnAllCarsOn () {
         model.turnAllCarsOn();
+    }
+
+    public void addCar(){
+        if(model.getVehicles().size() < 10){
+            int randomNum = (int)(Math.random() * 3);
+            if (randomNum == 0){
+                model.addVolvo();
+            }
+            else if (randomNum == 1){
+                model.addSaab();
+            }
+            else if (randomNum == 2){
+                model.addScania();
+            }
+        }
+    }
+
+    public void removeCar(){
+        if(!model.getVehicles().isEmpty()){
+            model.removeCar();
+        }
     }
     
 }

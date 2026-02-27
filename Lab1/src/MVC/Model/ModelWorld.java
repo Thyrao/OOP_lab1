@@ -6,7 +6,9 @@ import MVC.Model.Vehicles.CarsPackage.Cars.Volvo240;
 import MVC.Model.Vehicles.TrucksPackage.Trucks.Scania;
 import MVC.Model.Vehicles.Vehicle;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class ModelWorld {
@@ -33,6 +35,12 @@ public class ModelWorld {
     public void addScania(){
         Pair<Vehicle, String> scania  = VehicleFactory.createScania();
         vehicles.put(scania.getFirst(), scania.getLast());
+    }
+
+    public void removeCar(){
+        int randomNum = (int)(Math.random() * vehicles.size());
+        List<Vehicle> vehicle = new ArrayList<>(vehicles.keySet());
+        vehicles.remove(vehicle.get(randomNum));
     }
 
     public HashMap<Vehicle,String> getVehicles(){

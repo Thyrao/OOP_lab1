@@ -19,5 +19,4 @@ public class VolvoEngine implements Engine {
     public double decrementSpeed(double currentSpeedx, double speedFactor, double amount, double enginePower){
         return Math.max(currentSpeedx - speedFactor * amount,0);
     }
-
 }

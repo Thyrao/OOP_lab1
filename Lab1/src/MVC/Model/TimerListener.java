@@ -31,10 +31,10 @@ public class TimerListener implements ActionListener {
         for (Vehicle vehicle : model.getVehicles().keySet()) {
             vehicle.move();
             int x = (int) Math.round(vehicle.getPosition().getFirst());
-            int y = (int) Math.round(vehicle.getPosition().getLast()); // "-" för att koordinatsystemet är flippat
+            int y = (int) Math.round(vehicle.getPosition().getLast());
 
             model.bounds(vehicle, x, y);
-            notifyObservers();
         }
+        notifyObservers();
     }
 }
