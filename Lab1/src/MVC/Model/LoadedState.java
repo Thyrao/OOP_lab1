@@ -24,4 +24,6 @@ public class LoadedState implements State{
     public void brake(double amount) {
         //vehicle.brake(0.0);
     }
+    public void startEngine() {
+    }
 }

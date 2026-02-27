@@ -77,7 +77,7 @@ public class Car implements Movable, ICar, Vehicle{
         color = clr;}
 
     public void startEngine(){
-        currentSpeed = 0.1;}
+        state.startEngine();}
 
     public void stopEngine(){
         currentSpeed = 0.0;}

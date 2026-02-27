@@ -73,5 +73,7 @@ public class UnloadedState implements State{
             else vehicle.setCurrentSpeed(newSpeed);
         }
     }
-
+    public void startEngine() {
+        vehicle.setCurrentSpeed(0.1);
+    }
 }
