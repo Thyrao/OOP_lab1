@@ -16,14 +16,12 @@ import javax.swing.*;
 public class DrawPanel extends JPanel{
     ModelWorld model;
 
-    // Just a single image, TODO: Generalize
     private BufferedImage volvoServiceImage;
 
-    // TODO: Make this general for all cars
     /*public void moveit(Vehicle vehicle, int x, int y){
 
     }*/
-    // Initializes the panel and reads the images
+
     public DrawPanel(int x, int y, ModelWorld model) {
         this.setDoubleBuffered(true);
         this.setDoubleBuffered(true);

@@ -113,6 +113,6 @@ public class Volvo240 implements Vehicle, Movable, ICar {
     }
 
     public double speedFactor(){
-        return car.engine.speedFactor(getEnginePower());
+        return car.getEngine().speedFactor(getEnginePower());
     }
 }

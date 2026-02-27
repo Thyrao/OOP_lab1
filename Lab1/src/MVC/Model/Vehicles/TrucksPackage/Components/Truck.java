@@ -71,32 +71,10 @@ public class Truck implements Movable, Vehicle, ITruck {
         currentSpeed = 0;}
 
     public void gas(double amount){
-/*        double oldSpeed = getCurrentSpeed();
-        if(amount >= 0 && amount <=1){
-            double newSpeed = engine.incrementSpeed(getCurrentSpeed(), engine.speedFactor(getEnginePower()), amount, getEnginePower());
-            if(newSpeed < oldSpeed){
-                currentSpeed = oldSpeed;
-            }
-            else if (newSpeed > getEnginePower()){
-                currentSpeed = getEnginePower();
-            }
-            else currentSpeed = newSpeed;
-        }*/
         state.gas(amount);
     }
 
     public void brake(double amount){
-/*        double oldSpeed = getCurrentSpeed();
-        if(amount >= 0 && amount <=1){
-            double newSpeed = engine.decrementSpeed(getCurrentSpeed(), engine.speedFactor(getEnginePower()), amount, getEnginePower());
-            if (newSpeed > oldSpeed){
-                currentSpeed = oldSpeed;
-            }
-            else if (newSpeed < 0){
-                currentSpeed = 0;
-            }
-            else currentSpeed = newSpeed;
-        }*/
         state.brake(amount);
     }
 
@@ -108,12 +86,10 @@ public class Truck implements Movable, Vehicle, ITruck {
         direction = dir;
     }
     public void turnRight(){
-        //direction = (getDirection() + 1)%4;
         state.turnRight();
     }
 
     public void turnLeft(){
-        //direction = ((getDirection() - 1)%4 +4) % 4; // kan inte ha modulo på ett negativt tal
         state.turnLeft();
     }
 
@@ -124,20 +100,6 @@ public class Truck implements Movable, Vehicle, ITruck {
     }
 
     public void move(){
-/*        double dir = getDirection();
-
-        if (dir == 0){
-            posY +=  getCurrentSpeed();
-        }
-        else if (dir == 1){
-            posX -=  getCurrentSpeed();
-        }
-        else if (dir == 2){
-            posY -= getCurrentSpeed();
-        }
-        else {
-            posX += getCurrentSpeed();
-        }*/
         state.move();
     }
 

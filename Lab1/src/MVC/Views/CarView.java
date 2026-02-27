@@ -11,14 +11,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * This class represents the full view of the MVC pattern of your car simulator.
- * It initializes with being center on the screen and attaching it's controller in it's state.
- * It communicates with the Controller by calling methods of it when an action fires of in
- * each of it's components.
- * TODO: Write more actionListeners and wire the rest of the buttons
- **/
-
 public class CarView extends JFrame implements Observer{
     private static final int X = 800;
     private static final int Y = 800;
@@ -197,8 +189,6 @@ public class CarView extends JFrame implements Observer{
     }
     @Override
     public void update() {
-        //drawPanel.moveit(); // finns ingen move funktion jsut nu i drawPanel så därför fungerar det ej
-        // repaint() calls the paintComponent method of the panel
         drawPanel.repaint();
     }
 }

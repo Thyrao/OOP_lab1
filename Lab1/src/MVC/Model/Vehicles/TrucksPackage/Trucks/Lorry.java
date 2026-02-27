@@ -1,5 +1,4 @@
 package MVC.Model.Vehicles.TrucksPackage.Trucks;
-import MVC.Model.LoadedState;
 import MVC.Model.State;
 import MVC.Model.Vehicles.Engine;
 import MVC.Model.Vehicles.TrucksPackage.Components.LorryTruckbed;

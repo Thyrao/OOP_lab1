@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Car implements Movable, ICar, Vehicle{
-    // variabler
-    public Engine engine;
+    protected Engine engine;
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
     protected double currentSpeed; // The current speed of the car
@@ -83,32 +82,10 @@ public class Car implements Movable, ICar, Vehicle{
         currentSpeed = 0.0;}
 
     public void gas(double amount){
-/*        double oldSpeed = getCurrentSpeed();
-        if(amount >= 0 && amount <=1){
-            double newSpeed = engine.incrementSpeed(getCurrentSpeed(), engine.speedFactor(getEnginePower()), amount, getEnginePower());
-            if(newSpeed < oldSpeed){
-                currentSpeed = oldSpeed;
-            }
-            else if (newSpeed > getEnginePower()){
-                currentSpeed = getEnginePower();
-            }
-            else currentSpeed = newSpeed;
-        }*/
         state.gas(amount);
     }
 
     public void brake(double amount){
-/*        double oldSpeed = getCurrentSpeed();
-        if(amount >= 0 && amount <=1){
-            double newSpeed = engine.decrementSpeed(getCurrentSpeed(), engine.speedFactor(getEnginePower()), amount, getEnginePower());
-            if (newSpeed > oldSpeed){
-                currentSpeed = oldSpeed;
-            }
-            else if (newSpeed < 0){
-                currentSpeed = 0;
-            }
-            else currentSpeed = newSpeed;
-        }*/
         state.brake(amount);
     }
 
@@ -121,12 +98,10 @@ public class Car implements Movable, ICar, Vehicle{
     }
 
     public void turnRight(){
-        //direction = (getDirection() + 1)%4;
         state.turnRight();
     }
 
     public void turnLeft(){
-        //direction = ((getDirection() - 1)%4 +4) % 4; // kan inte ha modulo på ett negativt tal
         state.turnLeft();
     }
 
@@ -142,24 +117,6 @@ public class Car implements Movable, ICar, Vehicle{
      }
 
      public void move(){
-/*         double dir = getDirection();
-
-         if (dir == 0){
-             posY +=  getCurrentSpeed();
-         }
-         else if (dir == 1){
-             //posX = pos.get(0) + getCurrentSpeed();
-             posX -= getCurrentSpeed();
-         }
-         else if (dir == 2){
-             //posY = pos.get(1) - getCurrentSpeed();
-             posY -= getCurrentSpeed();
-         }
-         else {
-             //posX = pos.get(0) - getCurrentSpeed();
-             posX += getCurrentSpeed();
-         }
- */
          state.move();
      }
 }
