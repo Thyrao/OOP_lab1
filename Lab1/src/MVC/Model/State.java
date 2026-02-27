@@ -6,5 +6,4 @@ public interface State {
     void move();
     void gas(double amount);
     void brake(double amount);
-
 }

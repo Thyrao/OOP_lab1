@@ -3,6 +3,7 @@ import MVC.Model.State;
 import MVC.Model.Vehicles.CarsPackage.Components.Car;
 import MVC.Model.Vehicles.CarsPackage.Engines.SaabEngine;
 import MVC.Model.Vehicles.CarsPackage.Components.ICar;
+import MVC.Model.Vehicles.Engine;
 import MVC.Model.Vehicles.Movable;
 import MVC.Model.Vehicles.Vehicle;
 
@@ -20,6 +21,10 @@ public class Saab95 implements Vehicle, Movable, ICar {
 
     public void changeState(State state){
         car.changeState(state);
+    }
+
+    public Engine getEngine(){
+        return car.getEngine();
     }
 
     public void setTurboOn(){

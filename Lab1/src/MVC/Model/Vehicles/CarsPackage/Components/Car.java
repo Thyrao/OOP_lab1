@@ -51,6 +51,10 @@ public class Car implements Movable, ICar, Vehicle{
         this.state = state;
     }
 
+    public Engine getEngine(){
+        return engine;
+    }
+
     public int getCarSize(){
         return carSize;
     }

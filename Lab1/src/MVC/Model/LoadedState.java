@@ -5,11 +5,9 @@ import MVC.Model.Vehicles.Vehicle;
 
 public class LoadedState implements State{
     Vehicle vehicle;
-    Engine engine;
 
-    public LoadedState(Vehicle vehicle, Engine engine) {
+    public LoadedState(Vehicle vehicle) {
         this.vehicle = vehicle;
-        this.engine = engine;
     }
     public void turnRight(){
         vehicle.updateDirection(vehicle.getDirection());
