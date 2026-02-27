@@ -1,4 +1,5 @@
 package MVC.Model.Vehicles.CarsPackage.Cars;
+import MVC.Model.State;
 import MVC.Model.Vehicles.CarsPackage.Components.Car;
 import MVC.Model.Vehicles.CarsPackage.Engines.SaabEngine;
 import MVC.Model.Vehicles.CarsPackage.Components.ICar;
@@ -15,6 +16,10 @@ public class Saab95 implements Vehicle, Movable, ICar {
     public Saab95(){
         this.saabEngine = new SaabEngine(false);
         car = new Car(saabEngine, 2,  125, Color.red, "Saab95", 3);
+    }
+
+    public void changeState(State state){
+        car.changeState(state);
     }
 
     public void setTurboOn(){
@@ -82,6 +87,10 @@ public class Saab95 implements Vehicle, Movable, ICar {
     @Override
     public double getDirection() {
         return car.getDirection();
+    }
+
+    public void updateDirection(double dir){
+        car.updateDirection(dir);
     }
 
     public void updatePosition(double x, double y){

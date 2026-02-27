@@ -5,5 +5,6 @@ import MVC.Model.Vehicles.Vehicle;
 public interface ICar extends Vehicle {
 
     int getCarSize();
+    void changeState();
 
 }

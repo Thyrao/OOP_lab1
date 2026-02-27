@@ -1,5 +1,7 @@
 package MVC.Model.Vehicles.CarsPackage.Components;
 
+import MVC.Model.State;
+import MVC.Model.UnloadedState;
 import MVC.Model.Vehicles.Movable;
 import MVC.Model.Vehicles.Vehicle;
 import MVC.Model.Vehicles.Engine;
@@ -21,6 +23,7 @@ public class Car implements Movable, ICar, Vehicle{
     protected double direction;
     protected int carSize;
     protected List<Double> position;
+    protected State state;
 
     public Car(Engine engine, int nrDoors, int enginePower, Color color, String modelName, int carSize){
         this.engine = engine;
@@ -36,13 +39,17 @@ public class Car implements Movable, ICar, Vehicle{
         posY = 0.0;
         this.direction = 0;
         this.carSize = carSize;
-
+        this.state = new UnloadedState(this, this.engine);
         stopEngine();
     }
 
     // funktioner
     public int getNrDoors() {
         return nrDoors;}
+
+    public void changeState(State state){
+        this.state = state;
+    }
 
     public int getCarSize(){
         return carSize;
@@ -71,7 +78,7 @@ public class Car implements Movable, ICar, Vehicle{
         currentSpeed = 0.0;}
 
     public void gas(double amount){
-        double oldSpeed = getCurrentSpeed();
+/*        double oldSpeed = getCurrentSpeed();
         if(amount >= 0 && amount <=1){
             double newSpeed = engine.incrementSpeed(getCurrentSpeed(), engine.speedFactor(getEnginePower()), amount, getEnginePower());
             if(newSpeed < oldSpeed){
@@ -81,11 +88,12 @@ public class Car implements Movable, ICar, Vehicle{
                 currentSpeed = getEnginePower();
             }
             else currentSpeed = newSpeed;
-        }
+        }*/
+        state.gas(amount);
     }
 
     public void brake(double amount){
-        double oldSpeed = getCurrentSpeed();
+/*        double oldSpeed = getCurrentSpeed();
         if(amount >= 0 && amount <=1){
             double newSpeed = engine.decrementSpeed(getCurrentSpeed(), engine.speedFactor(getEnginePower()), amount, getEnginePower());
             if (newSpeed > oldSpeed){
@@ -95,19 +103,26 @@ public class Car implements Movable, ICar, Vehicle{
                 currentSpeed = 0;
             }
             else currentSpeed = newSpeed;
-        }
+        }*/
+        state.brake(amount);
     }
 
     public double getDirection(){
         return direction;
     }
 
+    public void updateDirection(double dir){
+        direction = dir;
+    }
+
     public void turnRight(){
-        direction = (getDirection() + 1)%4;
+        //direction = (getDirection() + 1)%4;
+        state.turnRight();
     }
 
     public void turnLeft(){
-        direction = ((getDirection() - 1)%4 +4) % 4; // kan inte ha modulo på ett negativt tal
+        //direction = ((getDirection() - 1)%4 +4) % 4; // kan inte ha modulo på ett negativt tal
+        state.turnLeft();
     }
 
     public void updatePosition(double x, double y){
@@ -122,7 +137,7 @@ public class Car implements Movable, ICar, Vehicle{
      }
 
      public void move(){
-         double dir = getDirection();
+/*         double dir = getDirection();
 
          if (dir == 0){
              posY +=  getCurrentSpeed();
@@ -139,6 +154,8 @@ public class Car implements Movable, ICar, Vehicle{
              //posX = pos.get(0) - getCurrentSpeed();
              posX += getCurrentSpeed();
          }
+ */
+         state.move();
      }
 }
 

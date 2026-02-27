@@ -1,4 +1,5 @@
 package MVC.Model.Vehicles.TrucksPackage.Components;
+import MVC.Model.LoadedState;
 import MVC.Model.Vehicles.CarsPackage.Components.ICar;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class LorryTruckbed{
                 if (angle && !loadedCars.contains(car))
                     if (car.getCarSize() < 5)
                         loadedCars.add(car);
+                        car.changeState(new LoadedState(car, car.engine));
             }
         }
     }
@@ -48,6 +50,7 @@ public class LorryTruckbed{
                 unloadedCar = getLoadedCars().removeLast();
                 unloadedCar.getPosition();
                 unloadedCar.updatePosition(unloadedCar.getPosition().get(0)+1, unloadedCar.getPosition().get(1)+1);
+                unloadedCar.changeState(new UnloadedState(unloadedCar));
                 return unloadedCar;
             }
         }

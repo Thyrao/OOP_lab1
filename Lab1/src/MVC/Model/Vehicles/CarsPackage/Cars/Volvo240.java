@@ -1,4 +1,5 @@
 package MVC.Model.Vehicles.CarsPackage.Cars;
+import MVC.Model.State;
 import MVC.Model.Vehicles.CarsPackage.Components.Car;
 import MVC.Model.Vehicles.CarsPackage.Engines.VolvoEngine;
 import MVC.Model.Vehicles.CarsPackage.Components.ICar;
@@ -15,6 +16,9 @@ public class Volvo240 implements Vehicle, Movable, ICar {
         car = new Car(new VolvoEngine(), 4, 100, Color.black, "Volvo240", 2);
     }
 
+    public void changeState(State state){
+        car.changeState(state);
+    }
     @Override
     public int getNrDoors() {
         return car.getNrDoors();
@@ -72,6 +76,10 @@ public class Volvo240 implements Vehicle, Movable, ICar {
     @Override
     public double getDirection() {
         return car.getDirection();
+    }
+
+    public void updateDirection(double dir){
+        car.updateDirection(dir);
     }
 
     @Override

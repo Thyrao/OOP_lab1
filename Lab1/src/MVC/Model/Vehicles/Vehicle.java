@@ -17,9 +17,8 @@ public interface Vehicle extends Movable{
     double getDirection();
     void turnRight();
     void turnLeft();
-    //List<Double> getPosition(); //flyttad till movable
     void move();
     void setCurrentSpeed(double amount);
     void updatePosition(double x, double y);
-
+    void updateDirection(double dir);
 }

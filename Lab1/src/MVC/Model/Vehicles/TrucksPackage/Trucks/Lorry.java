@@ -1,4 +1,5 @@
 package MVC.Model.Vehicles.TrucksPackage.Trucks;
+import MVC.Model.LoadedState;
 import MVC.Model.Vehicles.TrucksPackage.Components.LorryTruckbed;
 import MVC.Model.Vehicles.TrucksPackage.Engines.LorryEngine;
 import MVC.Model.Vehicles.Vehicle;
@@ -82,6 +83,10 @@ public class Lorry implements Movable, Vehicle, ITruck {
         return truck.getDirection();
     }
 
+    public void updateDirection(double dir){
+        truck.updateDirection(dir);
+    }
+
     @Override
     public void turnRight() {
         truck.turnRight();
@@ -125,7 +130,6 @@ public class Lorry implements Movable, Vehicle, ITruck {
 
     public void load(ICar car){
         lorryTruckbed.load(car, getPosition());
-
     }
 
     public ICar unload(){

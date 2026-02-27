@@ -20,6 +20,7 @@ public class Truck implements Movable, Vehicle, ITruck {
     protected double posX;
     protected double posY;
 
+
     public Truck(Engine engine, int nrDoors, double enginePower, Color color, String modelName){
         this.engine = engine;
         this.nrDoors = nrDoors;
@@ -89,6 +90,9 @@ public class Truck implements Movable, Vehicle, ITruck {
         return direction;
     }
 
+    public void updateDirection(double dir){
+        direction = dir;
+    }
     public void turnRight(){
         direction = (getDirection() + 1)%4;
     }

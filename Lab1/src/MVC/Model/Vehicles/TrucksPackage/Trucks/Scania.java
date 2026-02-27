@@ -72,6 +72,10 @@ public class Scania implements Movable, Vehicle, ITruck {
         return truck.getDirection();
     }
 
+    public void updateDirection(double dir){
+        truck.updateDirection(dir);
+    }
+
     @Override
     public void turnRight() {
         truck.turnRight();
